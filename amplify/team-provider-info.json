@@ -1,0 +1,25 @@
+{
+  "develop": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-desertamplify-develop-233306-authRole",
+      "UnauthRoleArn": "arn:aws:iam::012952714535:role/amplify-desertamplify-develop-233306-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::012952714535:role/amplify-desertamplify-develop-233306-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-desertamplify-develop-233306-deployment",
+      "UnauthRoleName": "amplify-desertamplify-develop-233306-unauthRole",
+      "StackName": "amplify-desertamplify-develop-233306",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:012952714535:stack/amplify-desertamplify-develop-233306/7a251a90-2c06-11eb-b487-0aa6c7749250",
+      "AmplifyAppId": "d2ndos63cem3ro"
+    },
+    "categories": {
+      "function": {
+        "desertAuthPostConfirmation": {
+          "GROUP": "Editors"
+        }
+      },
+      "auth": {
+        "desertAuth": {}
+      }
+    }
+  }
+}

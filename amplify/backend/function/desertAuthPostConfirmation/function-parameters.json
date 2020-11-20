@@ -1,0 +1,17 @@
+{
+  "trigger": true,
+  "modules": [
+    "add-to-group"
+  ],
+  "parentResource": "desertAuth",
+  "functionName": "desertAuthPostConfirmation",
+  "resourceName": "desertAuthPostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": [],
+  "triggerDir": "/Users/yasu/.nodebrew/node/v10.13.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/PostConfirmation",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "roleName": "desertAuthPostConfirmation",
+  "skipEdit": true,
+  "GROUP": "Editors",
+  "enableCors": false
+}

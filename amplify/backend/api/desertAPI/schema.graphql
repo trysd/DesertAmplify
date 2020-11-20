@@ -1,0 +1,87 @@
+#
+# @auth test
+#
+
+type Task @model
+ @auth(
+   rules: [
+     { allow: groups, groups: ["Admins"], queries: null, mutations: [create, update, delete] }
+     { allow: groups, groups: ["Editors"], queries: [get, list], mutations: null }
+   ]
+) {
+ id: ID!
+ title: String!
+ description: String
+ status: String
+}
+type PrivateNote @model @auth(rules: [{ allow: owner }]) {
+ id: ID!
+ content: String!
+}
+
+#
+# Lambds Transaction test
+#
+
+type Ship @model {
+ id: ID!
+ title: String!
+ capacity: Int!
+ registered: Int!
+ crews: [Crew] @connection(keyName: "byShip", fields: ["id"])
+ createdAt: AWSTimestamp
+}
+
+type Crew @model @key(name: "byShip", fields: ["shipID", "createdAt"]) {
+ id: ID!
+ shipID: ID!
+ userName: String!
+ ship: Ship @connection(fields: ["shipID"])
+ createdAt: AWSTimestamp
+}
+
+type responseRegisterShip {
+  status: Int
+  body: String
+}
+
+type Mutation {
+  registerShip(expectRegValue: Int, userName: String, shipId: String): responseRegisterShip @function(name: "desertFunction-${env}")
+}
+
+#
+# @key test
+#
+
+type Blog @model {
+ id: ID!
+ name: String!
+ posts: [Post] @connection(keyName: "byBlog", fields: ["id"])
+}
+
+type Post @model
+ @key(name: "byBlog", fields: ["blogID", "title"])
+{
+ id: ID!
+ title: String!
+ blogID: ID!
+ blog: Blog @connection(fields: ["blogID"])
+ comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
+ createdAt: AWSDateTime
+}
+
+type Comment @model
+ @key(name: "byPost", fields: ["postID", "createdAt"])
+ @auth(
+  rules: [
+   { allow: owner, ownerField: "userId", operations: [create, update, delete] }
+   { allow: groups, groups: ["Admins"], operations: [create, update, delete] }
+  ]
+) {
+ id: ID!
+ userId: ID
+ postID: ID!
+ post: Post @connection(fields: ["postID"])
+ content: String!
+ createdAt: AWSDateTime
+}

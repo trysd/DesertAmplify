@@ -1,0 +1,254 @@
+<amplify-authenticator>
+  <pre style="text-align:right" *ngIf="user && user.signInUserSession">
+    {{ user.signInUserSession.idToken.payload.email }}
+  </pre>
+  <app-user-page></app-user-page>
+  <amplify-sign-up slot="sign-up" usernameAlias="email" [formFields]="formFields"></amplify-sign-up>
+  <amplify-sign-in slot="sign-in" usernameAlias="email"></amplify-sign-in>
+</amplify-authenticator>
+
+<amplify-authenticator usernameAlias="email">
+  <amplify-confirm-sign-up slot="confirm-sign-up" [formFields]="formFieldsConfirm">
+  </amplify-confirm-sign-up>
+</amplify-authenticator>
+
+<!--
+=====
+=====
+===== add auth
+=====
+=====
+
+M:amplyfy-auth yasu$ amplify init
+Note: It is recommended to run this command from the root of your app directory
+? Enter a name for the project DesertAmplify
+? Enter a name for the environment develop
+? Choose your default editor: Visual Studio Code
+? Choose the type of app that you're building javascript
+Please tell us about your project
+? What javascript framework are you using angular
+? Source Directory Path:  src
+? Distribution Directory Path: dist/desert-amplify
+? Build Command:  npm run-script build
+? Start Command: ng serve
+Using default provider  awscloudformation
+
+For more information on AWS Profiles, see:
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
+
+? Do you want to use an AWS profile? (Y/n) (node:17717) ExperimentalWarning: The fs.promises API is experimental
+? Do you want to use an AWS profile? Yes
+? Please choose the profile you want to use env-ap-2
+Adding backend environment develop to AWS Amplify Console app: d3w52btwd9ds4j
+⠹ Initializing project in the cloud...
+
+CREATE_IN_PROGRESS amplify-desertamplify-develop-215417 AWS::CloudFormation::Stack Sat Nov 21 2020 21:54:20 GMT+0900 (GMT+09:00) User Initiated
+CREATE_IN_PROGRESS DeploymentBucket                     AWS::S3::Bucket            Sat Nov 21 2020 21:54:23 GMT+0900 (GMT+09:00)
+CREATE_IN_PROGRESS AuthRole                             AWS::IAM::Role             Sat Nov 21 2020 21:54:23 GMT+0900 (GMT+09:00)
+CREATE_IN_PROGRESS UnauthRole                           AWS::IAM::Role             Sat Nov 21 2020 21:54:24 GMT+0900 (GMT+09:00)
+CREATE_IN_PROGRESS UnauthRole                           AWS::IAM::Role             Sat Nov 21 2020 21:54:25 GMT+0900 (GMT+09:00) Resource creation Initiated
+CREATE_IN_PROGRESS AuthRole                             AWS::IAM::Role             Sat Nov 21 2020 21:54:25 GMT+0900 (GMT+09:00) Resource creation Initiated
+⠦ Initializing project in the cloud...
+
+CREATE_IN_PROGRESS DeploymentBucket AWS::S3::Bucket Sat Nov 21 2020 21:54:26 GMT+0900 (GMT+09:00) Resource creation Initiated
+⠋ Initializing project in the cloud...
+
+CREATE_COMPLETE UnauthRole AWS::IAM::Role Sat Nov 21 2020 21:54:43 GMT+0900 (GMT+09:00)
+CREATE_COMPLETE AuthRole   AWS::IAM::Role Sat Nov 21 2020 21:54:44 GMT+0900 (GMT+09:00)
+⠋ Initializing project in the cloud...
+
+CREATE_COMPLETE DeploymentBucket                     AWS::S3::Bucket            Sat Nov 21 2020 21:54:46 GMT+0900 (GMT+09:00)
+CREATE_COMPLETE amplify-desertamplify-develop-215417 AWS::CloudFormation::Stack Sat Nov 21 2020 21:54:49 GMT+0900 (GMT+09:00)
+✔ Successfully created initial AWS cloud resources for deployments.
+✔ Initialized provider successfully.
+Initialized your environment successfully.
+
+Your project has been successfully initialized and connected to the cloud!
+
+Some next steps:
+"amplify status" will show you what you've added already and if it's locally configured or deployed
+"amplify add <category>" will allow you to add features like user login or a backend API
+"amplify push" will build all your local backend resources and provision it in the cloud
+"amplify console" to open the Amplify Console and view your project status
+"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
+
+Pro tip:
+Try "amplify add api" to create a backend API and then "amplify publish" to deploy everything
+
+M:amplyfy-auth yasu$ amplify add auth
+Using service: Cognito, provided by: awscloudformation
+
+The current configured provider is Amazon Cognito.
+
+Do you want to use the default authentication and security configuration? Manual configuration
+Select the authentication/authorization services that you want to use: User Sign-Up, Sign-In, connected with AWS IAM controls (En
+ables per-user Storage features for images or other content, Analytics, and more)
+Please provide a friendly name for your resource that will be used to label this category in the project: DesertAmplify
+Please enter a name for your identity pool. DesertAmplify
+M:amplyfy-auth yasu$ amplify add auth
+Using service: Cognito, provided by: awscloudformation
+
+The current configured provider is Amazon Cognito.
+
+Do you want to use the default authentication and security configuration? Manual configuration
+Select the authentication/authorization services that you want to use: User Sign-Up, Sign-In, connected with AWS IAM controls (En
+ables per-user Storage features for images or other content, Analytics, and more)
+Please provide a friendly name for your resource that will be used to label this category in the project: daAuth
+Please enter a name for your identity pool. daAuth
+Allow unauthenticated logins? (Provides scoped down permissions that you can control via AWS IAM) Yes
+Do you want to enable 3rd party authentication providers in your identity pool? No
+Please provide a name for your user pool: daAyth
+Warning: you will not be able to edit these selections.
+How do you want users to be able to sign in? Email
+Do you want to add User Pool Groups? Yes
+? Provide a name for your user pool group: Admins
+? Do you want to add another User Pool Group Yes
+? Provide a name for your user pool group: Editors
+? Do you want to add another User Pool Group No
+✔ Sort the user pool groups in order of preference · Admins, Editors
+Do you want to add an admin queries API? Yes
+? Do you want to restrict access to the admin queries API to a specific Group Yes
+? Select the group to restrict access with: Admins
+Multifactor authentication (MFA) user login options: OFF
+Email based user registration/forgot password: Enabled (Requires per-user email entry at registration)
+Please specify an email verification subject: Your verification code
+Please specify an email verification message: Your verification code is {####}
+Do you want to override the default password policy for this User Pool? No
+Warning: you will not be able to edit these selections.
+What attributes are required for signing up? Email, Name, Nickname (This attribute is not supported by Facebook, Google, Login Wi
+th Amazon.), Phone Number (This attribute is not supported by Facebook, Login With Amazon.)
+Specify the app's refresh token expiration period (in days): 30
+Do you want to specify the user attributes this app can read and write? Yes
+Specify read attributes: Email, Name, Nickname, Phone Number, Email Verified?
+Specify write attributes:
+Do you want to enable any of the following capabilities? Add User to Group
+Do you want to use an OAuth flow? No
+? Do you want to configure Lambda Triggers for Cognito? No
+? Enter the name of the group to which users will be added. Editors
+Successfully added resource daAuthPostConfirmation locally.
+
+Next steps:
+Check out sample function code generated in <project-dir>/amplify/backend/function/daAuthPostConfirmation/src
+"amplify function build" builds all of your functions currently in the project
+"amplify mock function <functionName>" runs your function locally
+"amplify push" builds all of your local backend resources and provisions them in the cloud
+"amplify publish" builds all of your local backend and front-end resources (if you added hosting category) and provisions them in the cloud
+Successfully added the Lambda function locally
+? Do you want to edit your add-to-group function now? Yes
+Please edit the file in your editor: /Users/yasu/work/github/amplyfy-auth/amplify/backend/function/daAuthPostConfirmation/src/add-to-group.js
+? Press enter to continue
+Successfully added AdminQueries4fcb2ee5 function locally
+Successfully added AdminQueries API locally
+Successfully added auth resource daAuth locally
+
+Some next steps:
+"amplify push" will build all your local backend resources and provision it in the cloud
+"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
+
+(node:17980) ExperimentalWarning: The fs.promises API is experimental
+M:amplyfy-auth yasu$ amplify push
+⠋ Fetching updates to backend environment: develop from the cloud.(node:18350) ExperimentalWarning: The fs.promises API is experimental
+✔ Successfully pulled backend environment develop from the cloud.
+
+Current Environment: develop
+
+| Category | Resource name          | Operation | Provider plugin   |
+| -------- | ---------------------- | --------- | ----------------- |
+| Function | daAuthPostConfirmation | Create    | awscloudformation |
+| Function | AdminQueries4fcb2ee5   | Create    | awscloudformation |
+| Auth     | userPoolGroups         | Create    | awscloudformation |
+| Auth     | daAuth                 | Create    | awscloudformation |
+| Api      | AdminQueries           | Create    | awscloudformation |
+? Are you sure you want to continue? Yes
+
+    "userpoolClientReadAttributes": [
+        "email",
+        "name",
+        "nickname",
+        "phone_number",
+        "email_verified",
+        "phone_number_verified"
+    ],
+
+=====
+=====
+===== add api
+=====
+=====
+
+REST API endpoint: https://kvp2nh3xqk.execute-api.ap-northeast-2.amazonaws.com/develop
+
+M:amplyfy-auth yasu$ amplify add api
+? Please select from one of the below mentioned services: GraphQL
+? Provide API name: daApi
+? Choose the default authorization type for the API Amazon Cognito User Pool
+Use a Cognito user pool configured as a part of this project.
+? Do you want to configure advanced settings for the GraphQL API No, I am done.
+? Do you have an annotated GraphQL schema? No
+? Choose a schema template: Objects with fine-grained access control (e.g., a project management app with owner-based authorizatio
+n)
+(node:18826) ExperimentalWarning: The fs.promises API is experimental
+
+GraphQL schema compiled successfully.
+
+Edit your schema at /Users/yasu/work/github/amplyfy-auth/amplify/backend/api/daApi/schema.graphql or place .graphql files in a directory at /Users/yasu/work/github/amplyfy-auth/amplify/backend/api/daApi/schema
+? Do you want to edit the schema now? Yes
+Please edit the file in your editor: /Users/yasu/work/github/amplyfy-auth/amplify/backend/api/daApi/schema.graphql
+Successfully added resource daApi locally
+
+=====
+=====
+===== add function
+=====
+=====
+
+VM:amplyfy-auth yasu$ amplify add function
+? Select which capability you want to add: Lambda function (serverless function)
+? Provide a friendly name for your resource to be used as a label for this category in the project: desertFunction
+? Provide the AWS Lambda function name: desertFunction
+? Choose the runtime that you want to use: NodeJS
+? Choose the function template that you want to use: Hello World
+? Do you want to access other resources in this project from your Lambda function? Yes
+? Select the category api
+? Api has 2 resources in this project. Select the one you would like your Lambda to access desertAPI
+? Select the operations you want to permit for desertAPI create, read, update, delete
+
+You can access the following resource attributes as environment variables from your Lambda function
+        API_DESERTAPI_GRAPHQLAPIENDPOINTOUTPUT
+        API_DESERTAPI_GRAPHQLAPIIDOUTPUT
+        ENV
+        REGION
+? Do you want to invoke this function on a recurring schedule? No
+? Do you want to configure Lambda layers for this function? No
+? Do you want to edit the local lambda function now? Yes
+Please edit the file in your editor: amplify/backend/function/desertFunction/src/index.js
+? Press enter to continue
+Successfully added resource desertFunction locally.
+
+===== functionに対する@authの影響
+
+2020-11-22T01:10:29.939Z	73c10c94-9ac5-4936-8faf-629e52c916d0	INFO	AccessDeniedException: User: arn:aws:sts::012952714535:assumed-role/desertamplifyLambdaRole187996db-develop/desertFunction-develop is not authorized to perform: dynamodb:PutItem on resource: arn:aws:dynamodb:ap-northeast-2:012952714535:table/Crew-yjjlug7rs5fetiutw46kxqsscy-develop
+    at Request.extractError (/var/runtime/node_modules/aws-sdk/lib/protocol/json.js:52:27)
+    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:106:20)
+    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:78:10)
+    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/request.js:688:14)
+    at Request.transition (/var/runtime/node_modules/aws-sdk/lib/request.js:22:10)
+    at AcceptorStateMachine.runTo (/var/runtime/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /var/runtime/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:38:9)
+    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:690:12)
+    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:116:18) {
+  code: 'AccessDeniedException',
+  time: 2020-11-22T01:10:29.859Z,
+  requestId: 'CO550TIG9OKONE5BFOQ15BC25VVV4KQNSO5AEMVJF66Q9ASUAAJG',
+  statusCode: 400,
+  retryable: false,
+  retryDelay: 10.707727105929276
+}
+
+↓
+
+AmazonDynamoDBFullAccess　にIAMロールポリシーアタッチ
+
+-->
+
