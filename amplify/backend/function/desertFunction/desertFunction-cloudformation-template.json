@@ -83,7 +83,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-desertamplify-develop-233306-deployment",
-          "S3Key": "amplify-builds/desertFunction-6c795467505073625138-build.zip"
+          "S3Key": "amplify-builds/desertFunction-70395157614b4975357a-build.zip"
         }
       }
     },

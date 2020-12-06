@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "desertFunction:index.handler (nodejs10.x)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "amplify/backend/function/desertFunction/src",
+                "lambdaHandler": "index.handler"
+            },
+            "lambda": {
+                "runtime": "nodejs10.x",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        }
+    ]
+}

@@ -56,126 +56,6 @@ subscription OnDeletePrivateNote($owner: String!) {
     owner
   }
 }
-subscription OnCreateShip {
-  onCreateShip {
-    id
-    title
-    capacity
-    registered
-    crews {
-      items {
-        id
-        shipID
-        userName
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateShip {
-  onUpdateShip {
-    id
-    title
-    capacity
-    registered
-    crews {
-      items {
-        id
-        shipID
-        userName
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteShip {
-  onDeleteShip {
-    id
-    title
-    capacity
-    registered
-    crews {
-      items {
-        id
-        shipID
-        userName
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateCrew {
-  onCreateCrew {
-    id
-    shipID
-    userName
-    ship {
-      id
-      title
-      capacity
-      registered
-      crews {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateCrew {
-  onUpdateCrew {
-    id
-    shipID
-    userName
-    ship {
-      id
-      title
-      capacity
-      registered
-      crews {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteCrew {
-  onDeleteCrew {
-    id
-    shipID
-    userName
-    ship {
-      id
-      title
-      capacity
-      registered
-      crews {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
 subscription OnCreateBlog {
   onCreateBlog {
     id
@@ -391,6 +271,198 @@ subscription OnDeleteComment {
       updatedAt
     }
     content
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateRoutineShip {
+  onCreateRoutineShip {
+    id
+    ship {
+      items {
+        id
+        title
+        capacity
+        registered
+        createdAt
+        shipSize
+        routineShipID
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateRoutineShip {
+  onUpdateRoutineShip {
+    id
+    ship {
+      items {
+        id
+        title
+        capacity
+        registered
+        createdAt
+        shipSize
+        routineShipID
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteRoutineShip {
+  onDeleteRoutineShip {
+    id
+    ship {
+      items {
+        id
+        title
+        capacity
+        registered
+        createdAt
+        shipSize
+        routineShipID
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateShip {
+  onCreateShip {
+    id
+    title
+    capacity
+    registered
+    crews {
+      items {
+        id
+        shipID
+        userName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    shipSize
+    routineShipID
+    updatedAt
+  }
+}
+subscription OnUpdateShip {
+  onUpdateShip {
+    id
+    title
+    capacity
+    registered
+    crews {
+      items {
+        id
+        shipID
+        userName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    shipSize
+    routineShipID
+    updatedAt
+  }
+}
+subscription OnDeleteShip {
+  onDeleteShip {
+    id
+    title
+    capacity
+    registered
+    crews {
+      items {
+        id
+        shipID
+        userName
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    shipSize
+    routineShipID
+    updatedAt
+  }
+}
+subscription OnCreateCrew {
+  onCreateCrew {
+    id
+    shipID
+    userName
+    ship {
+      id
+      title
+      capacity
+      registered
+      crews {
+        nextToken
+      }
+      createdAt
+      shipSize
+      routineShipID
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCrew {
+  onUpdateCrew {
+    id
+    shipID
+    userName
+    ship {
+      id
+      title
+      capacity
+      registered
+      crews {
+        nextToken
+      }
+      createdAt
+      shipSize
+      routineShipID
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCrew {
+  onDeleteCrew {
+    id
+    shipID
+    userName
+    ship {
+      id
+      title
+      capacity
+      registered
+      crews {
+        nextToken
+      }
+      createdAt
+      shipSize
+      routineShipID
+      updatedAt
+    }
     createdAt
     updatedAt
   }

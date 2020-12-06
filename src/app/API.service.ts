@@ -96,91 +96,6 @@ export type DeletePrivateNoteInput = {
   id?: string | null;
 };
 
-export type CreateShipInput = {
-  id?: string | null;
-  title: string;
-  capacity: number;
-  registered: number;
-  createdAt?: number | null;
-};
-
-export type ModelShipConditionInput = {
-  title?: ModelStringInput | null;
-  capacity?: ModelIntInput | null;
-  registered?: ModelIntInput | null;
-  createdAt?: ModelIntInput | null;
-  and?: Array<ModelShipConditionInput | null> | null;
-  or?: Array<ModelShipConditionInput | null> | null;
-  not?: ModelShipConditionInput | null;
-};
-
-export type ModelIntInput = {
-  ne?: number | null;
-  eq?: number | null;
-  le?: number | null;
-  lt?: number | null;
-  ge?: number | null;
-  gt?: number | null;
-  between?: Array<number | null> | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-};
-
-export type UpdateShipInput = {
-  id: string;
-  title?: string | null;
-  capacity?: number | null;
-  registered?: number | null;
-  createdAt?: number | null;
-};
-
-export type DeleteShipInput = {
-  id?: string | null;
-};
-
-export type CreateCrewInput = {
-  id?: string | null;
-  shipID: string;
-  userName: string;
-  createdAt?: number | null;
-};
-
-export type ModelCrewConditionInput = {
-  shipID?: ModelIDInput | null;
-  userName?: ModelStringInput | null;
-  createdAt?: ModelIntInput | null;
-  and?: Array<ModelCrewConditionInput | null> | null;
-  or?: Array<ModelCrewConditionInput | null> | null;
-  not?: ModelCrewConditionInput | null;
-};
-
-export type ModelIDInput = {
-  ne?: string | null;
-  eq?: string | null;
-  le?: string | null;
-  lt?: string | null;
-  ge?: string | null;
-  gt?: string | null;
-  contains?: string | null;
-  notContains?: string | null;
-  between?: Array<string | null> | null;
-  beginsWith?: string | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-  size?: ModelSizeInput | null;
-};
-
-export type UpdateCrewInput = {
-  id: string;
-  shipID?: string | null;
-  userName?: string | null;
-  createdAt?: number | null;
-};
-
-export type DeleteCrewInput = {
-  id?: string | null;
-};
-
 export type CreateBlogInput = {
   id?: string | null;
   name: string;
@@ -216,6 +131,22 @@ export type ModelPostConditionInput = {
   and?: Array<ModelPostConditionInput | null> | null;
   or?: Array<ModelPostConditionInput | null> | null;
   not?: ModelPostConditionInput | null;
+};
+
+export type ModelIDInput = {
+  ne?: string | null;
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  contains?: string | null;
+  notContains?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+  size?: ModelSizeInput | null;
 };
 
 export type UpdatePostInput = {
@@ -258,6 +189,98 @@ export type DeleteCommentInput = {
   id?: string | null;
 };
 
+export type CreateRoutineShipInput = {
+  id?: string | null;
+};
+
+export type ModelRoutineShipConditionInput = {
+  and?: Array<ModelRoutineShipConditionInput | null> | null;
+  or?: Array<ModelRoutineShipConditionInput | null> | null;
+  not?: ModelRoutineShipConditionInput | null;
+};
+
+export type UpdateRoutineShipInput = {
+  id: string;
+};
+
+export type DeleteRoutineShipInput = {
+  id?: string | null;
+};
+
+export type CreateShipInput = {
+  id?: string | null;
+  title: string;
+  capacity: number;
+  registered: number;
+  createdAt?: string | null;
+  shipSize?: string | null;
+  routineShipID?: string | null;
+};
+
+export type ModelShipConditionInput = {
+  title?: ModelStringInput | null;
+  capacity?: ModelIntInput | null;
+  registered?: ModelIntInput | null;
+  createdAt?: ModelStringInput | null;
+  shipSize?: ModelStringInput | null;
+  routineShipID?: ModelIDInput | null;
+  and?: Array<ModelShipConditionInput | null> | null;
+  or?: Array<ModelShipConditionInput | null> | null;
+  not?: ModelShipConditionInput | null;
+};
+
+export type ModelIntInput = {
+  ne?: number | null;
+  eq?: number | null;
+  le?: number | null;
+  lt?: number | null;
+  ge?: number | null;
+  gt?: number | null;
+  between?: Array<number | null> | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+};
+
+export type UpdateShipInput = {
+  id: string;
+  title?: string | null;
+  capacity?: number | null;
+  registered?: number | null;
+  createdAt?: string | null;
+  shipSize?: string | null;
+  routineShipID?: string | null;
+};
+
+export type DeleteShipInput = {
+  id?: string | null;
+};
+
+export type CreateCrewInput = {
+  id?: string | null;
+  shipID: string;
+  userName: string;
+  createdAt?: string | null;
+};
+
+export type ModelCrewConditionInput = {
+  shipID?: ModelIDInput | null;
+  createdAt?: ModelStringInput | null;
+  and?: Array<ModelCrewConditionInput | null> | null;
+  or?: Array<ModelCrewConditionInput | null> | null;
+  not?: ModelCrewConditionInput | null;
+};
+
+export type UpdateCrewInput = {
+  id: string;
+  shipID?: string | null;
+  userName?: string | null;
+  createdAt?: string | null;
+};
+
+export type DeleteCrewInput = {
+  id?: string | null;
+};
+
 export type ModelTaskFilterInput = {
   id?: ModelIDInput | null;
   title?: ModelStringInput | null;
@@ -274,27 +297,6 @@ export type ModelPrivateNoteFilterInput = {
   and?: Array<ModelPrivateNoteFilterInput | null> | null;
   or?: Array<ModelPrivateNoteFilterInput | null> | null;
   not?: ModelPrivateNoteFilterInput | null;
-};
-
-export type ModelShipFilterInput = {
-  id?: ModelIDInput | null;
-  title?: ModelStringInput | null;
-  capacity?: ModelIntInput | null;
-  registered?: ModelIntInput | null;
-  createdAt?: ModelIntInput | null;
-  and?: Array<ModelShipFilterInput | null> | null;
-  or?: Array<ModelShipFilterInput | null> | null;
-  not?: ModelShipFilterInput | null;
-};
-
-export type ModelCrewFilterInput = {
-  id?: ModelIDInput | null;
-  shipID?: ModelIDInput | null;
-  userName?: ModelStringInput | null;
-  createdAt?: ModelIntInput | null;
-  and?: Array<ModelCrewFilterInput | null> | null;
-  or?: Array<ModelCrewFilterInput | null> | null;
-  not?: ModelCrewFilterInput | null;
 };
 
 export type ModelBlogFilterInput = {
@@ -324,6 +326,36 @@ export type ModelCommentFilterInput = {
   and?: Array<ModelCommentFilterInput | null> | null;
   or?: Array<ModelCommentFilterInput | null> | null;
   not?: ModelCommentFilterInput | null;
+};
+
+export type ModelRoutineShipFilterInput = {
+  id?: ModelIDInput | null;
+  and?: Array<ModelRoutineShipFilterInput | null> | null;
+  or?: Array<ModelRoutineShipFilterInput | null> | null;
+  not?: ModelRoutineShipFilterInput | null;
+};
+
+export type ModelShipFilterInput = {
+  id?: ModelIDInput | null;
+  title?: ModelStringInput | null;
+  capacity?: ModelIntInput | null;
+  registered?: ModelIntInput | null;
+  createdAt?: ModelStringInput | null;
+  shipSize?: ModelStringInput | null;
+  routineShipID?: ModelIDInput | null;
+  and?: Array<ModelShipFilterInput | null> | null;
+  or?: Array<ModelShipFilterInput | null> | null;
+  not?: ModelShipFilterInput | null;
+};
+
+export type ModelCrewFilterInput = {
+  id?: ModelIDInput | null;
+  shipID?: ModelIDInput | null;
+  userName?: ModelStringInput | null;
+  createdAt?: ModelStringInput | null;
+  and?: Array<ModelCrewFilterInput | null> | null;
+  or?: Array<ModelCrewFilterInput | null> | null;
+  not?: ModelCrewFilterInput | null;
 };
 
 export type RegisterShipMutation = {
@@ -387,138 +419,6 @@ export type DeletePrivateNoteMutation = {
   createdAt: string;
   updatedAt: string;
   owner: string | null;
-};
-
-export type CreateShipMutation = {
-  __typename: "Ship";
-  id: string;
-  title: string;
-  capacity: number;
-  registered: number;
-  crews: {
-    __typename: "ModelCrewConnection";
-    items: Array<{
-      __typename: "Crew";
-      id: string;
-      shipID: string;
-      userName: string;
-      createdAt: number | null;
-      updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type UpdateShipMutation = {
-  __typename: "Ship";
-  id: string;
-  title: string;
-  capacity: number;
-  registered: number;
-  crews: {
-    __typename: "ModelCrewConnection";
-    items: Array<{
-      __typename: "Crew";
-      id: string;
-      shipID: string;
-      userName: string;
-      createdAt: number | null;
-      updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type DeleteShipMutation = {
-  __typename: "Ship";
-  id: string;
-  title: string;
-  capacity: number;
-  registered: number;
-  crews: {
-    __typename: "ModelCrewConnection";
-    items: Array<{
-      __typename: "Crew";
-      id: string;
-      shipID: string;
-      userName: string;
-      createdAt: number | null;
-      updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type CreateCrewMutation = {
-  __typename: "Crew";
-  id: string;
-  shipID: string;
-  userName: string;
-  ship: {
-    __typename: "Ship";
-    id: string;
-    title: string;
-    capacity: number;
-    registered: number;
-    crews: {
-      __typename: "ModelCrewConnection";
-      nextToken: string | null;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type UpdateCrewMutation = {
-  __typename: "Crew";
-  id: string;
-  shipID: string;
-  userName: string;
-  ship: {
-    __typename: "Ship";
-    id: string;
-    title: string;
-    capacity: number;
-    registered: number;
-    crews: {
-      __typename: "ModelCrewConnection";
-      nextToken: string | null;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type DeleteCrewMutation = {
-  __typename: "Crew";
-  id: string;
-  shipID: string;
-  userName: string;
-  ship: {
-    __typename: "Ship";
-    id: string;
-    title: string;
-    capacity: number;
-    registered: number;
-    crews: {
-      __typename: "ModelCrewConnection";
-      nextToken: string | null;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
 };
 
 export type CreateBlogMutation = {
@@ -767,6 +667,216 @@ export type DeleteCommentMutation = {
   updatedAt: string;
 };
 
+export type CreateRoutineShipMutation = {
+  __typename: "RoutineShip";
+  id: string;
+  ship: {
+    __typename: "ModelShipConnection";
+    items: Array<{
+      __typename: "Ship";
+      id: string;
+      title: string;
+      capacity: number;
+      registered: number;
+      createdAt: string | null;
+      shipSize: string | null;
+      routineShipID: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdateRoutineShipMutation = {
+  __typename: "RoutineShip";
+  id: string;
+  ship: {
+    __typename: "ModelShipConnection";
+    items: Array<{
+      __typename: "Ship";
+      id: string;
+      title: string;
+      capacity: number;
+      registered: number;
+      createdAt: string | null;
+      shipSize: string | null;
+      routineShipID: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeleteRoutineShipMutation = {
+  __typename: "RoutineShip";
+  id: string;
+  ship: {
+    __typename: "ModelShipConnection";
+    items: Array<{
+      __typename: "Ship";
+      id: string;
+      title: string;
+      capacity: number;
+      registered: number;
+      createdAt: string | null;
+      shipSize: string | null;
+      routineShipID: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CreateShipMutation = {
+  __typename: "Ship";
+  id: string;
+  title: string;
+  capacity: number;
+  registered: number;
+  crews: {
+    __typename: "ModelCrewConnection";
+    items: Array<{
+      __typename: "Crew";
+      id: string;
+      shipID: string;
+      userName: string;
+      createdAt: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string | null;
+  shipSize: string | null;
+  routineShipID: string | null;
+  updatedAt: string;
+};
+
+export type UpdateShipMutation = {
+  __typename: "Ship";
+  id: string;
+  title: string;
+  capacity: number;
+  registered: number;
+  crews: {
+    __typename: "ModelCrewConnection";
+    items: Array<{
+      __typename: "Crew";
+      id: string;
+      shipID: string;
+      userName: string;
+      createdAt: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string | null;
+  shipSize: string | null;
+  routineShipID: string | null;
+  updatedAt: string;
+};
+
+export type DeleteShipMutation = {
+  __typename: "Ship";
+  id: string;
+  title: string;
+  capacity: number;
+  registered: number;
+  crews: {
+    __typename: "ModelCrewConnection";
+    items: Array<{
+      __typename: "Crew";
+      id: string;
+      shipID: string;
+      userName: string;
+      createdAt: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string | null;
+  shipSize: string | null;
+  routineShipID: string | null;
+  updatedAt: string;
+};
+
+export type CreateCrewMutation = {
+  __typename: "Crew";
+  id: string;
+  shipID: string;
+  userName: string;
+  ship: {
+    __typename: "Ship";
+    id: string;
+    title: string;
+    capacity: number;
+    registered: number;
+    crews: {
+      __typename: "ModelCrewConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string | null;
+    shipSize: string | null;
+    routineShipID: string | null;
+    updatedAt: string;
+  } | null;
+  createdAt: string | null;
+  updatedAt: string;
+};
+
+export type UpdateCrewMutation = {
+  __typename: "Crew";
+  id: string;
+  shipID: string;
+  userName: string;
+  ship: {
+    __typename: "Ship";
+    id: string;
+    title: string;
+    capacity: number;
+    registered: number;
+    crews: {
+      __typename: "ModelCrewConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string | null;
+    shipSize: string | null;
+    routineShipID: string | null;
+    updatedAt: string;
+  } | null;
+  createdAt: string | null;
+  updatedAt: string;
+};
+
+export type DeleteCrewMutation = {
+  __typename: "Crew";
+  id: string;
+  shipID: string;
+  userName: string;
+  ship: {
+    __typename: "Ship";
+    id: string;
+    title: string;
+    capacity: number;
+    registered: number;
+    crews: {
+      __typename: "ModelCrewConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string | null;
+    shipSize: string | null;
+    routineShipID: string | null;
+    updatedAt: string;
+  } | null;
+  createdAt: string | null;
+  updatedAt: string;
+};
+
 export type GetTaskQuery = {
   __typename: "Task";
   id: string;
@@ -809,90 +919,6 @@ export type ListPrivateNotesQuery = {
     createdAt: string;
     updatedAt: string;
     owner: string | null;
-  } | null> | null;
-  nextToken: string | null;
-};
-
-export type GetShipQuery = {
-  __typename: "Ship";
-  id: string;
-  title: string;
-  capacity: number;
-  registered: number;
-  crews: {
-    __typename: "ModelCrewConnection";
-    items: Array<{
-      __typename: "Crew";
-      id: string;
-      shipID: string;
-      userName: string;
-      createdAt: number | null;
-      updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type ListShipsQuery = {
-  __typename: "ModelShipConnection";
-  items: Array<{
-    __typename: "Ship";
-    id: string;
-    title: string;
-    capacity: number;
-    registered: number;
-    crews: {
-      __typename: "ModelCrewConnection";
-      nextToken: string | null;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
-  } | null> | null;
-  nextToken: string | null;
-};
-
-export type GetCrewQuery = {
-  __typename: "Crew";
-  id: string;
-  shipID: string;
-  userName: string;
-  ship: {
-    __typename: "Ship";
-    id: string;
-    title: string;
-    capacity: number;
-    registered: number;
-    crews: {
-      __typename: "ModelCrewConnection";
-      nextToken: string | null;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type ListCrewsQuery = {
-  __typename: "ModelCrewConnection";
-  items: Array<{
-    __typename: "Crew";
-    id: string;
-    shipID: string;
-    userName: string;
-    ship: {
-      __typename: "Ship";
-      id: string;
-      title: string;
-      capacity: number;
-      registered: number;
-      createdAt: number | null;
-      updatedAt: string;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
   } | null> | null;
   nextToken: string | null;
 };
@@ -1041,6 +1067,135 @@ export type ListCommentsQuery = {
   nextToken: string | null;
 };
 
+export type GetRoutineShipQuery = {
+  __typename: "RoutineShip";
+  id: string;
+  ship: {
+    __typename: "ModelShipConnection";
+    items: Array<{
+      __typename: "Ship";
+      id: string;
+      title: string;
+      capacity: number;
+      registered: number;
+      createdAt: string | null;
+      shipSize: string | null;
+      routineShipID: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListRoutineShipsQuery = {
+  __typename: "ModelRoutineShipConnection";
+  items: Array<{
+    __typename: "RoutineShip";
+    id: string;
+    ship: {
+      __typename: "ModelShipConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type GetShipQuery = {
+  __typename: "Ship";
+  id: string;
+  title: string;
+  capacity: number;
+  registered: number;
+  crews: {
+    __typename: "ModelCrewConnection";
+    items: Array<{
+      __typename: "Crew";
+      id: string;
+      shipID: string;
+      userName: string;
+      createdAt: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string | null;
+  shipSize: string | null;
+  routineShipID: string | null;
+  updatedAt: string;
+};
+
+export type ListShipsQuery = {
+  __typename: "ModelShipConnection";
+  items: Array<{
+    __typename: "Ship";
+    id: string;
+    title: string;
+    capacity: number;
+    registered: number;
+    crews: {
+      __typename: "ModelCrewConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string | null;
+    shipSize: string | null;
+    routineShipID: string | null;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type GetCrewQuery = {
+  __typename: "Crew";
+  id: string;
+  shipID: string;
+  userName: string;
+  ship: {
+    __typename: "Ship";
+    id: string;
+    title: string;
+    capacity: number;
+    registered: number;
+    crews: {
+      __typename: "ModelCrewConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string | null;
+    shipSize: string | null;
+    routineShipID: string | null;
+    updatedAt: string;
+  } | null;
+  createdAt: string | null;
+  updatedAt: string;
+};
+
+export type ListCrewsQuery = {
+  __typename: "ModelCrewConnection";
+  items: Array<{
+    __typename: "Crew";
+    id: string;
+    shipID: string;
+    userName: string;
+    ship: {
+      __typename: "Ship";
+      id: string;
+      title: string;
+      capacity: number;
+      registered: number;
+      createdAt: string | null;
+      shipSize: string | null;
+      routineShipID: string | null;
+      updatedAt: string;
+    } | null;
+    createdAt: string | null;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
 export type OnCreateTaskSubscription = {
   __typename: "Task";
   id: string;
@@ -1096,138 +1251,6 @@ export type OnDeletePrivateNoteSubscription = {
   createdAt: string;
   updatedAt: string;
   owner: string | null;
-};
-
-export type OnCreateShipSubscription = {
-  __typename: "Ship";
-  id: string;
-  title: string;
-  capacity: number;
-  registered: number;
-  crews: {
-    __typename: "ModelCrewConnection";
-    items: Array<{
-      __typename: "Crew";
-      id: string;
-      shipID: string;
-      userName: string;
-      createdAt: number | null;
-      updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type OnUpdateShipSubscription = {
-  __typename: "Ship";
-  id: string;
-  title: string;
-  capacity: number;
-  registered: number;
-  crews: {
-    __typename: "ModelCrewConnection";
-    items: Array<{
-      __typename: "Crew";
-      id: string;
-      shipID: string;
-      userName: string;
-      createdAt: number | null;
-      updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type OnDeleteShipSubscription = {
-  __typename: "Ship";
-  id: string;
-  title: string;
-  capacity: number;
-  registered: number;
-  crews: {
-    __typename: "ModelCrewConnection";
-    items: Array<{
-      __typename: "Crew";
-      id: string;
-      shipID: string;
-      userName: string;
-      createdAt: number | null;
-      updatedAt: string;
-    } | null> | null;
-    nextToken: string | null;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type OnCreateCrewSubscription = {
-  __typename: "Crew";
-  id: string;
-  shipID: string;
-  userName: string;
-  ship: {
-    __typename: "Ship";
-    id: string;
-    title: string;
-    capacity: number;
-    registered: number;
-    crews: {
-      __typename: "ModelCrewConnection";
-      nextToken: string | null;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type OnUpdateCrewSubscription = {
-  __typename: "Crew";
-  id: string;
-  shipID: string;
-  userName: string;
-  ship: {
-    __typename: "Ship";
-    id: string;
-    title: string;
-    capacity: number;
-    registered: number;
-    crews: {
-      __typename: "ModelCrewConnection";
-      nextToken: string | null;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
-};
-
-export type OnDeleteCrewSubscription = {
-  __typename: "Crew";
-  id: string;
-  shipID: string;
-  userName: string;
-  ship: {
-    __typename: "Ship";
-    id: string;
-    title: string;
-    capacity: number;
-    registered: number;
-    crews: {
-      __typename: "ModelCrewConnection";
-      nextToken: string | null;
-    } | null;
-    createdAt: number | null;
-    updatedAt: string;
-  } | null;
-  createdAt: number | null;
-  updatedAt: string;
 };
 
 export type OnCreateBlogSubscription = {
@@ -1476,6 +1499,216 @@ export type OnDeleteCommentSubscription = {
   updatedAt: string;
 };
 
+export type OnCreateRoutineShipSubscription = {
+  __typename: "RoutineShip";
+  id: string;
+  ship: {
+    __typename: "ModelShipConnection";
+    items: Array<{
+      __typename: "Ship";
+      id: string;
+      title: string;
+      capacity: number;
+      registered: number;
+      createdAt: string | null;
+      shipSize: string | null;
+      routineShipID: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdateRoutineShipSubscription = {
+  __typename: "RoutineShip";
+  id: string;
+  ship: {
+    __typename: "ModelShipConnection";
+    items: Array<{
+      __typename: "Ship";
+      id: string;
+      title: string;
+      capacity: number;
+      registered: number;
+      createdAt: string | null;
+      shipSize: string | null;
+      routineShipID: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeleteRoutineShipSubscription = {
+  __typename: "RoutineShip";
+  id: string;
+  ship: {
+    __typename: "ModelShipConnection";
+    items: Array<{
+      __typename: "Ship";
+      id: string;
+      title: string;
+      capacity: number;
+      registered: number;
+      createdAt: string | null;
+      shipSize: string | null;
+      routineShipID: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnCreateShipSubscription = {
+  __typename: "Ship";
+  id: string;
+  title: string;
+  capacity: number;
+  registered: number;
+  crews: {
+    __typename: "ModelCrewConnection";
+    items: Array<{
+      __typename: "Crew";
+      id: string;
+      shipID: string;
+      userName: string;
+      createdAt: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string | null;
+  shipSize: string | null;
+  routineShipID: string | null;
+  updatedAt: string;
+};
+
+export type OnUpdateShipSubscription = {
+  __typename: "Ship";
+  id: string;
+  title: string;
+  capacity: number;
+  registered: number;
+  crews: {
+    __typename: "ModelCrewConnection";
+    items: Array<{
+      __typename: "Crew";
+      id: string;
+      shipID: string;
+      userName: string;
+      createdAt: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string | null;
+  shipSize: string | null;
+  routineShipID: string | null;
+  updatedAt: string;
+};
+
+export type OnDeleteShipSubscription = {
+  __typename: "Ship";
+  id: string;
+  title: string;
+  capacity: number;
+  registered: number;
+  crews: {
+    __typename: "ModelCrewConnection";
+    items: Array<{
+      __typename: "Crew";
+      id: string;
+      shipID: string;
+      userName: string;
+      createdAt: string | null;
+      updatedAt: string;
+    } | null> | null;
+    nextToken: string | null;
+  } | null;
+  createdAt: string | null;
+  shipSize: string | null;
+  routineShipID: string | null;
+  updatedAt: string;
+};
+
+export type OnCreateCrewSubscription = {
+  __typename: "Crew";
+  id: string;
+  shipID: string;
+  userName: string;
+  ship: {
+    __typename: "Ship";
+    id: string;
+    title: string;
+    capacity: number;
+    registered: number;
+    crews: {
+      __typename: "ModelCrewConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string | null;
+    shipSize: string | null;
+    routineShipID: string | null;
+    updatedAt: string;
+  } | null;
+  createdAt: string | null;
+  updatedAt: string;
+};
+
+export type OnUpdateCrewSubscription = {
+  __typename: "Crew";
+  id: string;
+  shipID: string;
+  userName: string;
+  ship: {
+    __typename: "Ship";
+    id: string;
+    title: string;
+    capacity: number;
+    registered: number;
+    crews: {
+      __typename: "ModelCrewConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string | null;
+    shipSize: string | null;
+    routineShipID: string | null;
+    updatedAt: string;
+  } | null;
+  createdAt: string | null;
+  updatedAt: string;
+};
+
+export type OnDeleteCrewSubscription = {
+  __typename: "Crew";
+  id: string;
+  shipID: string;
+  userName: string;
+  ship: {
+    __typename: "Ship";
+    id: string;
+    title: string;
+    capacity: number;
+    registered: number;
+    crews: {
+      __typename: "ModelCrewConnection";
+      nextToken: string | null;
+    } | null;
+    createdAt: string | null;
+    shipSize: string | null;
+    routineShipID: string | null;
+    updatedAt: string;
+  } | null;
+  createdAt: string | null;
+  updatedAt: string;
+};
+
 @Injectable({
   providedIn: "root"
 })
@@ -1659,234 +1892,6 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <DeletePrivateNoteMutation>response.data.deletePrivateNote;
-  }
-  async CreateShip(
-    input: CreateShipInput,
-    condition?: ModelShipConditionInput
-  ): Promise<CreateShipMutation> {
-    const statement = `mutation CreateShip($input: CreateShipInput!, $condition: ModelShipConditionInput) {
-        createShip(input: $input, condition: $condition) {
-          __typename
-          id
-          title
-          capacity
-          registered
-          crews {
-            __typename
-            items {
-              __typename
-              id
-              shipID
-              userName
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <CreateShipMutation>response.data.createShip;
-  }
-  async UpdateShip(
-    input: UpdateShipInput,
-    condition?: ModelShipConditionInput
-  ): Promise<UpdateShipMutation> {
-    const statement = `mutation UpdateShip($input: UpdateShipInput!, $condition: ModelShipConditionInput) {
-        updateShip(input: $input, condition: $condition) {
-          __typename
-          id
-          title
-          capacity
-          registered
-          crews {
-            __typename
-            items {
-              __typename
-              id
-              shipID
-              userName
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <UpdateShipMutation>response.data.updateShip;
-  }
-  async DeleteShip(
-    input: DeleteShipInput,
-    condition?: ModelShipConditionInput
-  ): Promise<DeleteShipMutation> {
-    const statement = `mutation DeleteShip($input: DeleteShipInput!, $condition: ModelShipConditionInput) {
-        deleteShip(input: $input, condition: $condition) {
-          __typename
-          id
-          title
-          capacity
-          registered
-          crews {
-            __typename
-            items {
-              __typename
-              id
-              shipID
-              userName
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <DeleteShipMutation>response.data.deleteShip;
-  }
-  async CreateCrew(
-    input: CreateCrewInput,
-    condition?: ModelCrewConditionInput
-  ): Promise<CreateCrewMutation> {
-    const statement = `mutation CreateCrew($input: CreateCrewInput!, $condition: ModelCrewConditionInput) {
-        createCrew(input: $input, condition: $condition) {
-          __typename
-          id
-          shipID
-          userName
-          ship {
-            __typename
-            id
-            title
-            capacity
-            registered
-            crews {
-              __typename
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <CreateCrewMutation>response.data.createCrew;
-  }
-  async UpdateCrew(
-    input: UpdateCrewInput,
-    condition?: ModelCrewConditionInput
-  ): Promise<UpdateCrewMutation> {
-    const statement = `mutation UpdateCrew($input: UpdateCrewInput!, $condition: ModelCrewConditionInput) {
-        updateCrew(input: $input, condition: $condition) {
-          __typename
-          id
-          shipID
-          userName
-          ship {
-            __typename
-            id
-            title
-            capacity
-            registered
-            crews {
-              __typename
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <UpdateCrewMutation>response.data.updateCrew;
-  }
-  async DeleteCrew(
-    input: DeleteCrewInput,
-    condition?: ModelCrewConditionInput
-  ): Promise<DeleteCrewMutation> {
-    const statement = `mutation DeleteCrew($input: DeleteCrewInput!, $condition: ModelCrewConditionInput) {
-        deleteCrew(input: $input, condition: $condition) {
-          __typename
-          id
-          shipID
-          userName
-          ship {
-            __typename
-            id
-            title
-            capacity
-            registered
-            crews {
-              __typename
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <DeleteCrewMutation>response.data.deleteCrew;
   }
   async CreateBlog(
     input: CreateBlogInput,
@@ -2278,6 +2283,360 @@ export class APIService {
     )) as any;
     return <DeleteCommentMutation>response.data.deleteComment;
   }
+  async CreateRoutineShip(
+    input: CreateRoutineShipInput,
+    condition?: ModelRoutineShipConditionInput
+  ): Promise<CreateRoutineShipMutation> {
+    const statement = `mutation CreateRoutineShip($input: CreateRoutineShipInput!, $condition: ModelRoutineShipConditionInput) {
+        createRoutineShip(input: $input, condition: $condition) {
+          __typename
+          id
+          ship {
+            __typename
+            items {
+              __typename
+              id
+              title
+              capacity
+              registered
+              createdAt
+              shipSize
+              routineShipID
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateRoutineShipMutation>response.data.createRoutineShip;
+  }
+  async UpdateRoutineShip(
+    input: UpdateRoutineShipInput,
+    condition?: ModelRoutineShipConditionInput
+  ): Promise<UpdateRoutineShipMutation> {
+    const statement = `mutation UpdateRoutineShip($input: UpdateRoutineShipInput!, $condition: ModelRoutineShipConditionInput) {
+        updateRoutineShip(input: $input, condition: $condition) {
+          __typename
+          id
+          ship {
+            __typename
+            items {
+              __typename
+              id
+              title
+              capacity
+              registered
+              createdAt
+              shipSize
+              routineShipID
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateRoutineShipMutation>response.data.updateRoutineShip;
+  }
+  async DeleteRoutineShip(
+    input: DeleteRoutineShipInput,
+    condition?: ModelRoutineShipConditionInput
+  ): Promise<DeleteRoutineShipMutation> {
+    const statement = `mutation DeleteRoutineShip($input: DeleteRoutineShipInput!, $condition: ModelRoutineShipConditionInput) {
+        deleteRoutineShip(input: $input, condition: $condition) {
+          __typename
+          id
+          ship {
+            __typename
+            items {
+              __typename
+              id
+              title
+              capacity
+              registered
+              createdAt
+              shipSize
+              routineShipID
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteRoutineShipMutation>response.data.deleteRoutineShip;
+  }
+  async CreateShip(
+    input: CreateShipInput,
+    condition?: ModelShipConditionInput
+  ): Promise<CreateShipMutation> {
+    const statement = `mutation CreateShip($input: CreateShipInput!, $condition: ModelShipConditionInput) {
+        createShip(input: $input, condition: $condition) {
+          __typename
+          id
+          title
+          capacity
+          registered
+          crews {
+            __typename
+            items {
+              __typename
+              id
+              shipID
+              userName
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateShipMutation>response.data.createShip;
+  }
+  async UpdateShip(
+    input: UpdateShipInput,
+    condition?: ModelShipConditionInput
+  ): Promise<UpdateShipMutation> {
+    const statement = `mutation UpdateShip($input: UpdateShipInput!, $condition: ModelShipConditionInput) {
+        updateShip(input: $input, condition: $condition) {
+          __typename
+          id
+          title
+          capacity
+          registered
+          crews {
+            __typename
+            items {
+              __typename
+              id
+              shipID
+              userName
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateShipMutation>response.data.updateShip;
+  }
+  async DeleteShip(
+    input: DeleteShipInput,
+    condition?: ModelShipConditionInput
+  ): Promise<DeleteShipMutation> {
+    const statement = `mutation DeleteShip($input: DeleteShipInput!, $condition: ModelShipConditionInput) {
+        deleteShip(input: $input, condition: $condition) {
+          __typename
+          id
+          title
+          capacity
+          registered
+          crews {
+            __typename
+            items {
+              __typename
+              id
+              shipID
+              userName
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteShipMutation>response.data.deleteShip;
+  }
+  async CreateCrew(
+    input: CreateCrewInput,
+    condition?: ModelCrewConditionInput
+  ): Promise<CreateCrewMutation> {
+    const statement = `mutation CreateCrew($input: CreateCrewInput!, $condition: ModelCrewConditionInput) {
+        createCrew(input: $input, condition: $condition) {
+          __typename
+          id
+          shipID
+          userName
+          ship {
+            __typename
+            id
+            title
+            capacity
+            registered
+            crews {
+              __typename
+              nextToken
+            }
+            createdAt
+            shipSize
+            routineShipID
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateCrewMutation>response.data.createCrew;
+  }
+  async UpdateCrew(
+    input: UpdateCrewInput,
+    condition?: ModelCrewConditionInput
+  ): Promise<UpdateCrewMutation> {
+    const statement = `mutation UpdateCrew($input: UpdateCrewInput!, $condition: ModelCrewConditionInput) {
+        updateCrew(input: $input, condition: $condition) {
+          __typename
+          id
+          shipID
+          userName
+          ship {
+            __typename
+            id
+            title
+            capacity
+            registered
+            crews {
+              __typename
+              nextToken
+            }
+            createdAt
+            shipSize
+            routineShipID
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateCrewMutation>response.data.updateCrew;
+  }
+  async DeleteCrew(
+    input: DeleteCrewInput,
+    condition?: ModelCrewConditionInput
+  ): Promise<DeleteCrewMutation> {
+    const statement = `mutation DeleteCrew($input: DeleteCrewInput!, $condition: ModelCrewConditionInput) {
+        deleteCrew(input: $input, condition: $condition) {
+          __typename
+          id
+          shipID
+          userName
+          ship {
+            __typename
+            id
+            title
+            capacity
+            registered
+            crews {
+              __typename
+              nextToken
+            }
+            createdAt
+            shipSize
+            routineShipID
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteCrewMutation>response.data.deleteCrew;
+  }
   async GetTask(id: string): Promise<GetTaskQuery> {
     const statement = `query GetTask($id: ID!) {
         getTask(id: $id) {
@@ -2385,152 +2744,6 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <ListPrivateNotesQuery>response.data.listPrivateNotes;
-  }
-  async GetShip(id: string): Promise<GetShipQuery> {
-    const statement = `query GetShip($id: ID!) {
-        getShip(id: $id) {
-          __typename
-          id
-          title
-          capacity
-          registered
-          crews {
-            __typename
-            items {
-              __typename
-              id
-              shipID
-              userName
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      id
-    };
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <GetShipQuery>response.data.getShip;
-  }
-  async ListShips(
-    filter?: ModelShipFilterInput,
-    limit?: number,
-    nextToken?: string
-  ): Promise<ListShipsQuery> {
-    const statement = `query ListShips($filter: ModelShipFilterInput, $limit: Int, $nextToken: String) {
-        listShips(filter: $filter, limit: $limit, nextToken: $nextToken) {
-          __typename
-          items {
-            __typename
-            id
-            title
-            capacity
-            registered
-            crews {
-              __typename
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {};
-    if (filter) {
-      gqlAPIServiceArguments.filter = filter;
-    }
-    if (limit) {
-      gqlAPIServiceArguments.limit = limit;
-    }
-    if (nextToken) {
-      gqlAPIServiceArguments.nextToken = nextToken;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <ListShipsQuery>response.data.listShips;
-  }
-  async GetCrew(id: string): Promise<GetCrewQuery> {
-    const statement = `query GetCrew($id: ID!) {
-        getCrew(id: $id) {
-          __typename
-          id
-          shipID
-          userName
-          ship {
-            __typename
-            id
-            title
-            capacity
-            registered
-            crews {
-              __typename
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      id
-    };
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <GetCrewQuery>response.data.getCrew;
-  }
-  async ListCrews(
-    filter?: ModelCrewFilterInput,
-    limit?: number,
-    nextToken?: string
-  ): Promise<ListCrewsQuery> {
-    const statement = `query ListCrews($filter: ModelCrewFilterInput, $limit: Int, $nextToken: String) {
-        listCrews(filter: $filter, limit: $limit, nextToken: $nextToken) {
-          __typename
-          items {
-            __typename
-            id
-            shipID
-            userName
-            ship {
-              __typename
-              id
-              title
-              capacity
-              registered
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {};
-    if (filter) {
-      gqlAPIServiceArguments.filter = filter;
-    }
-    if (limit) {
-      gqlAPIServiceArguments.limit = limit;
-    }
-    if (nextToken) {
-      gqlAPIServiceArguments.nextToken = nextToken;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <ListCrewsQuery>response.data.listCrews;
   }
   async GetBlog(id: string): Promise<GetBlogQuery> {
     const statement = `query GetBlog($id: ID!) {
@@ -2769,6 +2982,228 @@ export class APIService {
     )) as any;
     return <ListCommentsQuery>response.data.listComments;
   }
+  async GetRoutineShip(id: string): Promise<GetRoutineShipQuery> {
+    const statement = `query GetRoutineShip($id: ID!) {
+        getRoutineShip(id: $id) {
+          __typename
+          id
+          ship {
+            __typename
+            items {
+              __typename
+              id
+              title
+              capacity
+              registered
+              createdAt
+              shipSize
+              routineShipID
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetRoutineShipQuery>response.data.getRoutineShip;
+  }
+  async ListRoutineShips(
+    filter?: ModelRoutineShipFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListRoutineShipsQuery> {
+    const statement = `query ListRoutineShips($filter: ModelRoutineShipFilterInput, $limit: Int, $nextToken: String) {
+        listRoutineShips(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            ship {
+              __typename
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListRoutineShipsQuery>response.data.listRoutineShips;
+  }
+  async GetShip(id: string): Promise<GetShipQuery> {
+    const statement = `query GetShip($id: ID!) {
+        getShip(id: $id) {
+          __typename
+          id
+          title
+          capacity
+          registered
+          crews {
+            __typename
+            items {
+              __typename
+              id
+              shipID
+              userName
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetShipQuery>response.data.getShip;
+  }
+  async ListShips(
+    filter?: ModelShipFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListShipsQuery> {
+    const statement = `query ListShips($filter: ModelShipFilterInput, $limit: Int, $nextToken: String) {
+        listShips(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            title
+            capacity
+            registered
+            crews {
+              __typename
+              nextToken
+            }
+            createdAt
+            shipSize
+            routineShipID
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListShipsQuery>response.data.listShips;
+  }
+  async GetCrew(id: string): Promise<GetCrewQuery> {
+    const statement = `query GetCrew($id: ID!) {
+        getCrew(id: $id) {
+          __typename
+          id
+          shipID
+          userName
+          ship {
+            __typename
+            id
+            title
+            capacity
+            registered
+            crews {
+              __typename
+              nextToken
+            }
+            createdAt
+            shipSize
+            routineShipID
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetCrewQuery>response.data.getCrew;
+  }
+  async ListCrews(
+    filter?: ModelCrewFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListCrewsQuery> {
+    const statement = `query ListCrews($filter: ModelCrewFilterInput, $limit: Int, $nextToken: String) {
+        listCrews(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            shipID
+            userName
+            ship {
+              __typename
+              id
+              title
+              capacity
+              registered
+              createdAt
+              shipSize
+              routineShipID
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListCrewsQuery>response.data.listCrews;
+  }
   OnCreateTaskListener: Observable<
     SubscriptionResponse<OnCreateTaskSubscription>
   > = API.graphql(
@@ -2873,186 +3308,6 @@ export class APIService {
       }`
     )
   ) as Observable<SubscriptionResponse<OnDeletePrivateNoteSubscription>>;
-
-  OnCreateShipListener: Observable<
-    SubscriptionResponse<OnCreateShipSubscription>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnCreateShip {
-        onCreateShip {
-          __typename
-          id
-          title
-          capacity
-          registered
-          crews {
-            __typename
-            items {
-              __typename
-              id
-              shipID
-              userName
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-      }`
-    )
-  ) as Observable<SubscriptionResponse<OnCreateShipSubscription>>;
-
-  OnUpdateShipListener: Observable<
-    SubscriptionResponse<OnUpdateShipSubscription>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnUpdateShip {
-        onUpdateShip {
-          __typename
-          id
-          title
-          capacity
-          registered
-          crews {
-            __typename
-            items {
-              __typename
-              id
-              shipID
-              userName
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-      }`
-    )
-  ) as Observable<SubscriptionResponse<OnUpdateShipSubscription>>;
-
-  OnDeleteShipListener: Observable<
-    SubscriptionResponse<OnDeleteShipSubscription>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnDeleteShip {
-        onDeleteShip {
-          __typename
-          id
-          title
-          capacity
-          registered
-          crews {
-            __typename
-            items {
-              __typename
-              id
-              shipID
-              userName
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-      }`
-    )
-  ) as Observable<SubscriptionResponse<OnDeleteShipSubscription>>;
-
-  OnCreateCrewListener: Observable<
-    SubscriptionResponse<OnCreateCrewSubscription>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnCreateCrew {
-        onCreateCrew {
-          __typename
-          id
-          shipID
-          userName
-          ship {
-            __typename
-            id
-            title
-            capacity
-            registered
-            crews {
-              __typename
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-      }`
-    )
-  ) as Observable<SubscriptionResponse<OnCreateCrewSubscription>>;
-
-  OnUpdateCrewListener: Observable<
-    SubscriptionResponse<OnUpdateCrewSubscription>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnUpdateCrew {
-        onUpdateCrew {
-          __typename
-          id
-          shipID
-          userName
-          ship {
-            __typename
-            id
-            title
-            capacity
-            registered
-            crews {
-              __typename
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-      }`
-    )
-  ) as Observable<SubscriptionResponse<OnUpdateCrewSubscription>>;
-
-  OnDeleteCrewListener: Observable<
-    SubscriptionResponse<OnDeleteCrewSubscription>
-  > = API.graphql(
-    graphqlOperation(
-      `subscription OnDeleteCrew {
-        onDeleteCrew {
-          __typename
-          id
-          shipID
-          userName
-          ship {
-            __typename
-            id
-            title
-            capacity
-            registered
-            crews {
-              __typename
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-      }`
-    )
-  ) as Observable<SubscriptionResponse<OnDeleteCrewSubscription>>;
 
   OnCreateBlogListener: Observable<
     SubscriptionResponse<OnCreateBlogSubscription>
@@ -3371,4 +3626,286 @@ export class APIService {
       }`
     )
   ) as Observable<SubscriptionResponse<OnDeleteCommentSubscription>>;
+
+  OnCreateRoutineShipListener: Observable<
+    SubscriptionResponse<OnCreateRoutineShipSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateRoutineShip {
+        onCreateRoutineShip {
+          __typename
+          id
+          ship {
+            __typename
+            items {
+              __typename
+              id
+              title
+              capacity
+              registered
+              createdAt
+              shipSize
+              routineShipID
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnCreateRoutineShipSubscription>>;
+
+  OnUpdateRoutineShipListener: Observable<
+    SubscriptionResponse<OnUpdateRoutineShipSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateRoutineShip {
+        onUpdateRoutineShip {
+          __typename
+          id
+          ship {
+            __typename
+            items {
+              __typename
+              id
+              title
+              capacity
+              registered
+              createdAt
+              shipSize
+              routineShipID
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnUpdateRoutineShipSubscription>>;
+
+  OnDeleteRoutineShipListener: Observable<
+    SubscriptionResponse<OnDeleteRoutineShipSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteRoutineShip {
+        onDeleteRoutineShip {
+          __typename
+          id
+          ship {
+            __typename
+            items {
+              __typename
+              id
+              title
+              capacity
+              registered
+              createdAt
+              shipSize
+              routineShipID
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnDeleteRoutineShipSubscription>>;
+
+  OnCreateShipListener: Observable<
+    SubscriptionResponse<OnCreateShipSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateShip {
+        onCreateShip {
+          __typename
+          id
+          title
+          capacity
+          registered
+          crews {
+            __typename
+            items {
+              __typename
+              id
+              shipID
+              userName
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnCreateShipSubscription>>;
+
+  OnUpdateShipListener: Observable<
+    SubscriptionResponse<OnUpdateShipSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateShip {
+        onUpdateShip {
+          __typename
+          id
+          title
+          capacity
+          registered
+          crews {
+            __typename
+            items {
+              __typename
+              id
+              shipID
+              userName
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnUpdateShipSubscription>>;
+
+  OnDeleteShipListener: Observable<
+    SubscriptionResponse<OnDeleteShipSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteShip {
+        onDeleteShip {
+          __typename
+          id
+          title
+          capacity
+          registered
+          crews {
+            __typename
+            items {
+              __typename
+              id
+              shipID
+              userName
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnDeleteShipSubscription>>;
+
+  OnCreateCrewListener: Observable<
+    SubscriptionResponse<OnCreateCrewSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateCrew {
+        onCreateCrew {
+          __typename
+          id
+          shipID
+          userName
+          ship {
+            __typename
+            id
+            title
+            capacity
+            registered
+            crews {
+              __typename
+              nextToken
+            }
+            createdAt
+            shipSize
+            routineShipID
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnCreateCrewSubscription>>;
+
+  OnUpdateCrewListener: Observable<
+    SubscriptionResponse<OnUpdateCrewSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateCrew {
+        onUpdateCrew {
+          __typename
+          id
+          shipID
+          userName
+          ship {
+            __typename
+            id
+            title
+            capacity
+            registered
+            crews {
+              __typename
+              nextToken
+            }
+            createdAt
+            shipSize
+            routineShipID
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnUpdateCrewSubscription>>;
+
+  OnDeleteCrewListener: Observable<
+    SubscriptionResponse<OnDeleteCrewSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteCrew {
+        onDeleteCrew {
+          __typename
+          id
+          shipID
+          userName
+          ship {
+            __typename
+            id
+            title
+            capacity
+            registered
+            crews {
+              __typename
+              nextToken
+            }
+            createdAt
+            shipSize
+            routineShipID
+            updatedAt
+          }
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnDeleteCrewSubscription>>;
 }

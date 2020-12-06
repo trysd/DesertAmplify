@@ -112,10 +112,10 @@ exports.handler = async (event) => {
   // TODO implement
   const response = {
     statusCode: 200,
-    errorCode: errorCode,
     headers: { "Access-Control-Allow-Origin": "*" },
     body: JSON.stringify({
       message: 'returnfunc from Lambda!',
+      errorCode: errorCode,
       argv: {
         expectRegValue: argv.expectRegValue,
         userName: argv.userName,

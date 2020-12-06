@@ -56,6 +56,12 @@ export class UserPageComponent implements OnInit {
      * ===== blog初期設定
      */
 
+    this.api.RegisterShip(5, 'testUser12050953', 'shipA').then(
+      e => console.log(e)
+    ).catch(
+      e => console.log(e)
+    );
+
     // blogリスト取得
     this.api.ListBlogs().then(e => {
       this.blogList = e.items;

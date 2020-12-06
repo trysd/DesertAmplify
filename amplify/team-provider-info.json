@@ -18,7 +18,8 @@
         }
       },
       "auth": {
-        "desertAuth": {}
+        "desertAuth": {},
+        "userPoolGroups": {}
       }
     }
   }

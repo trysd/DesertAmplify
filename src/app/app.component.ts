@@ -230,29 +230,29 @@ export class AppComponent implements OnInit {
 
     });
 
-    console.log(localStorage.getItem('amplify-signin-with-hostedUI'));
+    // console.log(localStorage.getItem('amplify-signin-with-hostedUI'));
     if (localStorage.getItem('amplify-signin-with-hostedUI') !== null) {
 
-      // currentAuthenticatedUser
-      Auth.currentAuthenticatedUser().then(e => {
-        console.log(e);
-      });
+      // // currentAuthenticatedUser
+      // Auth.currentAuthenticatedUser().then(e => {
+      //   console.log(e);
+      // });
 
-      // get Token
-      const resp = await Auth.currentSession();
-      const accessToken = resp.getAccessToken().getJwtToken();
-      console.log('token: ' + accessToken);
+      // // get Token
+      // const resp = await Auth.currentSession();
+      // const accessToken = resp.getAccessToken().getJwtToken();
+      // console.log('token: ' + accessToken);
 
-      // User Profile
-      const data = await Auth.currentUserPoolUser();
-      console.log(data);
+      // // User Profile
+      // const data = await Auth.currentUserPoolUser();
+      // console.log(data);
 
     }
 
-    // handle auth state changes
-    this.amplify.authStateChange$.subscribe(authState => {
-      console.log(authState);
-    });
+    // // handle auth state changes
+    // this.amplify.authStateChange$.subscribe(authState => {
+    //   console.log(authState);
+    // });
 
   }
 
