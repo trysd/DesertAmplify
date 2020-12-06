@@ -1,38 +1,9 @@
 {
   "function": {
-    "desertAuthPostConfirmation": {
+    "simpledesert72ff20de72ff20dePostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "AdminQueriesae769a08": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true,
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "desertAuth",
-          "attributes": [
-            "UserPoolId"
-          ]
-        }
-      ]
-    },
-    "desertFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "api",
-          "resourceName": "desertAPI",
-          "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput"
-          ]
-        }
-      ]
     }
   },
   "auth": {
@@ -42,7 +13,7 @@
       "dependsOn": [
         {
           "category": "auth",
-          "resourceName": "desertAuth",
+          "resourceName": "simpledesert72ff20de72ff20de",
           "attributes": [
             "UserPoolId",
             "AppClientIDWeb",
@@ -52,13 +23,13 @@
         }
       ]
     },
-    "desertAuth": {
+    "simpledesert72ff20de72ff20de": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "desertAuthPostConfirmation",
+          "resourceName": "simpledesert72ff20de72ff20dePostConfirmation",
           "triggerProvider": "Cognito",
           "attributes": [
             "Arn",
@@ -70,28 +41,7 @@
     }
   },
   "api": {
-    "AdminQueries": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "desertAuth",
-          "attributes": [
-            "UserPoolId"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "AdminQueriesae769a08",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ]
-    },
-    "desertAPI": {
+    "simpledesert": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -99,7 +49,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authdesertAuth"
+              "userPoolId": "authsimpledesert72ff20de72ff20de"
             }
           },
           "additionalAuthenticationProviders": []

@@ -1,25 +1,24 @@
 {
-  "develop": {
+  "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-desertamplify-develop-233306-authRole",
-      "UnauthRoleArn": "arn:aws:iam::012952714535:role/amplify-desertamplify-develop-233306-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::012952714535:role/amplify-desertamplify-develop-233306-authRole",
-      "Region": "ap-northeast-2",
-      "DeploymentBucketName": "amplify-desertamplify-develop-233306-deployment",
-      "UnauthRoleName": "amplify-desertamplify-develop-233306-unauthRole",
-      "StackName": "amplify-desertamplify-develop-233306",
-      "StackId": "arn:aws:cloudformation:ap-northeast-2:012952714535:stack/amplify-desertamplify-develop-233306/7a251a90-2c06-11eb-b487-0aa6c7749250",
-      "AmplifyAppId": "d2ndos63cem3ro"
+      "AuthRoleName": "amplify-simpledesert-dev-231326-authRole",
+      "UnauthRoleArn": "arn:aws:iam::363222262070:role/amplify-simpledesert-dev-231326-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::363222262070:role/amplify-simpledesert-dev-231326-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-simpledesert-dev-231326-deployment",
+      "UnauthRoleName": "amplify-simpledesert-dev-231326-unauthRole",
+      "StackName": "amplify-simpledesert-dev-231326",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:363222262070:stack/amplify-simpledesert-dev-231326/32224140-45f2-11eb-a526-060c99a0ecc6",
+      "AmplifyAppId": "d338ixbgztf52h"
     },
     "categories": {
       "function": {
-        "desertAuthPostConfirmation": {
-          "GROUP": "Editors"
+        "simpledesert72ff20de72ff20dePostConfirmation": {
+          "GROUP": "Users"
         }
       },
       "auth": {
-        "desertAuth": {},
-        "userPoolGroups": {}
+        "simpledesert72ff20de72ff20de": {}
       }
     }
   }

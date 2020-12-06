@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "desertAuth",
-    "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "desertc400268f",
-    "userPoolName": "desertAuth",
+    "identityPoolName": "simpledesert72ff20de_identitypool_72ff20de",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "simple72ff20de",
+    "userPoolName": "simpledesert72ff20de_userpool_72ff20de",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -18,31 +18,27 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "email",
-        "name",
-        "nickname",
-        "phone_number"
+        "email"
     ],
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
-        "email",
         "name",
         "nickname",
-        "phone_number"
+        "phone_number",
+        "email"
     ],
     "userpoolClientReadAttributes": [
         "email",
         "name",
         "nickname",
         "phone_number",
-        "email_verified",
-        "phone_number_verified"
+        "email_verified"
     ],
-    "userpoolClientLambdaRole": "desertc400268f_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "simple72ff20de_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
-    "sharedId": "c400268f",
-    "resourceName": "desertAuth",
+    "sharedId": "72ff20de",
+    "resourceName": "simpledesert72ff20de72ff20de",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -62,15 +58,15 @@
         "email"
     ],
     "userPoolGroups": true,
-    "adminQueries": true,
+    "adminQueries": false,
     "triggers": "{\n  \"PostConfirmation\": [\n    \"add-to-group\"\n  ]\n}",
     "hostedUI": false,
     "userPoolGroupList": [
         "Admins",
-        "Editors"
+        "Users"
     ],
-    "adminQueryGroup": "Admins",
     "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
     "parentStack": {
         "Ref": "AWS::StackId"
     },
@@ -80,7 +76,7 @@
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "desertAuthPostConfirmation",
+            "resourceName": "simpledesert72ff20de72ff20dePostConfirmation",
             "triggerProvider": "Cognito",
             "attributes": [
                 "Arn",

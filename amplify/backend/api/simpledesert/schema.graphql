@@ -1,0 +1,15 @@
+type Octopus
+  @model
+  @versioned
+  @key(name: "byDateByTypeByCreatedAt", fields: ["date", "type", "createdAt"], queryField: "itemsByDateByTypeByCreatedAt")
+    @auth (
+    rules: [
+      {allow: groups, groups: ["townHouseAdmin"]},
+      {allow: owner, ownerField: "user_id", operations: [create, update, delete]}
+    ])
+  {
+    id: ID!
+    date: AWSDate!
+    type: Int!
+    createdAt: AWSTimestamp
+  }

@@ -7,17 +7,17 @@ Parameters:
     Type: String
   unauthRoleArn:
     Type: String
+
   
   
   
-  
-  functiondesertAuthPostConfirmationArn: 
+  functionsimpledesert72ff20de72ff20dePostConfirmationArn:
     Type: String
-    Default: functiondesertAuthPostConfirmationArn
+    Default: functionsimpledesert72ff20de72ff20dePostConfirmationArn
   
-  functiondesertAuthPostConfirmationName: 
+  functionsimpledesert72ff20de72ff20dePostConfirmationName:
     Type: String
-    Default: functiondesertAuthPostConfirmationName
+    Default: functionsimpledesert72ff20de72ff20dePostConfirmationName
   
   
   
@@ -25,115 +25,155 @@ Parameters:
     
   identityPoolName:
     Type: String
-                
+  
+            
+  
   allowUnauthenticatedIdentities:
     Type: String
             
   resourceNameTruncated:
     Type: String
-              
+  
+            
   userPoolName:
     Type: String
-                      
+  
+            
+        
   autoVerifiedAttributes:
     Type: CommaDelimitedList
       
   mfaConfiguration:
     Type: String
-                      
+  
+            
+        
   mfaTypes:
     Type: CommaDelimitedList
       
   smsAuthenticationMessage:
     Type: String
-              
+  
+            
   smsVerificationMessage:
     Type: String
-              
+  
+            
   emailVerificationSubject:
     Type: String
-              
+  
+            
   emailVerificationMessage:
     Type: String
-                
+  
+            
+  
   defaultPasswordPolicy:
     Type: String
-                
+            
+    
   passwordPolicyMinLength:
     Type: Number
-                  
+          
+        
   passwordPolicyCharacters:
     Type: CommaDelimitedList
-              
+      
+        
   requiredAttributes:
     Type: CommaDelimitedList
-        
+      
+  
   userpoolClientGenerateSecret:
     Type: String
-                
+            
+    
   userpoolClientRefreshTokenValidity:
     Type: Number
-                  
+          
+        
   userpoolClientWriteAttributes:
     Type: CommaDelimitedList
-              
+      
+        
   userpoolClientReadAttributes:
     Type: CommaDelimitedList
       
   userpoolClientLambdaRole:
     Type: String
-                
+  
+            
+  
   userpoolClientSetAttributes:
     Type: String
             
   sharedId:
     Type: String
-              
+  
+            
   resourceName:
     Type: String
-              
+  
+            
   authSelections:
     Type: String
-                                      
+  
+            
+            
+            
   useDefault:
     Type: String
-                
+  
+            
+  
   thirdPartyAuth:
     Type: String
-                    
+            
+        
   usernameAttributes:
     Type: CommaDelimitedList
-        
+      
+  
   userPoolGroups:
     Type: String
-              
+            
+  
   adminQueries:
     Type: String
             
   triggers:
     Type: String
-                
+  
+            
+  
   hostedUI:
     Type: String
-                    
+            
+        
   userPoolGroupList:
     Type: CommaDelimitedList
       
-  adminQueryGroup:
-    Type: String
-              
+            
   serviceName:
     Type: String
-                    
+  
+            
+  
+  usernameCaseSensitive:
+    Type: String
+            
+      
   parentStack:
     Type: String
-                
+        
+        
   permissions:
     Type: CommaDelimitedList
-              
+      
+        
   dependsOn:
     Type: CommaDelimitedList
-    
+      
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
 
@@ -141,32 +181,32 @@ Resources:
   
   
   # BEGIN SNS ROLE RESOURCE
-  SNSRole: 
+  SNSRole:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'desertc400268f_sns-role', !Join ['',[ 'sns', 'c400268f', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
-      AssumeRolePolicyDocument: 
+      RoleName: !If [ShouldNotCreateEnvResources, 'simple72ff20de_sns-role', !Join ['',[ 'sns', '72ff20de', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      AssumeRolePolicyDocument:
         Version: "2012-10-17"
-        Statement: 
+        Statement:
           - Sid: ""
             Effect: "Allow"
-            Principal: 
+            Principal:
               Service: "cognito-idp.amazonaws.com"
-            Action: 
+            Action:
               - "sts:AssumeRole"
-            Condition: 
+            Condition:
               StringEquals:
-                sts:ExternalId: desertc400268f_role_external_id
-      Policies: 
-        - 
-          PolicyName: desertc400268f-sns-policy
-          PolicyDocument: 
+                sts:ExternalId: simple72ff20de_role_external_id
+      Policies:
+        -
+          PolicyName: simple72ff20de-sns-policy
+          PolicyDocument:
             Version: "2012-10-17"
-            Statement: 
-              - 
+            Statement:
+              -
                 Effect: "Allow"
-                Action: 
+                Action:
                   - "sns:Publish"
                 Resource: "*"
   # BEGIN USER POOL RESOURCES
@@ -178,25 +218,14 @@ Resources:
     Properties:
       UserPoolName: !If [ShouldNotCreateEnvResources, !Ref userPoolName, !Join ['',[!Ref userPoolName, '-', !Ref env]]]
       
-      Schema: 
+      
+      UsernameConfiguration:
+        CaseSensitive: false
+      
+      Schema:
         
         -
           Name: email
-          Required: true
-          Mutable: true
-        
-        -
-          Name: name
-          Required: true
-          Mutable: true
-        
-        -
-          Name: nickname
-          Required: true
-          Mutable: true
-        
-        -
-          Name: phone_number
           Required: true
           Mutable: true
         
@@ -208,7 +237,7 @@ Resources:
         
         
         
-          PostConfirmation: !Ref functiondesertAuthPostConfirmationArn
+          PostConfirmation: !Ref functionsimpledesert72ff20de72ff20dePostConfirmationArn
         
         
         
@@ -221,7 +250,7 @@ Resources:
       
       EmailVerificationMessage: !Ref emailVerificationMessage
       EmailVerificationSubject: !Ref emailVerificationSubject
-            
+      
       Policies:
         PasswordPolicy:
           MinimumLength: !Ref passwordPolicyMinLength
@@ -231,39 +260,39 @@ Resources:
           RequireUppercase: false
       
       UsernameAttributes: !Ref usernameAttributes
-          
+      
       MfaConfiguration: !Ref mfaConfiguration
       SmsVerificationMessage: !Ref smsVerificationMessage
-      SmsConfiguration: 
+      SmsConfiguration:
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: desertc400268f_role_external_id
+        ExternalId: simple72ff20de_role_external_id
     
   
-    
-    
   
-    
   
-  UserPoolPostConfirmationLambdaInvokePermission: 
+  
+  
+  
+  UserPoolPostConfirmationLambdaInvokePermission:
     Type: "AWS::Lambda::Permission"
     DependsOn: UserPool
-    Properties: 
+    Properties:
       Action: "lambda:invokeFunction"
       Principal: "cognito-idp.amazonaws.com"
-      FunctionName: !Ref functiondesertAuthPostConfirmationName
+      FunctionName: !Ref functionsimpledesert72ff20de72ff20dePostConfirmationName
       SourceArn: !GetAtt UserPool.Arn
-    
   
   
-   
-    
+  
+  
+  
   # Updating lambda role with permissions to Cognito
   
   
-  desertAuthPostConfirmationAddToGroupCognito:
+  simpledesert72ff20de72ff20dePostConfirmationAddToGroupCognito:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: desertAuthPostConfirmationAddToGroupCognito
+      PolicyName: simpledesert72ff20de72ff20dePostConfirmationAddToGroupCognito
       PolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -288,7 +317,7 @@ Resources:
             
 
       Roles:
-        - !Join ['',["desertAuthPostConfirmation", '-', !Ref env]]
+        - !Join ['',["simpledesert72ff20de72ff20dePostConfirmation", '-', !Ref env]]
   
   
   
@@ -297,7 +326,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: desertc400268f_app_clientWeb
+      ClientName: simple72ff20de_app_clientWeb
       
       ReadAttributes: !Ref userpoolClientReadAttributes
       WriteAttributes: !Ref userpoolClientWriteAttributes
@@ -310,7 +339,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: desertc400268f_app_client
+      ClientName: simple72ff20de_app_client
       
       ReadAttributes: !Ref userpoolClientReadAttributes
       WriteAttributes: !Ref userpoolClientWriteAttributes
@@ -324,7 +353,7 @@ Resources:
   # Created to execute Lambda which gets userpool app client config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', 'c400268f', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '72ff20de', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -342,7 +371,7 @@ Resources:
     Type: 'AWS::Lambda::Function'
     Properties:
       Code:
-        ZipFile: !Join 
+        ZipFile: !Join
           - |+
           - - 'const response = require(''cfn-response'');'
             - 'const aws = require(''aws-sdk'');'
@@ -358,7 +387,7 @@ Resources:
             - '   };'
             - '   identity.describeUserPoolClient(params).promise()'
             - '     .then((res) => {'
-            - '       response.send(event, context, response.SUCCESS, {''appSecret'': res.UserPoolClient.ClientSecret});'   
+            - '       response.send(event, context, response.SUCCESS, {''appSecret'': res.UserPoolClient.ClientSecret});'
             - '     })'
             - '     .catch((err) => {'
             - '       response.send(event, context, response.FAILED, {err});'
@@ -368,7 +397,7 @@ Resources:
       Handler: index.handler
       Runtime: nodejs10.x
       Timeout: '300'
-      Role: !GetAtt 
+      Role: !GetAtt
         - UserPoolClientRole
         - Arn
     DependsOn: UserPoolClientRole
@@ -378,8 +407,8 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: desertc400268f_userpoolclient_lambda_iam_policy
-      Roles: 
+      PolicyName: simple72ff20de_userpoolclient_lambda_iam_policy
+      Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
         Version: '2012-10-17'
@@ -395,8 +424,8 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: desertc400268f_userpoolclient_lambda_log_policy
-      Roles: 
+      PolicyName: simple72ff20de_userpoolclient_lambda_log_policy
+      Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
         Version: 2012-10-17
@@ -406,10 +435,10 @@ Resources:
               - 'logs:CreateLogGroup'
               - 'logs:CreateLogStream'
               - 'logs:PutLogEvents'
-            Resource: !Sub  
+            Resource: !Sub
               - arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*
               - { region: !Ref "AWS::Region",  account: !Ref "AWS::AccountId", lambda: !Ref UserPoolClientLambda}
-    DependsOn: UserPoolClientLambdaPolicy  
+    DependsOn: UserPoolClientLambdaPolicy
   UserPoolClientInputs:
   # Values passed to Userpool client Lambda
   # Depends on UserPool for Id
@@ -430,12 +459,12 @@ Resources:
     
   # BEGIN IDENTITY POOL RESOURCES
   
- 
+
   IdentityPool:
   # Always created
     Type: AWS::Cognito::IdentityPool
-    Properties: 
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'desertAuth', !Join ['',['desertAuth', '__', !Ref env]]]
+    Properties:
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'simpledesert72ff20de_identitypool_72ff20de', !Join ['',['simpledesert72ff20de_identitypool_72ff20de', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient
@@ -448,16 +477,16 @@ Resources:
             - { region: !Ref "AWS::Region",  client: !Ref UserPool}
             
       AllowUnauthenticatedIdentities: !Ref allowUnauthenticatedIdentities
-       
-       
-    DependsOn: UserPoolClientInputs 
+      
     
-  
+    DependsOn: UserPoolClientInputs
+    
+
   IdentityPoolRoleMap:
   # Created to map Auth and Unauth roles to the identity pool
   # Depends on Identity Pool for ID ref
     Type: AWS::Cognito::IdentityPoolRoleAttachment
-    Properties: 
+    Properties:
       IdentityPoolId: !Ref IdentityPool
       Roles:
           unauthenticated: !Ref unauthRoleArn
@@ -471,7 +500,7 @@ Outputs :
     Value: !Ref 'IdentityPool'
     Description:  Id for the identity pool
   IdentityPoolName:
-    Value: !GetAtt IdentityPool.Name 
+    Value: !GetAtt IdentityPool.Name
   
   
   
@@ -490,9 +519,9 @@ Outputs :
   AppClientSecret:
     Value: !GetAtt UserPoolClientInputs.appSecret
   
-   
-   
   
-   
-   
+  
+  
+  
+  
   
