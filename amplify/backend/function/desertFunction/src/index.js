@@ -1,13 +1,23 @@
 /* Amplify Params - DO NOT EDIT
-  API_DESERTFUNCTION_CREWTABLE_ARN
-  API_DESERTFUNCTION_CREWTABLE_NAME
-  API_DESERTFUNCTION_GRAPHQLAPIENDPOINTOUTPUT
-  API_DESERTFUNCTION_GRAPHQLAPIIDOUTPUT
-  API_DESERTFUNCTION_GRAPHQLAPIKEYOUTPUT
-  API_DESERTFUNCTION_SHIPTABLE_ARN
-  API_DESERTFUNCTION_SHIPTABLE_NAME
-  ENV
-  REGION
+	API_DESERT9_BLOGTABLE_ARN
+	API_DESERT9_BLOGTABLE_NAME
+	API_DESERT9_COMMENTTABLE_ARN
+	API_DESERT9_COMMENTTABLE_NAME
+	API_DESERT9_CREWTABLE_ARN
+	API_DESERT9_CREWTABLE_NAME
+	API_DESERT9_GRAPHQLAPIIDOUTPUT
+	API_DESERT9_POSTTABLE_ARN
+	API_DESERT9_POSTTABLE_NAME
+	API_DESERT9_PRIVATENOTETABLE_ARN
+	API_DESERT9_PRIVATENOTETABLE_NAME
+	API_DESERT9_ROUTINESHIPTABLE_ARN
+	API_DESERT9_ROUTINESHIPTABLE_NAME
+	API_DESERT9_SHIPTABLE_ARN
+	API_DESERT9_SHIPTABLE_NAME
+	API_DESERT9_TASKTABLE_ARN
+	API_DESERT9_TASKTABLE_NAME
+	ENV
+	REGION
 Amplify Params - DO NOT EDIT */
 
 'use strict';
@@ -56,7 +66,7 @@ exports.handler = async (event) => {
     TransactItems: [
       {
         Put: {
-          TableName: 'Crew-yjjlug7rs5fetiutw46kxqsscy-develop',// process.env.API_DESERTFUNCTION_CREWTABLE_NAME,
+          TableName: process.env.API_DESERT9_CREWTABLE_NAME,
           Item: {
             '__typename': 'Crew',
             id: newid,
@@ -84,7 +94,7 @@ exports.handler = async (event) => {
       //   }
       },{ // 他のフィールドで判定するパターン
         Update: {
-          TableName: 'Ship-yjjlug7rs5fetiutw46kxqsscy-develop', // process.env.API_DESERTFUNCTION_SHIPTABLE_NAME,
+          TableName: process.env.API_DESERT9_SHIPTABLE_NAME,
           Key: { id: argv.shipId },
           UpdateExpression: 'set #registered = #registered + :Increment',
           ConditionExpression: '#registered < #capacity',

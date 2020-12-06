@@ -60,6 +60,15 @@ query GetBlog($id: ID!) {
         id
         title
         blogID
+        blog {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        comments {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -79,6 +88,13 @@ query ListBlogs(
       id
       name
       posts {
+        items {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -96,6 +112,13 @@ query GetPost($id: ID!) {
       id
       name
       posts {
+        items {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -106,6 +129,13 @@ query GetPost($id: ID!) {
         id
         userId
         postID
+        post {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         content
         createdAt
         updatedAt
@@ -129,10 +159,21 @@ query ListPosts(
       blog {
         id
         name
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       comments {
+        items {
+          id
+          userId
+          postID
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -153,10 +194,21 @@ query GetComment($id: ID!) {
       blog {
         id
         name
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       comments {
+        items {
+          id
+          userId
+          postID
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -181,6 +233,15 @@ query ListComments(
         id
         title
         blogID
+        blog {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        comments {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -198,8 +259,12 @@ query GetRoutineShip($id: ID!) {
       items {
         id
         title
+        userName
         capacity
         registered
+        crews {
+          nextToken
+        }
         createdAt
         shipSize
         routineShipID
@@ -207,6 +272,11 @@ query GetRoutineShip($id: ID!) {
       }
       nextToken
     }
+    userName
+    startTime
+    endTime
+    startDate
+    endDate
     createdAt
     updatedAt
   }
@@ -220,8 +290,24 @@ query ListRoutineShips(
     items {
       id
       ship {
+        items {
+          id
+          title
+          userName
+          capacity
+          registered
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
         nextToken
       }
+      userName
+      startTime
+      endTime
+      startDate
+      endDate
       createdAt
       updatedAt
     }
@@ -232,6 +318,7 @@ query GetShip($id: ID!) {
   getShip(id: $id) {
     id
     title
+    userName
     capacity
     registered
     crews {
@@ -239,6 +326,17 @@ query GetShip($id: ID!) {
         id
         shipID
         userName
+        ship {
+          id
+          title
+          userName
+          capacity
+          registered
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -259,9 +357,17 @@ query ListShips(
     items {
       id
       title
+      userName
       capacity
       registered
       crews {
+        items {
+          id
+          shipID
+          userName
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -280,9 +386,17 @@ query GetCrew($id: ID!) {
     ship {
       id
       title
+      userName
       capacity
       registered
       crews {
+        items {
+          id
+          shipID
+          userName
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -307,8 +421,12 @@ query ListCrews(
       ship {
         id
         title
+        userName
         capacity
         registered
+        crews {
+          nextToken
+        }
         createdAt
         shipSize
         routineShipID

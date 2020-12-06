@@ -6,7 +6,7 @@ type Task @model
  @auth(
    rules: [
      { allow: groups, groups: ["Admins"], queries: null, mutations: [create, update, delete] }
-     { allow: groups, groups: ["Editors"], queries: [get, list], mutations: null }
+     { allow: groups, groups: ["Users"], queries: [get, list], mutations: null }
    ]
 ) {
  id: ID!
@@ -62,11 +62,14 @@ type Comment @model
 
 type RoutineShip @model {
   id: ID!
-  # startTime: AWSTime!
-  # endTime: AWSTime!
-  # startDate: AWDDate!
-  # endDate: AWSDate!
   ship: [Ship] @connection(keyName: "byRoutineShip", fields: ["id"]) #
+
+  userName: String
+  startTime: AWSTime
+  endTime: AWSTime
+  startDate: AWSDate
+  endDate: AWSDate
+
 }
 
 type Ship @model
@@ -79,6 +82,7 @@ type Ship @model
 {
  id: ID!
  title: String!
+ userName: String
  capacity: Int!
  registered: Int!
  crews: [Crew] @connection(keyName: "byShip", fields: ["id"])
@@ -102,12 +106,22 @@ type Crew @model @key(name: "byShip", fields: ["shipID", "createdAt"])
  createdAt: AWSDateTime
 }
 
-type responseRegisterShip {
+type RequestHttpX1 {
+  mode: String
+  test: String
+}
+
+type ResponseHttpX1 {
   status: Int
   body: String
 }
 
 type Mutation {
   registerShip(expectRegValue: Int, userName: String, shipId: String): responseRegisterShip @function(name: "desertFunction-${env}")
+  testHttpX1(request: String): ResponseHttpX1 @function(name: "funcHttpX1-${env}")
 }
 
+type responseRegisterShip {
+  status: Int
+  body: String
+}

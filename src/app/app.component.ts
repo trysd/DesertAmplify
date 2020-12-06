@@ -143,7 +143,11 @@ export const vocabularies = {
       'Password does not conform to policy: Password must have numeric characters': 'パスワードには数字を含めてください (8文字以上の大文字小文字を含む英数字)', // 適宜修正
       '1 validation error detected: Value at \'password\' failed to satisfy constraint: Member must have length greater than or equal to 6': 'パスワードは8文字以上、大文字小文字を含む英数字を指定してください', // 適宜修正。本来の意味とは異なるがこれで明示している。
       '2 validation errors detected: Value at \'password\' failed to satisfy constraint: Member must have length greater than or equal to 6; Value at \'password\' failed to satisfy constraint: Member must satisfy regular expression pattern: ^[\S]+.*[\S]+$': 'パスワードは8文字以上、大文字小文字を含む英数字を指定してください', // 適宜修正。本来の意味とは異なるがこれで明示している。
-  },
+
+      'Attribute value for custom:nickname must not be null': 'ニックネームは必須です',
+      'Attribute value for name must not be null': 'お名前は必須です'
+
+    },
 };
 
 I18n.putVocabularies(vocabularies);
@@ -157,6 +161,8 @@ I18n.setLanguage('ja');
 export class AppComponent implements OnInit {
 
   user: CognitoUserInterface | undefined;
+  userProp;
+
   authState: AuthState;
   formFields: FormFieldTypes;
   formFieldsConfirm: FormFieldTypes;
@@ -182,21 +188,21 @@ export class AppComponent implements OnInit {
         required: true,
       },
       {
-        type: 'name',
-        label: 'お名前',
-        placeholder: '姓名',
-        required: true,
-      },
-      {
         type: 'password',
         label: 'パスワード(8～15文字の半角英数字記号)',
         placeholder: '********',
         required: true,
       },
       {
-        type: 'nickname',
+        type: 'custom:nickname',
         label: 'ニックネーム',
         placeholder: 'nick name',
+        required: true,
+      },
+      {
+        type: 'name',
+        label: 'お名前',
+        placeholder: '姓名',
         required: true,
       },
       {
@@ -214,8 +220,8 @@ export class AppComponent implements OnInit {
 
       this.authState = authState;
       this.user = authData as CognitoUserInterface;
+      this.userProp = authData as CognitoUserInterface;
       this.ref.detectChanges();
-      console.log(authData);
 
       if (this.user) {
         this.useremail = this.user.username;
@@ -233,32 +239,40 @@ export class AppComponent implements OnInit {
     // console.log(localStorage.getItem('amplify-signin-with-hostedUI'));
     if (localStorage.getItem('amplify-signin-with-hostedUI') !== null) {
 
-      // // currentAuthenticatedUser
-      // Auth.currentAuthenticatedUser().then(e => {
-      //   console.log(e);
-      // });
+      // currentAuthenticatedUser
+      Auth.currentAuthenticatedUser().then(e => {
+        console.log(e);
+      });
 
-      // // get Token
-      // const resp = await Auth.currentSession();
-      // const accessToken = resp.getAccessToken().getJwtToken();
-      // console.log('token: ' + accessToken);
+      // get Token
+      const resp = await Auth.currentSession();
+      const accessToken = resp.getAccessToken().getJwtToken();
+      console.log('token: ' + accessToken);
 
-      // // User Profile
-      // const data = await Auth.currentUserPoolUser();
-      // console.log(data);
+      // User Profile
+      const data = await Auth.currentUserPoolUser();
+      console.log(data);
+
+      this.userProp = data;
 
     }
 
-    // // handle auth state changes
-    // this.amplify.authStateChange$.subscribe(authState => {
-    //   console.log(authState);
-    // });
+    // handle auth state changes
+    this.amplify.authStateChange$.subscribe(authState => {
+      console.log(authState);
+    });
 
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): any {
     return onAuthUIStateChange; // <- ???
+  }
+
+  async signout(): Promise<void> {
+    console.log('!');
+    await Auth.signOut();
+    console.log('%');
   }
 
 }

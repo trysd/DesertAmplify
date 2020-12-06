@@ -1,23 +1,23 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Parameters": {
-        "authdesertAuthUserPoolId": {
+        "authds9authUserPoolId": {
             "Type": "String",
-            "Default": "authdesertAuthUserPoolId"
+            "Default": "authds9authUserPoolId"
         },
         
-        "authdesertAuthIdentityPoolId": {
+        "authds9authIdentityPoolId": {
             "Type": "String",
-            "Default": "authdesertAuthIdentityPoolId"
+            "Default": "authds9authIdentityPoolId"
         },
         
-        "authdesertAuthAppClientID": {
+        "authds9authAppClientID": {
             "Type": "String",
-            "Default": "authdesertAuthAppClientID"
+            "Default": "authds9authAppClientID"
         },
-        "authdesertAuthAppClientIDWeb": {
+        "authds9authAppClientIDWeb": {
             "Type": "String",
-            "Default": "authdesertAuthAppClientIDWeb"
+            "Default": "authds9authAppClientIDWeb"
         },
         "AuthRoleArn": {
             "Type": "String"
@@ -55,7 +55,7 @@
               },
               
               "UserPoolId" : {
-                "Ref": "authdesertAuthUserPoolId"
+                "Ref": "authds9authUserPoolId"
               } 
             }
         },
@@ -68,7 +68,7 @@
                         "",
                         [
                           {
-                            "Ref": "authdesertAuthUserPoolId"
+                            "Ref": "authds9authUserPoolId"
                           },
                           "-AdminsGroupRole"
                         ]
@@ -85,7 +85,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authdesertAuthIdentityPoolId"}},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authds9authIdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -95,26 +95,26 @@
         },
      
     
-        "EditorsGroup": {
+        "UsersGroup": {
           "Type" : "AWS::Cognito::UserPoolGroup",
           "Properties" : {
-              "GroupName" : "Editors",
+              "GroupName" : "Users",
               "Precedence" : 2,
               
               "RoleArn" : {
                 "Fn::GetAtt": [
-                    "EditorsGroupRole",
+                    "UsersGroupRole",
                     "Arn"
                 ]
               },
               
               "UserPoolId" : {
-                "Ref": "authdesertAuthUserPoolId"
+                "Ref": "authds9authUserPoolId"
               } 
             }
         },
         
-        "EditorsGroupRole": {
+        "UsersGroupRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName":{
@@ -122,9 +122,9 @@
                         "",
                         [
                           {
-                            "Ref": "authdesertAuthUserPoolId"
+                            "Ref": "authds9authUserPoolId"
                           },
-                          "-EditorsGroupRole"
+                          "-UsersGroupRole"
                         ]
                     ]
                 },
@@ -139,7 +139,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authdesertAuthIdentityPoolId"}},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authds9authIdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -165,7 +165,7 @@
                                 "",
                                 [
                                   
-                                  "desertAuth",
+                                  "ds9auth",
                                   "-ExecutionRole-",
                                   {
                                     "Ref": "env"
@@ -324,16 +324,16 @@
                     "Ref": "UnauthRoleArn"
                 },
                 "identityPoolId": {
-                    "Ref": "authdesertAuthIdentityPoolId"
+                    "Ref": "authds9authIdentityPoolId"
                 },
                 "userPoolId": {
-                    "Ref": "authdesertAuthUserPoolId"
+                    "Ref": "authds9authUserPoolId"
                 },
                 "appClientIDWeb": {
-                    "Ref": "authdesertAuthAppClientIDWeb"
+                    "Ref": "authds9authAppClientIDWeb"
                 },
                 "appClientID": {
-                    "Ref": "authdesertAuthAppClientID"
+                    "Ref": "authds9authAppClientID"
                 },
                 "region": {
                     "Ref": "AWS::Region"
@@ -360,10 +360,10 @@
         },
         
       
-        "EditorsGroupRole": {
+        "UsersGroupRole": {
             "Value": {
                 "Fn::GetAtt": [
-                    "EditorsGroupRole",
+                    "UsersGroupRole",
                     "Arn"
                 ]
             }

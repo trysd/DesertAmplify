@@ -191,9 +191,19 @@ export type DeleteCommentInput = {
 
 export type CreateRoutineShipInput = {
   id?: string | null;
+  userName?: string | null;
+  startTime?: string | null;
+  endTime?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
 };
 
 export type ModelRoutineShipConditionInput = {
+  userName?: ModelStringInput | null;
+  startTime?: ModelStringInput | null;
+  endTime?: ModelStringInput | null;
+  startDate?: ModelStringInput | null;
+  endDate?: ModelStringInput | null;
   and?: Array<ModelRoutineShipConditionInput | null> | null;
   or?: Array<ModelRoutineShipConditionInput | null> | null;
   not?: ModelRoutineShipConditionInput | null;
@@ -201,6 +211,11 @@ export type ModelRoutineShipConditionInput = {
 
 export type UpdateRoutineShipInput = {
   id: string;
+  userName?: string | null;
+  startTime?: string | null;
+  endTime?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
 };
 
 export type DeleteRoutineShipInput = {
@@ -210,6 +225,7 @@ export type DeleteRoutineShipInput = {
 export type CreateShipInput = {
   id?: string | null;
   title: string;
+  userName?: string | null;
   capacity: number;
   registered: number;
   createdAt?: string | null;
@@ -219,6 +235,7 @@ export type CreateShipInput = {
 
 export type ModelShipConditionInput = {
   title?: ModelStringInput | null;
+  userName?: ModelStringInput | null;
   capacity?: ModelIntInput | null;
   registered?: ModelIntInput | null;
   createdAt?: ModelStringInput | null;
@@ -244,6 +261,7 @@ export type ModelIntInput = {
 export type UpdateShipInput = {
   id: string;
   title?: string | null;
+  userName?: string | null;
   capacity?: number | null;
   registered?: number | null;
   createdAt?: string | null;
@@ -330,6 +348,11 @@ export type ModelCommentFilterInput = {
 
 export type ModelRoutineShipFilterInput = {
   id?: ModelIDInput | null;
+  userName?: ModelStringInput | null;
+  startTime?: ModelStringInput | null;
+  endTime?: ModelStringInput | null;
+  startDate?: ModelStringInput | null;
+  endDate?: ModelStringInput | null;
   and?: Array<ModelRoutineShipFilterInput | null> | null;
   or?: Array<ModelRoutineShipFilterInput | null> | null;
   not?: ModelRoutineShipFilterInput | null;
@@ -338,6 +361,7 @@ export type ModelRoutineShipFilterInput = {
 export type ModelShipFilterInput = {
   id?: ModelIDInput | null;
   title?: ModelStringInput | null;
+  userName?: ModelStringInput | null;
   capacity?: ModelIntInput | null;
   registered?: ModelIntInput | null;
   createdAt?: ModelStringInput | null;
@@ -360,6 +384,12 @@ export type ModelCrewFilterInput = {
 
 export type RegisterShipMutation = {
   __typename: "responseRegisterShip";
+  status: number | null;
+  body: string | null;
+};
+
+export type TestHttpX1Mutation = {
+  __typename: "ResponseHttpX1";
   status: number | null;
   body: string | null;
 };
@@ -432,6 +462,17 @@ export type CreateBlogMutation = {
       id: string;
       title: string;
       blogID: string;
+      blog: {
+        __typename: "Blog";
+        id: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      comments: {
+        __typename: "ModelCommentConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -452,6 +493,17 @@ export type UpdateBlogMutation = {
       id: string;
       title: string;
       blogID: string;
+      blog: {
+        __typename: "Blog";
+        id: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      comments: {
+        __typename: "ModelCommentConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -472,6 +524,17 @@ export type DeleteBlogMutation = {
       id: string;
       title: string;
       blogID: string;
+      blog: {
+        __typename: "Blog";
+        id: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      comments: {
+        __typename: "ModelCommentConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -492,6 +555,14 @@ export type CreatePostMutation = {
     name: string;
     posts: {
       __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -504,6 +575,14 @@ export type CreatePostMutation = {
       id: string;
       userId: string | null;
       postID: string;
+      post: {
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null;
       content: string;
       createdAt: string | null;
       updatedAt: string;
@@ -525,6 +604,14 @@ export type UpdatePostMutation = {
     name: string;
     posts: {
       __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -537,6 +624,14 @@ export type UpdatePostMutation = {
       id: string;
       userId: string | null;
       postID: string;
+      post: {
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null;
       content: string;
       createdAt: string | null;
       updatedAt: string;
@@ -558,6 +653,14 @@ export type DeletePostMutation = {
     name: string;
     posts: {
       __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -570,6 +673,14 @@ export type DeletePostMutation = {
       id: string;
       userId: string | null;
       postID: string;
+      post: {
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null;
       content: string;
       createdAt: string | null;
       updatedAt: string;
@@ -594,11 +705,24 @@ export type CreateCommentMutation = {
       __typename: "Blog";
       id: string;
       name: string;
+      posts: {
+        __typename: "ModelPostConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
     } | null;
     comments: {
       __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        userId: string | null;
+        postID: string;
+        content: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -623,11 +747,24 @@ export type UpdateCommentMutation = {
       __typename: "Blog";
       id: string;
       name: string;
+      posts: {
+        __typename: "ModelPostConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
     } | null;
     comments: {
       __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        userId: string | null;
+        postID: string;
+        content: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -652,11 +789,24 @@ export type DeleteCommentMutation = {
       __typename: "Blog";
       id: string;
       name: string;
+      posts: {
+        __typename: "ModelPostConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
     } | null;
     comments: {
       __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        userId: string | null;
+        postID: string;
+        content: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -676,8 +826,13 @@ export type CreateRoutineShipMutation = {
       __typename: "Ship";
       id: string;
       title: string;
+      userName: string | null;
       capacity: number;
       registered: number;
+      crews: {
+        __typename: "ModelCrewConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       shipSize: string | null;
       routineShipID: string | null;
@@ -685,6 +840,11 @@ export type CreateRoutineShipMutation = {
     } | null> | null;
     nextToken: string | null;
   } | null;
+  userName: string | null;
+  startTime: string | null;
+  endTime: string | null;
+  startDate: string | null;
+  endDate: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -698,8 +858,13 @@ export type UpdateRoutineShipMutation = {
       __typename: "Ship";
       id: string;
       title: string;
+      userName: string | null;
       capacity: number;
       registered: number;
+      crews: {
+        __typename: "ModelCrewConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       shipSize: string | null;
       routineShipID: string | null;
@@ -707,6 +872,11 @@ export type UpdateRoutineShipMutation = {
     } | null> | null;
     nextToken: string | null;
   } | null;
+  userName: string | null;
+  startTime: string | null;
+  endTime: string | null;
+  startDate: string | null;
+  endDate: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -720,8 +890,13 @@ export type DeleteRoutineShipMutation = {
       __typename: "Ship";
       id: string;
       title: string;
+      userName: string | null;
       capacity: number;
       registered: number;
+      crews: {
+        __typename: "ModelCrewConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       shipSize: string | null;
       routineShipID: string | null;
@@ -729,6 +904,11 @@ export type DeleteRoutineShipMutation = {
     } | null> | null;
     nextToken: string | null;
   } | null;
+  userName: string | null;
+  startTime: string | null;
+  endTime: string | null;
+  startDate: string | null;
+  endDate: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -737,6 +917,7 @@ export type CreateShipMutation = {
   __typename: "Ship";
   id: string;
   title: string;
+  userName: string | null;
   capacity: number;
   registered: number;
   crews: {
@@ -746,6 +927,18 @@ export type CreateShipMutation = {
       id: string;
       shipID: string;
       userName: string;
+      ship: {
+        __typename: "Ship";
+        id: string;
+        title: string;
+        userName: string | null;
+        capacity: number;
+        registered: number;
+        createdAt: string | null;
+        shipSize: string | null;
+        routineShipID: string | null;
+        updatedAt: string;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -761,6 +954,7 @@ export type UpdateShipMutation = {
   __typename: "Ship";
   id: string;
   title: string;
+  userName: string | null;
   capacity: number;
   registered: number;
   crews: {
@@ -770,6 +964,18 @@ export type UpdateShipMutation = {
       id: string;
       shipID: string;
       userName: string;
+      ship: {
+        __typename: "Ship";
+        id: string;
+        title: string;
+        userName: string | null;
+        capacity: number;
+        registered: number;
+        createdAt: string | null;
+        shipSize: string | null;
+        routineShipID: string | null;
+        updatedAt: string;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -785,6 +991,7 @@ export type DeleteShipMutation = {
   __typename: "Ship";
   id: string;
   title: string;
+  userName: string | null;
   capacity: number;
   registered: number;
   crews: {
@@ -794,6 +1001,18 @@ export type DeleteShipMutation = {
       id: string;
       shipID: string;
       userName: string;
+      ship: {
+        __typename: "Ship";
+        id: string;
+        title: string;
+        userName: string | null;
+        capacity: number;
+        registered: number;
+        createdAt: string | null;
+        shipSize: string | null;
+        routineShipID: string | null;
+        updatedAt: string;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -814,10 +1033,19 @@ export type CreateCrewMutation = {
     __typename: "Ship";
     id: string;
     title: string;
+    userName: string | null;
     capacity: number;
     registered: number;
     crews: {
       __typename: "ModelCrewConnection";
+      items: Array<{
+        __typename: "Crew";
+        id: string;
+        shipID: string;
+        userName: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -838,10 +1066,19 @@ export type UpdateCrewMutation = {
     __typename: "Ship";
     id: string;
     title: string;
+    userName: string | null;
     capacity: number;
     registered: number;
     crews: {
       __typename: "ModelCrewConnection";
+      items: Array<{
+        __typename: "Crew";
+        id: string;
+        shipID: string;
+        userName: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -862,10 +1099,19 @@ export type DeleteCrewMutation = {
     __typename: "Ship";
     id: string;
     title: string;
+    userName: string | null;
     capacity: number;
     registered: number;
     crews: {
       __typename: "ModelCrewConnection";
+      items: Array<{
+        __typename: "Crew";
+        id: string;
+        shipID: string;
+        userName: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -934,6 +1180,17 @@ export type GetBlogQuery = {
       id: string;
       title: string;
       blogID: string;
+      blog: {
+        __typename: "Blog";
+        id: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      comments: {
+        __typename: "ModelCommentConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -951,6 +1208,14 @@ export type ListBlogsQuery = {
     name: string;
     posts: {
       __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -970,6 +1235,14 @@ export type GetPostQuery = {
     name: string;
     posts: {
       __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -982,6 +1255,14 @@ export type GetPostQuery = {
       id: string;
       userId: string | null;
       postID: string;
+      post: {
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null;
       content: string;
       createdAt: string | null;
       updatedAt: string;
@@ -1003,11 +1284,24 @@ export type ListPostsQuery = {
       __typename: "Blog";
       id: string;
       name: string;
+      posts: {
+        __typename: "ModelPostConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
     } | null;
     comments: {
       __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        userId: string | null;
+        postID: string;
+        content: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1030,11 +1324,24 @@ export type GetCommentQuery = {
       __typename: "Blog";
       id: string;
       name: string;
+      posts: {
+        __typename: "ModelPostConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
     } | null;
     comments: {
       __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        userId: string | null;
+        postID: string;
+        content: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1057,6 +1364,17 @@ export type ListCommentsQuery = {
       id: string;
       title: string;
       blogID: string;
+      blog: {
+        __typename: "Blog";
+        id: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      comments: {
+        __typename: "ModelCommentConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null;
@@ -1076,8 +1394,13 @@ export type GetRoutineShipQuery = {
       __typename: "Ship";
       id: string;
       title: string;
+      userName: string | null;
       capacity: number;
       registered: number;
+      crews: {
+        __typename: "ModelCrewConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       shipSize: string | null;
       routineShipID: string | null;
@@ -1085,6 +1408,11 @@ export type GetRoutineShipQuery = {
     } | null> | null;
     nextToken: string | null;
   } | null;
+  userName: string | null;
+  startTime: string | null;
+  endTime: string | null;
+  startDate: string | null;
+  endDate: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -1096,8 +1424,25 @@ export type ListRoutineShipsQuery = {
     id: string;
     ship: {
       __typename: "ModelShipConnection";
+      items: Array<{
+        __typename: "Ship";
+        id: string;
+        title: string;
+        userName: string | null;
+        capacity: number;
+        registered: number;
+        createdAt: string | null;
+        shipSize: string | null;
+        routineShipID: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
+    userName: string | null;
+    startTime: string | null;
+    endTime: string | null;
+    startDate: string | null;
+    endDate: string | null;
     createdAt: string;
     updatedAt: string;
   } | null> | null;
@@ -1108,6 +1453,7 @@ export type GetShipQuery = {
   __typename: "Ship";
   id: string;
   title: string;
+  userName: string | null;
   capacity: number;
   registered: number;
   crews: {
@@ -1117,6 +1463,18 @@ export type GetShipQuery = {
       id: string;
       shipID: string;
       userName: string;
+      ship: {
+        __typename: "Ship";
+        id: string;
+        title: string;
+        userName: string | null;
+        capacity: number;
+        registered: number;
+        createdAt: string | null;
+        shipSize: string | null;
+        routineShipID: string | null;
+        updatedAt: string;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -1134,10 +1492,19 @@ export type ListShipsQuery = {
     __typename: "Ship";
     id: string;
     title: string;
+    userName: string | null;
     capacity: number;
     registered: number;
     crews: {
       __typename: "ModelCrewConnection";
+      items: Array<{
+        __typename: "Crew";
+        id: string;
+        shipID: string;
+        userName: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1157,10 +1524,19 @@ export type GetCrewQuery = {
     __typename: "Ship";
     id: string;
     title: string;
+    userName: string | null;
     capacity: number;
     registered: number;
     crews: {
       __typename: "ModelCrewConnection";
+      items: Array<{
+        __typename: "Crew";
+        id: string;
+        shipID: string;
+        userName: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1183,8 +1559,13 @@ export type ListCrewsQuery = {
       __typename: "Ship";
       id: string;
       title: string;
+      userName: string | null;
       capacity: number;
       registered: number;
+      crews: {
+        __typename: "ModelCrewConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       shipSize: string | null;
       routineShipID: string | null;
@@ -1264,6 +1645,17 @@ export type OnCreateBlogSubscription = {
       id: string;
       title: string;
       blogID: string;
+      blog: {
+        __typename: "Blog";
+        id: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      comments: {
+        __typename: "ModelCommentConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -1284,6 +1676,17 @@ export type OnUpdateBlogSubscription = {
       id: string;
       title: string;
       blogID: string;
+      blog: {
+        __typename: "Blog";
+        id: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      comments: {
+        __typename: "ModelCommentConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -1304,6 +1707,17 @@ export type OnDeleteBlogSubscription = {
       id: string;
       title: string;
       blogID: string;
+      blog: {
+        __typename: "Blog";
+        id: string;
+        name: string;
+        createdAt: string;
+        updatedAt: string;
+      } | null;
+      comments: {
+        __typename: "ModelCommentConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -1324,6 +1738,14 @@ export type OnCreatePostSubscription = {
     name: string;
     posts: {
       __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -1336,6 +1758,14 @@ export type OnCreatePostSubscription = {
       id: string;
       userId: string | null;
       postID: string;
+      post: {
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null;
       content: string;
       createdAt: string | null;
       updatedAt: string;
@@ -1357,6 +1787,14 @@ export type OnUpdatePostSubscription = {
     name: string;
     posts: {
       __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -1369,6 +1807,14 @@ export type OnUpdatePostSubscription = {
       id: string;
       userId: string | null;
       postID: string;
+      post: {
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null;
       content: string;
       createdAt: string | null;
       updatedAt: string;
@@ -1390,6 +1836,14 @@ export type OnDeletePostSubscription = {
     name: string;
     posts: {
       __typename: "ModelPostConnection";
+      items: Array<{
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string;
@@ -1402,6 +1856,14 @@ export type OnDeletePostSubscription = {
       id: string;
       userId: string | null;
       postID: string;
+      post: {
+        __typename: "Post";
+        id: string;
+        title: string;
+        blogID: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null;
       content: string;
       createdAt: string | null;
       updatedAt: string;
@@ -1426,11 +1888,24 @@ export type OnCreateCommentSubscription = {
       __typename: "Blog";
       id: string;
       name: string;
+      posts: {
+        __typename: "ModelPostConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
     } | null;
     comments: {
       __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        userId: string | null;
+        postID: string;
+        content: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1455,11 +1930,24 @@ export type OnUpdateCommentSubscription = {
       __typename: "Blog";
       id: string;
       name: string;
+      posts: {
+        __typename: "ModelPostConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
     } | null;
     comments: {
       __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        userId: string | null;
+        postID: string;
+        content: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1484,11 +1972,24 @@ export type OnDeleteCommentSubscription = {
       __typename: "Blog";
       id: string;
       name: string;
+      posts: {
+        __typename: "ModelPostConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string;
       updatedAt: string;
     } | null;
     comments: {
       __typename: "ModelCommentConnection";
+      items: Array<{
+        __typename: "Comment";
+        id: string;
+        userId: string | null;
+        postID: string;
+        content: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1508,8 +2009,13 @@ export type OnCreateRoutineShipSubscription = {
       __typename: "Ship";
       id: string;
       title: string;
+      userName: string | null;
       capacity: number;
       registered: number;
+      crews: {
+        __typename: "ModelCrewConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       shipSize: string | null;
       routineShipID: string | null;
@@ -1517,6 +2023,11 @@ export type OnCreateRoutineShipSubscription = {
     } | null> | null;
     nextToken: string | null;
   } | null;
+  userName: string | null;
+  startTime: string | null;
+  endTime: string | null;
+  startDate: string | null;
+  endDate: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -1530,8 +2041,13 @@ export type OnUpdateRoutineShipSubscription = {
       __typename: "Ship";
       id: string;
       title: string;
+      userName: string | null;
       capacity: number;
       registered: number;
+      crews: {
+        __typename: "ModelCrewConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       shipSize: string | null;
       routineShipID: string | null;
@@ -1539,6 +2055,11 @@ export type OnUpdateRoutineShipSubscription = {
     } | null> | null;
     nextToken: string | null;
   } | null;
+  userName: string | null;
+  startTime: string | null;
+  endTime: string | null;
+  startDate: string | null;
+  endDate: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -1552,8 +2073,13 @@ export type OnDeleteRoutineShipSubscription = {
       __typename: "Ship";
       id: string;
       title: string;
+      userName: string | null;
       capacity: number;
       registered: number;
+      crews: {
+        __typename: "ModelCrewConnection";
+        nextToken: string | null;
+      } | null;
       createdAt: string | null;
       shipSize: string | null;
       routineShipID: string | null;
@@ -1561,6 +2087,11 @@ export type OnDeleteRoutineShipSubscription = {
     } | null> | null;
     nextToken: string | null;
   } | null;
+  userName: string | null;
+  startTime: string | null;
+  endTime: string | null;
+  startDate: string | null;
+  endDate: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -1569,6 +2100,7 @@ export type OnCreateShipSubscription = {
   __typename: "Ship";
   id: string;
   title: string;
+  userName: string | null;
   capacity: number;
   registered: number;
   crews: {
@@ -1578,6 +2110,18 @@ export type OnCreateShipSubscription = {
       id: string;
       shipID: string;
       userName: string;
+      ship: {
+        __typename: "Ship";
+        id: string;
+        title: string;
+        userName: string | null;
+        capacity: number;
+        registered: number;
+        createdAt: string | null;
+        shipSize: string | null;
+        routineShipID: string | null;
+        updatedAt: string;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -1593,6 +2137,7 @@ export type OnUpdateShipSubscription = {
   __typename: "Ship";
   id: string;
   title: string;
+  userName: string | null;
   capacity: number;
   registered: number;
   crews: {
@@ -1602,6 +2147,18 @@ export type OnUpdateShipSubscription = {
       id: string;
       shipID: string;
       userName: string;
+      ship: {
+        __typename: "Ship";
+        id: string;
+        title: string;
+        userName: string | null;
+        capacity: number;
+        registered: number;
+        createdAt: string | null;
+        shipSize: string | null;
+        routineShipID: string | null;
+        updatedAt: string;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -1617,6 +2174,7 @@ export type OnDeleteShipSubscription = {
   __typename: "Ship";
   id: string;
   title: string;
+  userName: string | null;
   capacity: number;
   registered: number;
   crews: {
@@ -1626,6 +2184,18 @@ export type OnDeleteShipSubscription = {
       id: string;
       shipID: string;
       userName: string;
+      ship: {
+        __typename: "Ship";
+        id: string;
+        title: string;
+        userName: string | null;
+        capacity: number;
+        registered: number;
+        createdAt: string | null;
+        shipSize: string | null;
+        routineShipID: string | null;
+        updatedAt: string;
+      } | null;
       createdAt: string | null;
       updatedAt: string;
     } | null> | null;
@@ -1646,10 +2216,19 @@ export type OnCreateCrewSubscription = {
     __typename: "Ship";
     id: string;
     title: string;
+    userName: string | null;
     capacity: number;
     registered: number;
     crews: {
       __typename: "ModelCrewConnection";
+      items: Array<{
+        __typename: "Crew";
+        id: string;
+        shipID: string;
+        userName: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1670,10 +2249,19 @@ export type OnUpdateCrewSubscription = {
     __typename: "Ship";
     id: string;
     title: string;
+    userName: string | null;
     capacity: number;
     registered: number;
     crews: {
       __typename: "ModelCrewConnection";
+      items: Array<{
+        __typename: "Crew";
+        id: string;
+        shipID: string;
+        userName: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1694,10 +2282,19 @@ export type OnDeleteCrewSubscription = {
     __typename: "Ship";
     id: string;
     title: string;
+    userName: string | null;
     capacity: number;
     registered: number;
     crews: {
       __typename: "ModelCrewConnection";
+      items: Array<{
+        __typename: "Crew";
+        id: string;
+        shipID: string;
+        userName: string;
+        createdAt: string | null;
+        updatedAt: string;
+      } | null> | null;
       nextToken: string | null;
     } | null;
     createdAt: string | null;
@@ -1739,6 +2336,23 @@ export class APIService {
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
     return <RegisterShipMutation>response.data.registerShip;
+  }
+  async TestHttpX1(request?: string): Promise<TestHttpX1Mutation> {
+    const statement = `mutation TestHttpX1($request: String) {
+        testHttpX1(request: $request) {
+          __typename
+          status
+          body
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (request) {
+      gqlAPIServiceArguments.request = request;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <TestHttpX1Mutation>response.data.testHttpX1;
   }
   async CreateTask(
     input: CreateTaskInput,
@@ -1909,6 +2523,17 @@ export class APIService {
               id
               title
               blogID
+              blog {
+                __typename
+                id
+                name
+                createdAt
+                updatedAt
+              }
+              comments {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
@@ -1945,6 +2570,17 @@ export class APIService {
               id
               title
               blogID
+              blog {
+                __typename
+                id
+                name
+                createdAt
+                updatedAt
+              }
+              comments {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
@@ -1981,6 +2617,17 @@ export class APIService {
               id
               title
               blogID
+              blog {
+                __typename
+                id
+                name
+                createdAt
+                updatedAt
+              }
+              comments {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
@@ -2017,6 +2664,14 @@ export class APIService {
             name
             posts {
               __typename
+              items {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2029,6 +2684,14 @@ export class APIService {
               id
               userId
               postID
+              post {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               content
               createdAt
               updatedAt
@@ -2066,6 +2729,14 @@ export class APIService {
             name
             posts {
               __typename
+              items {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2078,6 +2749,14 @@ export class APIService {
               id
               userId
               postID
+              post {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               content
               createdAt
               updatedAt
@@ -2115,6 +2794,14 @@ export class APIService {
             name
             posts {
               __typename
+              items {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2127,6 +2814,14 @@ export class APIService {
               id
               userId
               postID
+              post {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               content
               createdAt
               updatedAt
@@ -2167,11 +2862,24 @@ export class APIService {
               __typename
               id
               name
+              posts {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
             comments {
               __typename
+              items {
+                __typename
+                id
+                userId
+                postID
+                content
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2212,11 +2920,24 @@ export class APIService {
               __typename
               id
               name
+              posts {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
             comments {
               __typename
+              items {
+                __typename
+                id
+                userId
+                postID
+                content
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2257,11 +2978,24 @@ export class APIService {
               __typename
               id
               name
+              posts {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
             comments {
               __typename
+              items {
+                __typename
+                id
+                userId
+                postID
+                content
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2297,8 +3031,13 @@ export class APIService {
               __typename
               id
               title
+              userName
               capacity
               registered
+              crews {
+                __typename
+                nextToken
+              }
               createdAt
               shipSize
               routineShipID
@@ -2306,6 +3045,11 @@ export class APIService {
             }
             nextToken
           }
+          userName
+          startTime
+          endTime
+          startDate
+          endDate
           createdAt
           updatedAt
         }
@@ -2335,8 +3079,13 @@ export class APIService {
               __typename
               id
               title
+              userName
               capacity
               registered
+              crews {
+                __typename
+                nextToken
+              }
               createdAt
               shipSize
               routineShipID
@@ -2344,6 +3093,11 @@ export class APIService {
             }
             nextToken
           }
+          userName
+          startTime
+          endTime
+          startDate
+          endDate
           createdAt
           updatedAt
         }
@@ -2373,8 +3127,13 @@ export class APIService {
               __typename
               id
               title
+              userName
               capacity
               registered
+              crews {
+                __typename
+                nextToken
+              }
               createdAt
               shipSize
               routineShipID
@@ -2382,6 +3141,11 @@ export class APIService {
             }
             nextToken
           }
+          userName
+          startTime
+          endTime
+          startDate
+          endDate
           createdAt
           updatedAt
         }
@@ -2406,6 +3170,7 @@ export class APIService {
           __typename
           id
           title
+          userName
           capacity
           registered
           crews {
@@ -2415,6 +3180,18 @@ export class APIService {
               id
               shipID
               userName
+              ship {
+                __typename
+                id
+                title
+                userName
+                capacity
+                registered
+                createdAt
+                shipSize
+                routineShipID
+                updatedAt
+              }
               createdAt
               updatedAt
             }
@@ -2446,6 +3223,7 @@ export class APIService {
           __typename
           id
           title
+          userName
           capacity
           registered
           crews {
@@ -2455,6 +3233,18 @@ export class APIService {
               id
               shipID
               userName
+              ship {
+                __typename
+                id
+                title
+                userName
+                capacity
+                registered
+                createdAt
+                shipSize
+                routineShipID
+                updatedAt
+              }
               createdAt
               updatedAt
             }
@@ -2486,6 +3276,7 @@ export class APIService {
           __typename
           id
           title
+          userName
           capacity
           registered
           crews {
@@ -2495,6 +3286,18 @@ export class APIService {
               id
               shipID
               userName
+              ship {
+                __typename
+                id
+                title
+                userName
+                capacity
+                registered
+                createdAt
+                shipSize
+                routineShipID
+                updatedAt
+              }
               createdAt
               updatedAt
             }
@@ -2531,10 +3334,19 @@ export class APIService {
             __typename
             id
             title
+            userName
             capacity
             registered
             crews {
               __typename
+              items {
+                __typename
+                id
+                shipID
+                userName
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2571,10 +3383,19 @@ export class APIService {
             __typename
             id
             title
+            userName
             capacity
             registered
             crews {
               __typename
+              items {
+                __typename
+                id
+                shipID
+                userName
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2611,10 +3432,19 @@ export class APIService {
             __typename
             id
             title
+            userName
             capacity
             registered
             crews {
               __typename
+              items {
+                __typename
+                id
+                shipID
+                userName
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2758,6 +3588,17 @@ export class APIService {
               id
               title
               blogID
+              blog {
+                __typename
+                id
+                name
+                createdAt
+                updatedAt
+              }
+              comments {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
@@ -2789,6 +3630,14 @@ export class APIService {
             name
             posts {
               __typename
+              items {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2825,6 +3674,14 @@ export class APIService {
             name
             posts {
               __typename
+              items {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2837,6 +3694,14 @@ export class APIService {
               id
               userId
               postID
+              post {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               content
               createdAt
               updatedAt
@@ -2872,11 +3737,24 @@ export class APIService {
               __typename
               id
               name
+              posts {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
             comments {
               __typename
+              items {
+                __typename
+                id
+                userId
+                postID
+                content
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2916,11 +3794,24 @@ export class APIService {
               __typename
               id
               name
+              posts {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
             comments {
               __typename
+              items {
+                __typename
+                id
+                userId
+                postID
+                content
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -2957,6 +3848,17 @@ export class APIService {
               id
               title
               blogID
+              blog {
+                __typename
+                id
+                name
+                createdAt
+                updatedAt
+              }
+              comments {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
@@ -2993,8 +3895,13 @@ export class APIService {
               __typename
               id
               title
+              userName
               capacity
               registered
+              crews {
+                __typename
+                nextToken
+              }
               createdAt
               shipSize
               routineShipID
@@ -3002,6 +3909,11 @@ export class APIService {
             }
             nextToken
           }
+          userName
+          startTime
+          endTime
+          startDate
+          endDate
           createdAt
           updatedAt
         }
@@ -3027,8 +3939,25 @@ export class APIService {
             id
             ship {
               __typename
+              items {
+                __typename
+                id
+                title
+                userName
+                capacity
+                registered
+                createdAt
+                shipSize
+                routineShipID
+                updatedAt
+              }
               nextToken
             }
+            userName
+            startTime
+            endTime
+            startDate
+            endDate
             createdAt
             updatedAt
           }
@@ -3056,6 +3985,7 @@ export class APIService {
           __typename
           id
           title
+          userName
           capacity
           registered
           crews {
@@ -3065,6 +3995,18 @@ export class APIService {
               id
               shipID
               userName
+              ship {
+                __typename
+                id
+                title
+                userName
+                capacity
+                registered
+                createdAt
+                shipSize
+                routineShipID
+                updatedAt
+              }
               createdAt
               updatedAt
             }
@@ -3096,10 +4038,19 @@ export class APIService {
             __typename
             id
             title
+            userName
             capacity
             registered
             crews {
               __typename
+              items {
+                __typename
+                id
+                shipID
+                userName
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3136,10 +4087,19 @@ export class APIService {
             __typename
             id
             title
+            userName
             capacity
             registered
             crews {
               __typename
+              items {
+                __typename
+                id
+                shipID
+                userName
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3176,8 +4136,13 @@ export class APIService {
               __typename
               id
               title
+              userName
               capacity
               registered
+              crews {
+                __typename
+                nextToken
+              }
               createdAt
               shipSize
               routineShipID
@@ -3325,6 +4290,17 @@ export class APIService {
               id
               title
               blogID
+              blog {
+                __typename
+                id
+                name
+                createdAt
+                updatedAt
+              }
+              comments {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
@@ -3353,6 +4329,17 @@ export class APIService {
               id
               title
               blogID
+              blog {
+                __typename
+                id
+                name
+                createdAt
+                updatedAt
+              }
+              comments {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
@@ -3381,6 +4368,17 @@ export class APIService {
               id
               title
               blogID
+              blog {
+                __typename
+                id
+                name
+                createdAt
+                updatedAt
+              }
+              comments {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
@@ -3409,6 +4407,14 @@ export class APIService {
             name
             posts {
               __typename
+              items {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3421,6 +4427,14 @@ export class APIService {
               id
               userId
               postID
+              post {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               content
               createdAt
               updatedAt
@@ -3450,6 +4464,14 @@ export class APIService {
             name
             posts {
               __typename
+              items {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3462,6 +4484,14 @@ export class APIService {
               id
               userId
               postID
+              post {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               content
               createdAt
               updatedAt
@@ -3491,6 +4521,14 @@ export class APIService {
             name
             posts {
               __typename
+              items {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3503,6 +4541,14 @@ export class APIService {
               id
               userId
               postID
+              post {
+                __typename
+                id
+                title
+                blogID
+                createdAt
+                updatedAt
+              }
               content
               createdAt
               updatedAt
@@ -3535,11 +4581,24 @@ export class APIService {
               __typename
               id
               name
+              posts {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
             comments {
               __typename
+              items {
+                __typename
+                id
+                userId
+                postID
+                content
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3572,11 +4631,24 @@ export class APIService {
               __typename
               id
               name
+              posts {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
             comments {
               __typename
+              items {
+                __typename
+                id
+                userId
+                postID
+                content
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3609,11 +4681,24 @@ export class APIService {
               __typename
               id
               name
+              posts {
+                __typename
+                nextToken
+              }
               createdAt
               updatedAt
             }
             comments {
               __typename
+              items {
+                __typename
+                id
+                userId
+                postID
+                content
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3641,8 +4726,13 @@ export class APIService {
               __typename
               id
               title
+              userName
               capacity
               registered
+              crews {
+                __typename
+                nextToken
+              }
               createdAt
               shipSize
               routineShipID
@@ -3650,6 +4740,11 @@ export class APIService {
             }
             nextToken
           }
+          userName
+          startTime
+          endTime
+          startDate
+          endDate
           createdAt
           updatedAt
         }
@@ -3671,8 +4766,13 @@ export class APIService {
               __typename
               id
               title
+              userName
               capacity
               registered
+              crews {
+                __typename
+                nextToken
+              }
               createdAt
               shipSize
               routineShipID
@@ -3680,6 +4780,11 @@ export class APIService {
             }
             nextToken
           }
+          userName
+          startTime
+          endTime
+          startDate
+          endDate
           createdAt
           updatedAt
         }
@@ -3701,8 +4806,13 @@ export class APIService {
               __typename
               id
               title
+              userName
               capacity
               registered
+              crews {
+                __typename
+                nextToken
+              }
               createdAt
               shipSize
               routineShipID
@@ -3710,6 +4820,11 @@ export class APIService {
             }
             nextToken
           }
+          userName
+          startTime
+          endTime
+          startDate
+          endDate
           createdAt
           updatedAt
         }
@@ -3726,6 +4841,7 @@ export class APIService {
           __typename
           id
           title
+          userName
           capacity
           registered
           crews {
@@ -3735,6 +4851,18 @@ export class APIService {
               id
               shipID
               userName
+              ship {
+                __typename
+                id
+                title
+                userName
+                capacity
+                registered
+                createdAt
+                shipSize
+                routineShipID
+                updatedAt
+              }
               createdAt
               updatedAt
             }
@@ -3758,6 +4886,7 @@ export class APIService {
           __typename
           id
           title
+          userName
           capacity
           registered
           crews {
@@ -3767,6 +4896,18 @@ export class APIService {
               id
               shipID
               userName
+              ship {
+                __typename
+                id
+                title
+                userName
+                capacity
+                registered
+                createdAt
+                shipSize
+                routineShipID
+                updatedAt
+              }
               createdAt
               updatedAt
             }
@@ -3790,6 +4931,7 @@ export class APIService {
           __typename
           id
           title
+          userName
           capacity
           registered
           crews {
@@ -3799,6 +4941,18 @@ export class APIService {
               id
               shipID
               userName
+              ship {
+                __typename
+                id
+                title
+                userName
+                capacity
+                registered
+                createdAt
+                shipSize
+                routineShipID
+                updatedAt
+              }
               createdAt
               updatedAt
             }
@@ -3827,10 +4981,19 @@ export class APIService {
             __typename
             id
             title
+            userName
             capacity
             registered
             crews {
               __typename
+              items {
+                __typename
+                id
+                shipID
+                userName
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3859,10 +5022,19 @@ export class APIService {
             __typename
             id
             title
+            userName
             capacity
             registered
             crews {
               __typename
+              items {
+                __typename
+                id
+                shipID
+                userName
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt
@@ -3891,10 +5063,19 @@ export class APIService {
             __typename
             id
             title
+            userName
             capacity
             registered
             crews {
               __typename
+              items {
+                __typename
+                id
+                shipID
+                userName
+                createdAt
+                updatedAt
+              }
               nextToken
             }
             createdAt

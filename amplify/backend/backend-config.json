@@ -1,20 +1,20 @@
 {
   "function": {
-    "desertAuthPostConfirmation": {
+    "ds9authPostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "AdminQueriesae769a08": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
+    "funcHttpX1": {
       "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
       "dependsOn": [
         {
-          "category": "auth",
-          "resourceName": "desertAuth",
+          "category": "api",
+          "resourceName": "desert9",
           "attributes": [
-            "UserPoolId"
+            "GraphQLAPIIdOutput"
           ]
         }
       ]
@@ -26,10 +26,9 @@
       "dependsOn": [
         {
           "category": "api",
-          "resourceName": "desertAPI",
+          "resourceName": "desert9",
           "attributes": [
-            "GraphQLAPIIdOutput",
-            "GraphQLAPIEndpointOutput"
+            "GraphQLAPIIdOutput"
           ]
         }
       ]
@@ -42,7 +41,7 @@
       "dependsOn": [
         {
           "category": "auth",
-          "resourceName": "desertAuth",
+          "resourceName": "ds9auth",
           "attributes": [
             "UserPoolId",
             "AppClientIDWeb",
@@ -52,13 +51,13 @@
         }
       ]
     },
-    "desertAuth": {
+    "ds9auth": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "desertAuthPostConfirmation",
+          "resourceName": "ds9authPostConfirmation",
           "triggerProvider": "Cognito",
           "attributes": [
             "Arn",
@@ -70,28 +69,7 @@
     }
   },
   "api": {
-    "AdminQueries": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "desertAuth",
-          "attributes": [
-            "UserPoolId"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "AdminQueriesae769a08",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ]
-    },
-    "desertAPI": {
+    "desert9": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -99,7 +77,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authdesertAuth"
+              "userPoolId": "authds9auth"
             }
           },
           "additionalAuthenticationProviders": []

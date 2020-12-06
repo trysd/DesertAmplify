@@ -37,12 +37,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "desertFunction",
+            "funcHttpX1",
             {
               "Fn::Join": [
                 "",
                 [
-                  "desertFunction",
+                  "funcHttpX1",
                   "-",
                   {
                     "Ref": "env"
@@ -284,7 +284,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-desert9-dev-122324-deployment",
-          "S3Key": "amplify-builds/desertFunction-70464549304765764b31-build.zip"
+          "S3Key": "amplify-builds/funcHttpX1-6656334570754241446d-build.zip"
         }
       }
     },
@@ -294,12 +294,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "desert9LambdaRolee5f32ca7",
+            "desert9LambdaRolee41ab460",
             {
               "Fn::Join": [
                 "",
                 [
-                  "desert9LambdaRolee5f32ca7",
+                  "desert9LambdaRolee41ab460",
                   "-",
                   {
                     "Ref": "env"

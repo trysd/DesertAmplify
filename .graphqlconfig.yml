@@ -1,6 +1,6 @@
 projects:
-  desertAPI:
-    schemaPath: src/graphql/schema.json
+  desert9:
+    schemaPath: amplify/backend/api/desert9/build/schema.graphql
     includes:
       - src/graphql/**/*.graphql
     excludes:
@@ -10,6 +10,7 @@ projects:
         codeGenTarget: angular
         generatedFileName: src/app/API.service.ts
         docsFilePath: src/graphql
+        maxDepth: 4
 extensions:
   amplify:
     version: 3

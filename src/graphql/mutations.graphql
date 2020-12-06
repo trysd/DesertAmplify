@@ -13,6 +13,12 @@ mutation RegisterShip(
     body
   }
 }
+mutation TestHttpX1($request: String) {
+  testHttpX1(request: $request) {
+    status
+    body
+  }
+}
 mutation CreateTask(
   $input: CreateTaskInput!
   $condition: ModelTaskConditionInput
@@ -100,6 +106,15 @@ mutation CreateBlog(
         id
         title
         blogID
+        blog {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        comments {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -121,6 +136,15 @@ mutation UpdateBlog(
         id
         title
         blogID
+        blog {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        comments {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -142,6 +166,15 @@ mutation DeleteBlog(
         id
         title
         blogID
+        blog {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        comments {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -163,6 +196,13 @@ mutation CreatePost(
       id
       name
       posts {
+        items {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -173,6 +213,13 @@ mutation CreatePost(
         id
         userId
         postID
+        post {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         content
         createdAt
         updatedAt
@@ -195,6 +242,13 @@ mutation UpdatePost(
       id
       name
       posts {
+        items {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -205,6 +259,13 @@ mutation UpdatePost(
         id
         userId
         postID
+        post {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         content
         createdAt
         updatedAt
@@ -227,6 +288,13 @@ mutation DeletePost(
       id
       name
       posts {
+        items {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -237,6 +305,13 @@ mutation DeletePost(
         id
         userId
         postID
+        post {
+          id
+          title
+          blogID
+          createdAt
+          updatedAt
+        }
         content
         createdAt
         updatedAt
@@ -262,10 +337,21 @@ mutation CreateComment(
       blog {
         id
         name
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       comments {
+        items {
+          id
+          userId
+          postID
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -291,10 +377,21 @@ mutation UpdateComment(
       blog {
         id
         name
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       comments {
+        items {
+          id
+          userId
+          postID
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -320,10 +417,21 @@ mutation DeleteComment(
       blog {
         id
         name
+        posts {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       comments {
+        items {
+          id
+          userId
+          postID
+          content
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -344,8 +452,12 @@ mutation CreateRoutineShip(
       items {
         id
         title
+        userName
         capacity
         registered
+        crews {
+          nextToken
+        }
         createdAt
         shipSize
         routineShipID
@@ -353,6 +465,11 @@ mutation CreateRoutineShip(
       }
       nextToken
     }
+    userName
+    startTime
+    endTime
+    startDate
+    endDate
     createdAt
     updatedAt
   }
@@ -367,8 +484,12 @@ mutation UpdateRoutineShip(
       items {
         id
         title
+        userName
         capacity
         registered
+        crews {
+          nextToken
+        }
         createdAt
         shipSize
         routineShipID
@@ -376,6 +497,11 @@ mutation UpdateRoutineShip(
       }
       nextToken
     }
+    userName
+    startTime
+    endTime
+    startDate
+    endDate
     createdAt
     updatedAt
   }
@@ -390,8 +516,12 @@ mutation DeleteRoutineShip(
       items {
         id
         title
+        userName
         capacity
         registered
+        crews {
+          nextToken
+        }
         createdAt
         shipSize
         routineShipID
@@ -399,6 +529,11 @@ mutation DeleteRoutineShip(
       }
       nextToken
     }
+    userName
+    startTime
+    endTime
+    startDate
+    endDate
     createdAt
     updatedAt
   }
@@ -410,6 +545,7 @@ mutation CreateShip(
   createShip(input: $input, condition: $condition) {
     id
     title
+    userName
     capacity
     registered
     crews {
@@ -417,6 +553,17 @@ mutation CreateShip(
         id
         shipID
         userName
+        ship {
+          id
+          title
+          userName
+          capacity
+          registered
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -435,6 +582,7 @@ mutation UpdateShip(
   updateShip(input: $input, condition: $condition) {
     id
     title
+    userName
     capacity
     registered
     crews {
@@ -442,6 +590,17 @@ mutation UpdateShip(
         id
         shipID
         userName
+        ship {
+          id
+          title
+          userName
+          capacity
+          registered
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -460,6 +619,7 @@ mutation DeleteShip(
   deleteShip(input: $input, condition: $condition) {
     id
     title
+    userName
     capacity
     registered
     crews {
@@ -467,6 +627,17 @@ mutation DeleteShip(
         id
         shipID
         userName
+        ship {
+          id
+          title
+          userName
+          capacity
+          registered
+          createdAt
+          shipSize
+          routineShipID
+          updatedAt
+        }
         createdAt
         updatedAt
       }
@@ -489,9 +660,17 @@ mutation CreateCrew(
     ship {
       id
       title
+      userName
       capacity
       registered
       crews {
+        items {
+          id
+          shipID
+          userName
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -514,9 +693,17 @@ mutation UpdateCrew(
     ship {
       id
       title
+      userName
       capacity
       registered
       crews {
+        items {
+          id
+          shipID
+          userName
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
@@ -539,9 +726,17 @@ mutation DeleteCrew(
     ship {
       id
       title
+      userName
       capacity
       registered
       crews {
+        items {
+          id
+          shipID
+          userName
+          createdAt
+          updatedAt
+        }
         nextToken
       }
       createdAt
