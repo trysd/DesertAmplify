@@ -28,17 +28,36 @@ query ListOctopuss(
     nextToken
   }
 }
-query ItemsByDateByTypeByCreatedAt(
-  $date: AWSDate
-  $typeCreatedAt: ModelOctopusByDateByTypeByCreatedAtCompositeKeyConditionInput
+query GetLeg($id: ID!) {
+  getLeg(id: $id) {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}
+query ListLegs($filter: ModelLegFilterInput, $limit: Int, $nextToken: String) {
+  listLegs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query ItemsByExample(
+  $type: Int
+  $date: ModelStringKeyConditionInput
   $sortDirection: ModelSortDirection
   $filter: ModelOctopusFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  itemsByDateByTypeByCreatedAt(
+  itemsByExample(
+    type: $type
     date: $date
-    typeCreatedAt: $typeCreatedAt
     sortDirection: $sortDirection
     filter: $filter
     limit: $limit

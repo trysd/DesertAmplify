@@ -29,18 +29,33 @@
 type Octopus
   @model
   @versioned
-  @key(name: "byDateByTypeByCreatedAt", fields: ["date", "type", "createdAt"], queryField: "itemsByDateByTypeByCreatedAt")
+    @key(name: "byExample", fields: ["type", "date"], queryField: "itemsByExample")
     @auth (
     rules: [
-      {allow: groups, groups: ["townHouseAdmin"], operations: [create, update, delete]}, # 管理グループに対する権限
+      {allow: groups, groups: ["townHouseAdmin"], operations: [create, update, delete]},
       {allow: owner, ownerField: "user_id", operations: [create, update, delete]}
     ])
   {
     id: ID!
     date: AWSDate!
     type: Int!
-    createdAt: AWSTimestamp
   }
+
+type Leg @model {
+  id: ID!
+  name: String!
+}
+
+query MyQuery {
+  itemsByExample(date: {eq: "2020-12-10"}, type: 2, limit: 3) {
+    items {
+      date
+      type
+    }
+  }
+}
+
+
 
 
 M:desert9 yasu$ amplify add api

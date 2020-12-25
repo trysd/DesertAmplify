@@ -216,6 +216,50 @@ export class AppComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
+
+
+    /*
+
+    https://xp-cloud.jp/blog/2018/12/12/4383/
+
+    const responce: Promise<TransactorResponce> = this.api.transactor(JSON.stringify(
+      [
+        Create: { // Update/Delete/Create どれかひとつ必須の型
+          TableBasicName: DynamoTable.Crew,
+          Item: { // 任意。createする場合
+            fieldaaa: 'aaa of value'
+            ...
+          },
+          ConditionItem: { // 任意。判定が必要な場合に記載。Itemと同時に使えるか不明
+            Key: { id: argv.shipId },
+            UpdateExpression: 'set #registered = #registered + :Increment',
+            ConditionExpression: '#registered < #capacity',
+            ExpressionAttributeNames: {
+              '#registered': 'registered',
+              '#capacity': 'capacity'
+            },
+            ExpressionAttributeValues: {
+              ':Increment': 1
+            }
+          }
+        },
+        Delete: {
+          ...
+        }
+      ]
+    ));
+
+
+
+    */
+
+    // this.api.CreateOctopus(
+    //   {
+    //     date: "2020-12-10",
+    //     type: 1
+    //   }
+    // )
+
     onAuthUIStateChange((authState, authData) => {
 
       this.authState = authState;

@@ -13,13 +13,11 @@ export type CreateOctopusInput = {
   id?: string | null;
   date: string;
   type: number;
-  createdAt?: number | null;
 };
 
 export type ModelOctopusConditionInput = {
   date?: ModelStringInput | null;
   type?: ModelIntInput | null;
-  createdAt?: ModelIntInput | null;
   and?: Array<ModelOctopusConditionInput | null> | null;
   or?: Array<ModelOctopusConditionInput | null> | null;
   not?: ModelOctopusConditionInput | null;
@@ -80,7 +78,6 @@ export type UpdateOctopusInput = {
   id: string;
   date?: string | null;
   type?: number | null;
-  createdAt?: number | null;
   expectedVersion: number;
 };
 
@@ -89,11 +86,31 @@ export type DeleteOctopusInput = {
   expectedVersion: number;
 };
 
+export type CreateLegInput = {
+  id?: string | null;
+  name: string;
+};
+
+export type ModelLegConditionInput = {
+  name?: ModelStringInput | null;
+  and?: Array<ModelLegConditionInput | null> | null;
+  or?: Array<ModelLegConditionInput | null> | null;
+  not?: ModelLegConditionInput | null;
+};
+
+export type UpdateLegInput = {
+  id: string;
+  name?: string | null;
+};
+
+export type DeleteLegInput = {
+  id?: string | null;
+};
+
 export type ModelOctopusFilterInput = {
   id?: ModelIDInput | null;
   date?: ModelStringInput | null;
   type?: ModelIntInput | null;
-  createdAt?: ModelIntInput | null;
   and?: Array<ModelOctopusFilterInput | null> | null;
   or?: Array<ModelOctopusFilterInput | null> | null;
   not?: ModelOctopusFilterInput | null;
@@ -115,19 +132,22 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null;
 };
 
-export type ModelOctopusByDateByTypeByCreatedAtCompositeKeyConditionInput = {
-  eq?: ModelOctopusByDateByTypeByCreatedAtCompositeKeyInput | null;
-  le?: ModelOctopusByDateByTypeByCreatedAtCompositeKeyInput | null;
-  lt?: ModelOctopusByDateByTypeByCreatedAtCompositeKeyInput | null;
-  ge?: ModelOctopusByDateByTypeByCreatedAtCompositeKeyInput | null;
-  gt?: ModelOctopusByDateByTypeByCreatedAtCompositeKeyInput | null;
-  between?: Array<ModelOctopusByDateByTypeByCreatedAtCompositeKeyInput | null> | null;
-  beginsWith?: ModelOctopusByDateByTypeByCreatedAtCompositeKeyInput | null;
+export type ModelLegFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelLegFilterInput | null> | null;
+  or?: Array<ModelLegFilterInput | null> | null;
+  not?: ModelLegFilterInput | null;
 };
 
-export type ModelOctopusByDateByTypeByCreatedAtCompositeKeyInput = {
-  type?: number | null;
-  createdAt?: number | null;
+export type ModelStringKeyConditionInput = {
+  eq?: string | null;
+  le?: string | null;
+  lt?: string | null;
+  ge?: string | null;
+  gt?: string | null;
+  between?: Array<string | null> | null;
+  beginsWith?: string | null;
 };
 
 export enum ModelSortDirection {
@@ -140,7 +160,7 @@ export type CreateOctopusMutation = {
   id: string;
   date: string;
   type: number;
-  createdAt: number | null;
+  createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
@@ -151,7 +171,7 @@ export type UpdateOctopusMutation = {
   id: string;
   date: string;
   type: number;
-  createdAt: number | null;
+  createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
@@ -162,10 +182,34 @@ export type DeleteOctopusMutation = {
   id: string;
   date: string;
   type: number;
-  createdAt: number | null;
+  createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
+};
+
+export type CreateLegMutation = {
+  __typename: "Leg";
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdateLegMutation = {
+  __typename: "Leg";
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeleteLegMutation = {
+  __typename: "Leg";
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type GetOctopusQuery = {
@@ -173,7 +217,7 @@ export type GetOctopusQuery = {
   id: string;
   date: string;
   type: number;
-  createdAt: number | null;
+  createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
@@ -186,7 +230,7 @@ export type ListOctopussQuery = {
     id: string;
     date: string;
     type: number;
-    createdAt: number | null;
+    createdAt: string;
     updatedAt: string;
     version: number;
     user_id: string | null;
@@ -194,14 +238,34 @@ export type ListOctopussQuery = {
   nextToken: string | null;
 };
 
-export type ItemsByDateByTypeByCreatedAtQuery = {
+export type GetLegQuery = {
+  __typename: "Leg";
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListLegsQuery = {
+  __typename: "ModelLegConnection";
+  items: Array<{
+    __typename: "Leg";
+    id: string;
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type ItemsByExampleQuery = {
   __typename: "ModelOctopusConnection";
   items: Array<{
     __typename: "Octopus";
     id: string;
     date: string;
     type: number;
-    createdAt: number | null;
+    createdAt: string;
     updatedAt: string;
     version: number;
     user_id: string | null;
@@ -214,7 +278,7 @@ export type OnCreateOctopusSubscription = {
   id: string;
   date: string;
   type: number;
-  createdAt: number | null;
+  createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
@@ -225,7 +289,7 @@ export type OnUpdateOctopusSubscription = {
   id: string;
   date: string;
   type: number;
-  createdAt: number | null;
+  createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
@@ -236,10 +300,34 @@ export type OnDeleteOctopusSubscription = {
   id: string;
   date: string;
   type: number;
-  createdAt: number | null;
+  createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
+};
+
+export type OnCreateLegSubscription = {
+  __typename: "Leg";
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdateLegSubscription = {
+  __typename: "Leg";
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeleteLegSubscription = {
+  __typename: "Leg";
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 @Injectable({
@@ -327,6 +415,78 @@ export class APIService {
     )) as any;
     return <DeleteOctopusMutation>response.data.deleteOctopus;
   }
+  async CreateLeg(
+    input: CreateLegInput,
+    condition?: ModelLegConditionInput
+  ): Promise<CreateLegMutation> {
+    const statement = `mutation CreateLeg($input: CreateLegInput!, $condition: ModelLegConditionInput) {
+        createLeg(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateLegMutation>response.data.createLeg;
+  }
+  async UpdateLeg(
+    input: UpdateLegInput,
+    condition?: ModelLegConditionInput
+  ): Promise<UpdateLegMutation> {
+    const statement = `mutation UpdateLeg($input: UpdateLegInput!, $condition: ModelLegConditionInput) {
+        updateLeg(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateLegMutation>response.data.updateLeg;
+  }
+  async DeleteLeg(
+    input: DeleteLegInput,
+    condition?: ModelLegConditionInput
+  ): Promise<DeleteLegMutation> {
+    const statement = `mutation DeleteLeg($input: DeleteLegInput!, $condition: ModelLegConditionInput) {
+        deleteLeg(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteLegMutation>response.data.deleteLeg;
+  }
   async GetOctopus(id: string): Promise<GetOctopusQuery> {
     const statement = `query GetOctopus($id: ID!) {
         getOctopus(id: $id) {
@@ -384,16 +544,67 @@ export class APIService {
     )) as any;
     return <ListOctopussQuery>response.data.listOctopuss;
   }
-  async ItemsByDateByTypeByCreatedAt(
-    date?: string,
-    typeCreatedAt?: ModelOctopusByDateByTypeByCreatedAtCompositeKeyConditionInput,
+  async GetLeg(id: string): Promise<GetLegQuery> {
+    const statement = `query GetLeg($id: ID!) {
+        getLeg(id: $id) {
+          __typename
+          id
+          name
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetLegQuery>response.data.getLeg;
+  }
+  async ListLegs(
+    filter?: ModelLegFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListLegsQuery> {
+    const statement = `query ListLegs($filter: ModelLegFilterInput, $limit: Int, $nextToken: String) {
+        listLegs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListLegsQuery>response.data.listLegs;
+  }
+  async ItemsByExample(
+    type?: number,
+    date?: ModelStringKeyConditionInput,
     sortDirection?: ModelSortDirection,
     filter?: ModelOctopusFilterInput,
     limit?: number,
     nextToken?: string
-  ): Promise<ItemsByDateByTypeByCreatedAtQuery> {
-    const statement = `query ItemsByDateByTypeByCreatedAt($date: AWSDate, $typeCreatedAt: ModelOctopusByDateByTypeByCreatedAtCompositeKeyConditionInput, $sortDirection: ModelSortDirection, $filter: ModelOctopusFilterInput, $limit: Int, $nextToken: String) {
-        itemsByDateByTypeByCreatedAt(date: $date, typeCreatedAt: $typeCreatedAt, sortDirection: $sortDirection, filter: $filter, limit: $limit, nextToken: $nextToken) {
+  ): Promise<ItemsByExampleQuery> {
+    const statement = `query ItemsByExample($type: Int, $date: ModelStringKeyConditionInput, $sortDirection: ModelSortDirection, $filter: ModelOctopusFilterInput, $limit: Int, $nextToken: String) {
+        itemsByExample(type: $type, date: $date, sortDirection: $sortDirection, filter: $filter, limit: $limit, nextToken: $nextToken) {
           __typename
           items {
             __typename
@@ -409,11 +620,11 @@ export class APIService {
         }
       }`;
     const gqlAPIServiceArguments: any = {};
+    if (type) {
+      gqlAPIServiceArguments.type = type;
+    }
     if (date) {
       gqlAPIServiceArguments.date = date;
-    }
-    if (typeCreatedAt) {
-      gqlAPIServiceArguments.typeCreatedAt = typeCreatedAt;
     }
     if (sortDirection) {
       gqlAPIServiceArguments.sortDirection = sortDirection;
@@ -430,9 +641,7 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <ItemsByDateByTypeByCreatedAtQuery>(
-      response.data.itemsByDateByTypeByCreatedAt
-    );
+    return <ItemsByExampleQuery>response.data.itemsByExample;
   }
   OnCreateOctopusListener: Observable<
     SubscriptionResponse<OnCreateOctopusSubscription>
@@ -490,4 +699,52 @@ export class APIService {
       }`
     )
   ) as Observable<SubscriptionResponse<OnDeleteOctopusSubscription>>;
+
+  OnCreateLegListener: Observable<
+    SubscriptionResponse<OnCreateLegSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateLeg {
+        onCreateLeg {
+          __typename
+          id
+          name
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnCreateLegSubscription>>;
+
+  OnUpdateLegListener: Observable<
+    SubscriptionResponse<OnUpdateLegSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateLeg {
+        onUpdateLeg {
+          __typename
+          id
+          name
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnUpdateLegSubscription>>;
+
+  OnDeleteLegListener: Observable<
+    SubscriptionResponse<OnDeleteLegSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteLeg {
+        onDeleteLeg {
+          __typename
+          id
+          name
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnDeleteLegSubscription>>;
 }

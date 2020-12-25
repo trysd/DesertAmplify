@@ -32,3 +32,27 @@ subscription OnDeleteOctopus {
     user_id
   }
 }
+subscription OnCreateLeg {
+  onCreateLeg {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateLeg {
+  onUpdateLeg {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteLeg {
+  onDeleteLeg {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}

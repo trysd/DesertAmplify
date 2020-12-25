@@ -41,3 +41,36 @@ mutation DeleteOctopus(
     user_id
   }
 }
+mutation CreateLeg(
+  $input: CreateLegInput!
+  $condition: ModelLegConditionInput
+) {
+  createLeg(input: $input, condition: $condition) {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateLeg(
+  $input: UpdateLegInput!
+  $condition: ModelLegConditionInput
+) {
+  updateLeg(input: $input, condition: $condition) {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteLeg(
+  $input: DeleteLegInput!
+  $condition: ModelLegConditionInput
+) {
+  deleteLeg(input: $input, condition: $condition) {
+    id
+    name
+    createdAt
+    updatedAt
+  }
+}
