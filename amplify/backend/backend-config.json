@@ -1,9 +1,24 @@
 {
   "function": {
-    "simpledesert72ff20de72ff20dePostConfirmation": {
+    "daSimAuthPostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "testFunc": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "dasimApi",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ]
+        }
+      ]
     }
   },
   "auth": {
@@ -13,7 +28,7 @@
       "dependsOn": [
         {
           "category": "auth",
-          "resourceName": "simpledesert72ff20de72ff20de",
+          "resourceName": "daSimAuth",
           "attributes": [
             "UserPoolId",
             "AppClientIDWeb",
@@ -23,13 +38,13 @@
         }
       ]
     },
-    "simpledesert72ff20de72ff20de": {
+    "daSimAuth": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "simpledesert72ff20de72ff20dePostConfirmation",
+          "resourceName": "daSimAuthPostConfirmation",
           "triggerProvider": "Cognito",
           "attributes": [
             "Arn",
@@ -41,7 +56,7 @@
     }
   },
   "api": {
-    "simpledesert": {
+    "dasimApi": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -49,7 +64,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authsimpledesert72ff20de72ff20de"
+              "userPoolId": "authdaSimAuth"
             }
           },
           "additionalAuthenticationProviders": []

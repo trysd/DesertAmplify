@@ -3,14 +3,14 @@
   "modules": [
     "add-to-group"
   ],
-  "parentResource": "simpledesert72ff20de72ff20de",
-  "functionName": "simpledesert72ff20de72ff20dePostConfirmation",
-  "resourceName": "simpledesert72ff20de72ff20dePostConfirmation",
+  "parentResource": "daSimAuth",
+  "functionName": "daSimAuthPostConfirmation",
+  "resourceName": "daSimAuthPostConfirmation",
   "parentStack": "auth",
   "triggerEnvs": [],
   "triggerDir": "/Users/yasu/.nodebrew/node/v12.16.1/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/PostConfirmation",
   "triggerTemplate": "PostConfirmation.json.ejs",
-  "roleName": "simpledesert72ff20de72ff20dePostConfirmation",
+  "roleName": "daSimAuthPostConfirmation",
   "skipEdit": true,
   "GROUP": "Users",
   "enableCors": false

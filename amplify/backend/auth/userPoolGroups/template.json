@@ -1,23 +1,23 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Parameters": {
-        "authsimpledesert72ff20de72ff20deUserPoolId": {
+        "authdaSimAuthUserPoolId": {
             "Type": "String",
-            "Default": "authsimpledesert72ff20de72ff20deUserPoolId"
+            "Default": "authdaSimAuthUserPoolId"
         },
         
-        "authsimpledesert72ff20de72ff20deIdentityPoolId": {
+        "authdaSimAuthIdentityPoolId": {
             "Type": "String",
-            "Default": "authsimpledesert72ff20de72ff20deIdentityPoolId"
+            "Default": "authdaSimAuthIdentityPoolId"
         },
         
-        "authsimpledesert72ff20de72ff20deAppClientID": {
+        "authdaSimAuthAppClientID": {
             "Type": "String",
-            "Default": "authsimpledesert72ff20de72ff20deAppClientID"
+            "Default": "authdaSimAuthAppClientID"
         },
-        "authsimpledesert72ff20de72ff20deAppClientIDWeb": {
+        "authdaSimAuthAppClientIDWeb": {
             "Type": "String",
-            "Default": "authsimpledesert72ff20de72ff20deAppClientIDWeb"
+            "Default": "authdaSimAuthAppClientIDWeb"
         },
         "AuthRoleArn": {
             "Type": "String"
@@ -55,7 +55,7 @@
               },
               
               "UserPoolId" : {
-                "Ref": "authsimpledesert72ff20de72ff20deUserPoolId"
+                "Ref": "authdaSimAuthUserPoolId"
               } 
             }
         },
@@ -68,7 +68,7 @@
                         "",
                         [
                           {
-                            "Ref": "authsimpledesert72ff20de72ff20deUserPoolId"
+                            "Ref": "authdaSimAuthUserPoolId"
                           },
                           "-AdminsGroupRole"
                         ]
@@ -85,7 +85,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authsimpledesert72ff20de72ff20deIdentityPoolId"}},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authdaSimAuthIdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -109,7 +109,7 @@
               },
               
               "UserPoolId" : {
-                "Ref": "authsimpledesert72ff20de72ff20deUserPoolId"
+                "Ref": "authdaSimAuthUserPoolId"
               } 
             }
         },
@@ -122,7 +122,7 @@
                         "",
                         [
                           {
-                            "Ref": "authsimpledesert72ff20de72ff20deUserPoolId"
+                            "Ref": "authdaSimAuthUserPoolId"
                           },
                           "-UsersGroupRole"
                         ]
@@ -139,7 +139,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authsimpledesert72ff20de72ff20deIdentityPoolId"}},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authdaSimAuthIdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -165,7 +165,7 @@
                                 "",
                                 [
                                   
-                                  "simpledesert72ff20de72ff20de",
+                                  "daSimAuth",
                                   "-ExecutionRole-",
                                   {
                                     "Ref": "env"
@@ -324,16 +324,16 @@
                     "Ref": "UnauthRoleArn"
                 },
                 "identityPoolId": {
-                    "Ref": "authsimpledesert72ff20de72ff20deIdentityPoolId"
+                    "Ref": "authdaSimAuthIdentityPoolId"
                 },
                 "userPoolId": {
-                    "Ref": "authsimpledesert72ff20de72ff20deUserPoolId"
+                    "Ref": "authdaSimAuthUserPoolId"
                 },
                 "appClientIDWeb": {
-                    "Ref": "authsimpledesert72ff20de72ff20deAppClientIDWeb"
+                    "Ref": "authdaSimAuthAppClientIDWeb"
                 },
                 "appClientID": {
-                    "Ref": "authsimpledesert72ff20de72ff20deAppClientID"
+                    "Ref": "authdaSimAuthAppClientID"
                 },
                 "region": {
                     "Ref": "AWS::Region"

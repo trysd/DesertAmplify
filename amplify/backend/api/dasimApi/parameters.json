@@ -1,10 +1,10 @@
 {
-  "AppSyncApiName": "simpledesert",
+  "AppSyncApiName": "dasimApi",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authsimpledesert72ff20de72ff20de",
+      "authdaSimAuth",
       "Outputs.UserPoolId"
     ]
   }

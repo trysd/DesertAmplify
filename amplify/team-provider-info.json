@@ -1,24 +1,24 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-simpledesert-dev-231326-authRole",
-      "UnauthRoleArn": "arn:aws:iam::363222262070:role/amplify-simpledesert-dev-231326-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::363222262070:role/amplify-simpledesert-dev-231326-authRole",
+      "AuthRoleName": "amplify-dasim-dev-95713-authRole",
+      "UnauthRoleArn": "arn:aws:iam::363222262070:role/amplify-dasim-dev-95713-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::363222262070:role/amplify-dasim-dev-95713-authRole",
       "Region": "ap-northeast-1",
-      "DeploymentBucketName": "amplify-simpledesert-dev-231326-deployment",
-      "UnauthRoleName": "amplify-simpledesert-dev-231326-unauthRole",
-      "StackName": "amplify-simpledesert-dev-231326",
-      "StackId": "arn:aws:cloudformation:ap-northeast-1:363222262070:stack/amplify-simpledesert-dev-231326/32224140-45f2-11eb-a526-060c99a0ecc6",
-      "AmplifyAppId": "d338ixbgztf52h"
+      "DeploymentBucketName": "amplify-dasim-dev-95713-deployment",
+      "UnauthRoleName": "amplify-dasim-dev-95713-unauthRole",
+      "StackName": "amplify-dasim-dev-95713",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:363222262070:stack/amplify-dasim-dev-95713/c9937f70-4e27-11eb-92c0-06ffc2bc5714",
+      "AmplifyAppId": "d2s4xqi740me82"
     },
     "categories": {
       "function": {
-        "simpledesert72ff20de72ff20dePostConfirmation": {
+        "daSimAuthPostConfirmation": {
           "GROUP": "Users"
         }
       },
       "auth": {
-        "simpledesert72ff20de72ff20de": {}
+        "daSimAuth": {}
       }
     }
   }

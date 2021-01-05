@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "simpledesert72ff20de_identitypool_72ff20de",
+    "identityPoolName": "daSimPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "simple72ff20de",
-    "userPoolName": "simpledesert72ff20de_userpool_72ff20de",
+    "resourceNameTruncated": "dasimcad53d45",
+    "userPoolName": "dasimAuthPool",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -35,10 +35,10 @@
         "phone_number",
         "email_verified"
     ],
-    "userpoolClientLambdaRole": "simple72ff20de_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "daSimAcad53d45_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": true,
-    "sharedId": "72ff20de",
-    "resourceName": "simpledesert72ff20de72ff20de",
+    "sharedId": "cad53d45",
+    "resourceName": "daSimAuth",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -76,7 +76,7 @@
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "simpledesert72ff20de72ff20dePostConfirmation",
+            "resourceName": "daSimAuthPostConfirmation",
             "triggerProvider": "Cognito",
             "attributes": [
                 "Arn",

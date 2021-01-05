@@ -216,7 +216,18 @@ export class AppComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
+    const xxx = this.api.CreateTest({arg: "..c"});
+    const xx2 = this.api.EditTest({arg: "..e"})
 
+    xxx.then(e => {
+      console.log(e);
+      console.log(JSON.parse(e.body))
+    });
+
+    xx2.then(e => {
+      console.log(e);
+      console.log(JSON.parse(e.body))
+    })
 
     /*
 

@@ -9,19 +9,48 @@ export interface SubscriptionResponse<T> {
   value: GraphQLResult<T>;
 }
 
-export type CreateOctopusInput = {
-  id?: string | null;
-  date: string;
-  type: number;
+export type testInput = {
+  arg: string;
 };
 
-export type ModelOctopusConditionInput = {
-  date?: ModelStringInput | null;
-  type?: ModelIntInput | null;
-  and?: Array<ModelOctopusConditionInput | null> | null;
-  or?: Array<ModelOctopusConditionInput | null> | null;
-  not?: ModelOctopusConditionInput | null;
+export type CreateCannonInput = {
+  id?: string | null;
+  type: number;
+  date: string;
 };
+
+export type ModelCannonConditionInput = {
+  type?: ModelIntInput | null;
+  date?: ModelStringInput | null;
+  and?: Array<ModelCannonConditionInput | null> | null;
+  or?: Array<ModelCannonConditionInput | null> | null;
+  not?: ModelCannonConditionInput | null;
+};
+
+export type ModelIntInput = {
+  ne?: number | null;
+  eq?: number | null;
+  le?: number | null;
+  lt?: number | null;
+  ge?: number | null;
+  gt?: number | null;
+  between?: Array<number | null> | null;
+  attributeExists?: boolean | null;
+  attributeType?: ModelAttributeTypes | null;
+};
+
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null"
+}
 
 export type ModelStringInput = {
   ne?: string | null;
@@ -39,19 +68,6 @@ export type ModelStringInput = {
   size?: ModelSizeInput | null;
 };
 
-export enum ModelAttributeTypes {
-  binary = "binary",
-  binarySet = "binarySet",
-  bool = "bool",
-  list = "list",
-  map = "map",
-  number = "number",
-  numberSet = "numberSet",
-  string = "string",
-  stringSet = "stringSet",
-  _null = "_null"
-}
-
 export type ModelSizeInput = {
   ne?: number | null;
   eq?: number | null;
@@ -62,58 +78,32 @@ export type ModelSizeInput = {
   between?: Array<number | null> | null;
 };
 
-export type ModelIntInput = {
-  ne?: number | null;
-  eq?: number | null;
-  le?: number | null;
-  lt?: number | null;
-  ge?: number | null;
-  gt?: number | null;
-  between?: Array<number | null> | null;
-  attributeExists?: boolean | null;
-  attributeType?: ModelAttributeTypes | null;
-};
-
-export type UpdateOctopusInput = {
+export type UpdateCannonInput = {
   id: string;
-  date?: string | null;
   type?: number | null;
+  date?: string | null;
   expectedVersion: number;
 };
 
-export type DeleteOctopusInput = {
+export type DeleteCannonInput = {
   id?: string | null;
   expectedVersion: number;
 };
 
-export type CreateLegInput = {
+export type CreateTargetsInput = {
   id?: string | null;
-  name: string;
+  type: number;
+  target: string;
+  targetId: string;
 };
 
-export type ModelLegConditionInput = {
-  name?: ModelStringInput | null;
-  and?: Array<ModelLegConditionInput | null> | null;
-  or?: Array<ModelLegConditionInput | null> | null;
-  not?: ModelLegConditionInput | null;
-};
-
-export type UpdateLegInput = {
-  id: string;
-  name?: string | null;
-};
-
-export type DeleteLegInput = {
-  id?: string | null;
-};
-
-export type ModelOctopusFilterInput = {
-  id?: ModelIDInput | null;
-  date?: ModelStringInput | null;
+export type ModelTargetsConditionInput = {
   type?: ModelIntInput | null;
-  and?: Array<ModelOctopusFilterInput | null> | null;
-  or?: Array<ModelOctopusFilterInput | null> | null;
-  not?: ModelOctopusFilterInput | null;
+  target?: ModelStringInput | null;
+  targetId?: ModelIDInput | null;
+  and?: Array<ModelTargetsConditionInput | null> | null;
+  or?: Array<ModelTargetsConditionInput | null> | null;
+  not?: ModelTargetsConditionInput | null;
 };
 
 export type ModelIDInput = {
@@ -132,12 +122,100 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null;
 };
 
-export type ModelLegFilterInput = {
-  id?: ModelIDInput | null;
+export type UpdateTargetsInput = {
+  id: string;
+  type?: number | null;
+  target?: string | null;
+  targetId?: string | null;
+};
+
+export type DeleteTargetsInput = {
+  id?: string | null;
+};
+
+export type CreateTargetAAAInput = {
+  id?: string | null;
+  type: number;
+  name: string;
+};
+
+export type ModelTargetAAAConditionInput = {
+  type?: ModelIntInput | null;
   name?: ModelStringInput | null;
-  and?: Array<ModelLegFilterInput | null> | null;
-  or?: Array<ModelLegFilterInput | null> | null;
-  not?: ModelLegFilterInput | null;
+  and?: Array<ModelTargetAAAConditionInput | null> | null;
+  or?: Array<ModelTargetAAAConditionInput | null> | null;
+  not?: ModelTargetAAAConditionInput | null;
+};
+
+export type UpdateTargetAAAInput = {
+  id: string;
+  type?: number | null;
+  name?: string | null;
+};
+
+export type DeleteTargetAAAInput = {
+  id?: string | null;
+};
+
+export type CreateTargetBBBInput = {
+  id?: string | null;
+  type: number;
+  name: string;
+};
+
+export type ModelTargetBBBConditionInput = {
+  type?: ModelIntInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelTargetBBBConditionInput | null> | null;
+  or?: Array<ModelTargetBBBConditionInput | null> | null;
+  not?: ModelTargetBBBConditionInput | null;
+};
+
+export type UpdateTargetBBBInput = {
+  id: string;
+  type?: number | null;
+  name?: string | null;
+};
+
+export type DeleteTargetBBBInput = {
+  id?: string | null;
+};
+
+export type ModelCannonFilterInput = {
+  id?: ModelIDInput | null;
+  type?: ModelIntInput | null;
+  date?: ModelStringInput | null;
+  and?: Array<ModelCannonFilterInput | null> | null;
+  or?: Array<ModelCannonFilterInput | null> | null;
+  not?: ModelCannonFilterInput | null;
+};
+
+export type ModelTargetsFilterInput = {
+  id?: ModelIDInput | null;
+  type?: ModelIntInput | null;
+  target?: ModelStringInput | null;
+  targetId?: ModelIDInput | null;
+  and?: Array<ModelTargetsFilterInput | null> | null;
+  or?: Array<ModelTargetsFilterInput | null> | null;
+  not?: ModelTargetsFilterInput | null;
+};
+
+export type ModelTargetAAAFilterInput = {
+  id?: ModelIDInput | null;
+  type?: ModelIntInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelTargetAAAFilterInput | null> | null;
+  or?: Array<ModelTargetAAAFilterInput | null> | null;
+  not?: ModelTargetAAAFilterInput | null;
+};
+
+export type ModelTargetBBBFilterInput = {
+  id?: ModelIDInput | null;
+  type?: ModelIntInput | null;
+  name?: ModelStringInput | null;
+  and?: Array<ModelTargetBBBFilterInput | null> | null;
+  or?: Array<ModelTargetBBBFilterInput | null> | null;
+  not?: ModelTargetBBBFilterInput | null;
 };
 
 export type ModelStringKeyConditionInput = {
@@ -155,81 +233,168 @@ export enum ModelSortDirection {
   DESC = "DESC"
 }
 
-export type CreateOctopusMutation = {
-  __typename: "Octopus";
+export type CreateTestMutation = {
+  __typename: "response";
+  statusCode: number | null;
+  body: string | null;
+  header: string | null;
+};
+
+export type EditTestMutation = {
+  __typename: "response";
+  statusCode: number | null;
+  body: string | null;
+  header: string | null;
+};
+
+export type DeleteTestMutation = {
+  __typename: "response";
+  statusCode: number | null;
+  body: string | null;
+  header: string | null;
+};
+
+export type CreateCannonMutation = {
+  __typename: "Cannon";
   id: string;
-  date: string;
   type: number;
+  date: string;
   createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
 };
 
-export type UpdateOctopusMutation = {
-  __typename: "Octopus";
+export type UpdateCannonMutation = {
+  __typename: "Cannon";
   id: string;
-  date: string;
   type: number;
+  date: string;
   createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
 };
 
-export type DeleteOctopusMutation = {
-  __typename: "Octopus";
+export type DeleteCannonMutation = {
+  __typename: "Cannon";
   id: string;
-  date: string;
   type: number;
+  date: string;
   createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
 };
 
-export type CreateLegMutation = {
-  __typename: "Leg";
+export type CreateTargetsMutation = {
+  __typename: "Targets";
   id: string;
+  type: number;
+  target: string;
+  targetId: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type UpdateTargetsMutation = {
+  __typename: "Targets";
+  id: string;
+  type: number;
+  target: string;
+  targetId: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type DeleteTargetsMutation = {
+  __typename: "Targets";
+  id: string;
+  type: number;
+  target: string;
+  targetId: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type CreateTargetAaaMutation = {
+  __typename: "TargetAAA";
+  id: string;
+  type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type UpdateTargetAaaMutation = {
+  __typename: "TargetAAA";
+  id: string;
+  type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type DeleteTargetAaaMutation = {
+  __typename: "TargetAAA";
+  id: string;
+  type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type CreateTargetBbbMutation = {
+  __typename: "TargetBBB";
+  id: string;
+  type: number;
   name: string;
   createdAt: string;
   updatedAt: string;
 };
 
-export type UpdateLegMutation = {
-  __typename: "Leg";
+export type UpdateTargetBbbMutation = {
+  __typename: "TargetBBB";
   id: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type DeleteLegMutation = {
-  __typename: "Leg";
-  id: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-export type GetOctopusQuery = {
-  __typename: "Octopus";
-  id: string;
-  date: string;
   type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeleteTargetBbbMutation = {
+  __typename: "TargetBBB";
+  id: string;
+  type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type GetCannonQuery = {
+  __typename: "Cannon";
+  id: string;
+  type: number;
+  date: string;
   createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
 };
 
-export type ListOctopussQuery = {
-  __typename: "ModelOctopusConnection";
+export type ListCannonsQuery = {
+  __typename: "ModelCannonConnection";
   items: Array<{
-    __typename: "Octopus";
+    __typename: "Cannon";
     id: string;
-    date: string;
     type: number;
+    date: string;
     createdAt: string;
     updatedAt: string;
     version: number;
@@ -238,19 +403,71 @@ export type ListOctopussQuery = {
   nextToken: string | null;
 };
 
-export type GetLegQuery = {
-  __typename: "Leg";
+export type GetTargetsQuery = {
+  __typename: "Targets";
   id: string;
+  type: number;
+  target: string;
+  targetId: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type ListTargetssQuery = {
+  __typename: "ModelTargetsConnection";
+  items: Array<{
+    __typename: "Targets";
+    id: string;
+    type: number;
+    target: string;
+    targetId: string;
+    createdAt: string;
+    updatedAt: string;
+    user_id: string | null;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type GetTargetAaaQuery = {
+  __typename: "TargetAAA";
+  id: string;
+  type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type ListTargetAaAsQuery = {
+  __typename: "ModelTargetAAAConnection";
+  items: Array<{
+    __typename: "TargetAAA";
+    id: string;
+    type: number;
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    user_id: string | null;
+  } | null> | null;
+  nextToken: string | null;
+};
+
+export type GetTargetBbbQuery = {
+  __typename: "TargetBBB";
+  id: string;
+  type: number;
   name: string;
   createdAt: string;
   updatedAt: string;
 };
 
-export type ListLegsQuery = {
-  __typename: "ModelLegConnection";
+export type ListTargetBbBsQuery = {
+  __typename: "ModelTargetBBBConnection";
   items: Array<{
-    __typename: "Leg";
+    __typename: "TargetBBB";
     id: string;
+    type: number;
     name: string;
     createdAt: string;
     updatedAt: string;
@@ -259,12 +476,12 @@ export type ListLegsQuery = {
 };
 
 export type ItemsByExampleQuery = {
-  __typename: "ModelOctopusConnection";
+  __typename: "ModelCannonConnection";
   items: Array<{
-    __typename: "Octopus";
+    __typename: "Cannon";
     id: string;
-    date: string;
     type: number;
+    date: string;
     createdAt: string;
     updatedAt: string;
     version: number;
@@ -273,58 +490,124 @@ export type ItemsByExampleQuery = {
   nextToken: string | null;
 };
 
-export type OnCreateOctopusSubscription = {
-  __typename: "Octopus";
+export type OnCreateCannonSubscription = {
+  __typename: "Cannon";
   id: string;
-  date: string;
   type: number;
+  date: string;
   createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
 };
 
-export type OnUpdateOctopusSubscription = {
-  __typename: "Octopus";
+export type OnUpdateCannonSubscription = {
+  __typename: "Cannon";
   id: string;
-  date: string;
   type: number;
+  date: string;
   createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
 };
 
-export type OnDeleteOctopusSubscription = {
-  __typename: "Octopus";
+export type OnDeleteCannonSubscription = {
+  __typename: "Cannon";
   id: string;
-  date: string;
   type: number;
+  date: string;
   createdAt: string;
   updatedAt: string;
   version: number;
   user_id: string | null;
 };
 
-export type OnCreateLegSubscription = {
-  __typename: "Leg";
+export type OnCreateTargetsSubscription = {
+  __typename: "Targets";
   id: string;
+  type: number;
+  target: string;
+  targetId: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type OnUpdateTargetsSubscription = {
+  __typename: "Targets";
+  id: string;
+  type: number;
+  target: string;
+  targetId: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type OnDeleteTargetsSubscription = {
+  __typename: "Targets";
+  id: string;
+  type: number;
+  target: string;
+  targetId: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type OnCreateTargetAaaSubscription = {
+  __typename: "TargetAAA";
+  id: string;
+  type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type OnUpdateTargetAaaSubscription = {
+  __typename: "TargetAAA";
+  id: string;
+  type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type OnDeleteTargetAaaSubscription = {
+  __typename: "TargetAAA";
+  id: string;
+  type: number;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  user_id: string | null;
+};
+
+export type OnCreateTargetBbbSubscription = {
+  __typename: "TargetBBB";
+  id: string;
+  type: number;
   name: string;
   createdAt: string;
   updatedAt: string;
 };
 
-export type OnUpdateLegSubscription = {
-  __typename: "Leg";
+export type OnUpdateTargetBbbSubscription = {
+  __typename: "TargetBBB";
   id: string;
+  type: number;
   name: string;
   createdAt: string;
   updatedAt: string;
 };
 
-export type OnDeleteLegSubscription = {
-  __typename: "Leg";
+export type OnDeleteTargetBbbSubscription = {
+  __typename: "TargetBBB";
   id: string;
+  type: number;
   name: string;
   createdAt: string;
   updatedAt: string;
@@ -334,16 +617,67 @@ export type OnDeleteLegSubscription = {
   providedIn: "root"
 })
 export class APIService {
-  async CreateOctopus(
-    input: CreateOctopusInput,
-    condition?: ModelOctopusConditionInput
-  ): Promise<CreateOctopusMutation> {
-    const statement = `mutation CreateOctopus($input: CreateOctopusInput!, $condition: ModelOctopusConditionInput) {
-        createOctopus(input: $input, condition: $condition) {
+  async CreateTest(input: testInput): Promise<CreateTestMutation> {
+    const statement = `mutation CreateTest($input: testInput!) {
+        createTest(input: $input) {
+          __typename
+          statusCode
+          body
+          header
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTestMutation>response.data.createTest;
+  }
+  async EditTest(input: testInput): Promise<EditTestMutation> {
+    const statement = `mutation EditTest($input: testInput!) {
+        editTest(input: $input) {
+          __typename
+          statusCode
+          body
+          header
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <EditTestMutation>response.data.editTest;
+  }
+  async DeleteTest(input: testInput): Promise<DeleteTestMutation> {
+    const statement = `mutation DeleteTest($input: testInput!) {
+        deleteTest(input: $input) {
+          __typename
+          statusCode
+          body
+          header
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTestMutation>response.data.deleteTest;
+  }
+  async CreateCannon(
+    input: CreateCannonInput,
+    condition?: ModelCannonConditionInput
+  ): Promise<CreateCannonMutation> {
+    const statement = `mutation CreateCannon($input: CreateCannonInput!, $condition: ModelCannonConditionInput) {
+        createCannon(input: $input, condition: $condition) {
           __typename
           id
-          date
           type
+          date
           createdAt
           updatedAt
           version
@@ -359,18 +693,18 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <CreateOctopusMutation>response.data.createOctopus;
+    return <CreateCannonMutation>response.data.createCannon;
   }
-  async UpdateOctopus(
-    input: UpdateOctopusInput,
-    condition?: ModelOctopusConditionInput
-  ): Promise<UpdateOctopusMutation> {
-    const statement = `mutation UpdateOctopus($input: UpdateOctopusInput!, $condition: ModelOctopusConditionInput) {
-        updateOctopus(input: $input, condition: $condition) {
+  async UpdateCannon(
+    input: UpdateCannonInput,
+    condition?: ModelCannonConditionInput
+  ): Promise<UpdateCannonMutation> {
+    const statement = `mutation UpdateCannon($input: UpdateCannonInput!, $condition: ModelCannonConditionInput) {
+        updateCannon(input: $input, condition: $condition) {
           __typename
           id
-          date
           type
+          date
           createdAt
           updatedAt
           version
@@ -386,18 +720,18 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <UpdateOctopusMutation>response.data.updateOctopus;
+    return <UpdateCannonMutation>response.data.updateCannon;
   }
-  async DeleteOctopus(
-    input: DeleteOctopusInput,
-    condition?: ModelOctopusConditionInput
-  ): Promise<DeleteOctopusMutation> {
-    const statement = `mutation DeleteOctopus($input: DeleteOctopusInput!, $condition: ModelOctopusConditionInput) {
-        deleteOctopus(input: $input, condition: $condition) {
+  async DeleteCannon(
+    input: DeleteCannonInput,
+    condition?: ModelCannonConditionInput
+  ): Promise<DeleteCannonMutation> {
+    const statement = `mutation DeleteCannon($input: DeleteCannonInput!, $condition: ModelCannonConditionInput) {
+        deleteCannon(input: $input, condition: $condition) {
           __typename
           id
-          date
           type
+          date
           createdAt
           updatedAt
           version
@@ -413,87 +747,249 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <DeleteOctopusMutation>response.data.deleteOctopus;
+    return <DeleteCannonMutation>response.data.deleteCannon;
   }
-  async CreateLeg(
-    input: CreateLegInput,
-    condition?: ModelLegConditionInput
-  ): Promise<CreateLegMutation> {
-    const statement = `mutation CreateLeg($input: CreateLegInput!, $condition: ModelLegConditionInput) {
-        createLeg(input: $input, condition: $condition) {
+  async CreateTargets(
+    input: CreateTargetsInput,
+    condition?: ModelTargetsConditionInput
+  ): Promise<CreateTargetsMutation> {
+    const statement = `mutation CreateTargets($input: CreateTargetsInput!, $condition: ModelTargetsConditionInput) {
+        createTargets(input: $input, condition: $condition) {
           __typename
           id
-          name
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <CreateLegMutation>response.data.createLeg;
-  }
-  async UpdateLeg(
-    input: UpdateLegInput,
-    condition?: ModelLegConditionInput
-  ): Promise<UpdateLegMutation> {
-    const statement = `mutation UpdateLeg($input: UpdateLegInput!, $condition: ModelLegConditionInput) {
-        updateLeg(input: $input, condition: $condition) {
-          __typename
-          id
-          name
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <UpdateLegMutation>response.data.updateLeg;
-  }
-  async DeleteLeg(
-    input: DeleteLegInput,
-    condition?: ModelLegConditionInput
-  ): Promise<DeleteLegMutation> {
-    const statement = `mutation DeleteLeg($input: DeleteLegInput!, $condition: ModelLegConditionInput) {
-        deleteLeg(input: $input, condition: $condition) {
-          __typename
-          id
-          name
-          createdAt
-          updatedAt
-        }
-      }`;
-    const gqlAPIServiceArguments: any = {
-      input
-    };
-    if (condition) {
-      gqlAPIServiceArguments.condition = condition;
-    }
-    const response = (await API.graphql(
-      graphqlOperation(statement, gqlAPIServiceArguments)
-    )) as any;
-    return <DeleteLegMutation>response.data.deleteLeg;
-  }
-  async GetOctopus(id: string): Promise<GetOctopusQuery> {
-    const statement = `query GetOctopus($id: ID!) {
-        getOctopus(id: $id) {
-          __typename
-          id
-          date
           type
+          target
+          targetId
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTargetsMutation>response.data.createTargets;
+  }
+  async UpdateTargets(
+    input: UpdateTargetsInput,
+    condition?: ModelTargetsConditionInput
+  ): Promise<UpdateTargetsMutation> {
+    const statement = `mutation UpdateTargets($input: UpdateTargetsInput!, $condition: ModelTargetsConditionInput) {
+        updateTargets(input: $input, condition: $condition) {
+          __typename
+          id
+          type
+          target
+          targetId
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTargetsMutation>response.data.updateTargets;
+  }
+  async DeleteTargets(
+    input: DeleteTargetsInput,
+    condition?: ModelTargetsConditionInput
+  ): Promise<DeleteTargetsMutation> {
+    const statement = `mutation DeleteTargets($input: DeleteTargetsInput!, $condition: ModelTargetsConditionInput) {
+        deleteTargets(input: $input, condition: $condition) {
+          __typename
+          id
+          type
+          target
+          targetId
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTargetsMutation>response.data.deleteTargets;
+  }
+  async CreateTargetAaa(
+    input: CreateTargetAAAInput,
+    condition?: ModelTargetAAAConditionInput
+  ): Promise<CreateTargetAaaMutation> {
+    const statement = `mutation CreateTargetAaa($input: CreateTargetAAAInput!, $condition: ModelTargetAAAConditionInput) {
+        createTargetAAA(input: $input, condition: $condition) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTargetAaaMutation>response.data.createTargetAAA;
+  }
+  async UpdateTargetAaa(
+    input: UpdateTargetAAAInput,
+    condition?: ModelTargetAAAConditionInput
+  ): Promise<UpdateTargetAaaMutation> {
+    const statement = `mutation UpdateTargetAaa($input: UpdateTargetAAAInput!, $condition: ModelTargetAAAConditionInput) {
+        updateTargetAAA(input: $input, condition: $condition) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTargetAaaMutation>response.data.updateTargetAAA;
+  }
+  async DeleteTargetAaa(
+    input: DeleteTargetAAAInput,
+    condition?: ModelTargetAAAConditionInput
+  ): Promise<DeleteTargetAaaMutation> {
+    const statement = `mutation DeleteTargetAaa($input: DeleteTargetAAAInput!, $condition: ModelTargetAAAConditionInput) {
+        deleteTargetAAA(input: $input, condition: $condition) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTargetAaaMutation>response.data.deleteTargetAAA;
+  }
+  async CreateTargetBbb(
+    input: CreateTargetBBBInput,
+    condition?: ModelTargetBBBConditionInput
+  ): Promise<CreateTargetBbbMutation> {
+    const statement = `mutation CreateTargetBbb($input: CreateTargetBBBInput!, $condition: ModelTargetBBBConditionInput) {
+        createTargetBBB(input: $input, condition: $condition) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTargetBbbMutation>response.data.createTargetBBB;
+  }
+  async UpdateTargetBbb(
+    input: UpdateTargetBBBInput,
+    condition?: ModelTargetBBBConditionInput
+  ): Promise<UpdateTargetBbbMutation> {
+    const statement = `mutation UpdateTargetBbb($input: UpdateTargetBBBInput!, $condition: ModelTargetBBBConditionInput) {
+        updateTargetBBB(input: $input, condition: $condition) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTargetBbbMutation>response.data.updateTargetBBB;
+  }
+  async DeleteTargetBbb(
+    input: DeleteTargetBBBInput,
+    condition?: ModelTargetBBBConditionInput
+  ): Promise<DeleteTargetBbbMutation> {
+    const statement = `mutation DeleteTargetBbb($input: DeleteTargetBBBInput!, $condition: ModelTargetBBBConditionInput) {
+        deleteTargetBBB(input: $input, condition: $condition) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTargetBbbMutation>response.data.deleteTargetBBB;
+  }
+  async GetCannon(id: string): Promise<GetCannonQuery> {
+    const statement = `query GetCannon($id: ID!) {
+        getCannon(id: $id) {
+          __typename
+          id
+          type
+          date
           createdAt
           updatedAt
           version
@@ -506,21 +1002,21 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <GetOctopusQuery>response.data.getOctopus;
+    return <GetCannonQuery>response.data.getCannon;
   }
-  async ListOctopuss(
-    filter?: ModelOctopusFilterInput,
+  async ListCannons(
+    filter?: ModelCannonFilterInput,
     limit?: number,
     nextToken?: string
-  ): Promise<ListOctopussQuery> {
-    const statement = `query ListOctopuss($filter: ModelOctopusFilterInput, $limit: Int, $nextToken: String) {
-        listOctopuss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  ): Promise<ListCannonsQuery> {
+    const statement = `query ListCannons($filter: ModelCannonFilterInput, $limit: Int, $nextToken: String) {
+        listCannons(filter: $filter, limit: $limit, nextToken: $nextToken) {
           __typename
           items {
             __typename
             id
-            date
             type
+            date
             createdAt
             updatedAt
             version
@@ -542,13 +1038,126 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <ListOctopussQuery>response.data.listOctopuss;
+    return <ListCannonsQuery>response.data.listCannons;
   }
-  async GetLeg(id: string): Promise<GetLegQuery> {
-    const statement = `query GetLeg($id: ID!) {
-        getLeg(id: $id) {
+  async GetTargets(id: string): Promise<GetTargetsQuery> {
+    const statement = `query GetTargets($id: ID!) {
+        getTargets(id: $id) {
           __typename
           id
+          type
+          target
+          targetId
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetTargetsQuery>response.data.getTargets;
+  }
+  async ListTargetss(
+    filter?: ModelTargetsFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListTargetssQuery> {
+    const statement = `query ListTargetss($filter: ModelTargetsFilterInput, $limit: Int, $nextToken: String) {
+        listTargetss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            type
+            target
+            targetId
+            createdAt
+            updatedAt
+            user_id
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListTargetssQuery>response.data.listTargetss;
+  }
+  async GetTargetAaa(id: string): Promise<GetTargetAaaQuery> {
+    const statement = `query GetTargetAaa($id: ID!) {
+        getTargetAAA(id: $id) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetTargetAaaQuery>response.data.getTargetAAA;
+  }
+  async ListTargetAaAs(
+    filter?: ModelTargetAAAFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListTargetAaAsQuery> {
+    const statement = `query ListTargetAaAs($filter: ModelTargetAAAFilterInput, $limit: Int, $nextToken: String) {
+        listTargetAAAs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            type
+            name
+            createdAt
+            updatedAt
+            user_id
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListTargetAaAsQuery>response.data.listTargetAAAs;
+  }
+  async GetTargetBbb(id: string): Promise<GetTargetBbbQuery> {
+    const statement = `query GetTargetBbb($id: ID!) {
+        getTargetBBB(id: $id) {
+          __typename
+          id
+          type
           name
           createdAt
           updatedAt
@@ -560,19 +1169,20 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <GetLegQuery>response.data.getLeg;
+    return <GetTargetBbbQuery>response.data.getTargetBBB;
   }
-  async ListLegs(
-    filter?: ModelLegFilterInput,
+  async ListTargetBbBs(
+    filter?: ModelTargetBBBFilterInput,
     limit?: number,
     nextToken?: string
-  ): Promise<ListLegsQuery> {
-    const statement = `query ListLegs($filter: ModelLegFilterInput, $limit: Int, $nextToken: String) {
-        listLegs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  ): Promise<ListTargetBbBsQuery> {
+    const statement = `query ListTargetBbBs($filter: ModelTargetBBBFilterInput, $limit: Int, $nextToken: String) {
+        listTargetBBBs(filter: $filter, limit: $limit, nextToken: $nextToken) {
           __typename
           items {
             __typename
             id
+            type
             name
             createdAt
             updatedAt
@@ -593,24 +1203,24 @@ export class APIService {
     const response = (await API.graphql(
       graphqlOperation(statement, gqlAPIServiceArguments)
     )) as any;
-    return <ListLegsQuery>response.data.listLegs;
+    return <ListTargetBbBsQuery>response.data.listTargetBBBs;
   }
   async ItemsByExample(
     type?: number,
     date?: ModelStringKeyConditionInput,
     sortDirection?: ModelSortDirection,
-    filter?: ModelOctopusFilterInput,
+    filter?: ModelCannonFilterInput,
     limit?: number,
     nextToken?: string
   ): Promise<ItemsByExampleQuery> {
-    const statement = `query ItemsByExample($type: Int, $date: ModelStringKeyConditionInput, $sortDirection: ModelSortDirection, $filter: ModelOctopusFilterInput, $limit: Int, $nextToken: String) {
+    const statement = `query ItemsByExample($type: Int, $date: ModelStringKeyConditionInput, $sortDirection: ModelSortDirection, $filter: ModelCannonFilterInput, $limit: Int, $nextToken: String) {
         itemsByExample(type: $type, date: $date, sortDirection: $sortDirection, filter: $filter, limit: $limit, nextToken: $nextToken) {
           __typename
           items {
             __typename
             id
-            date
             type
+            date
             createdAt
             updatedAt
             version
@@ -643,16 +1253,16 @@ export class APIService {
     )) as any;
     return <ItemsByExampleQuery>response.data.itemsByExample;
   }
-  OnCreateOctopusListener: Observable<
-    SubscriptionResponse<OnCreateOctopusSubscription>
+  OnCreateCannonListener: Observable<
+    SubscriptionResponse<OnCreateCannonSubscription>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnCreateOctopus {
-        onCreateOctopus {
+      `subscription OnCreateCannon($user_id: String) {
+        onCreateCannon(user_id: $user_id) {
           __typename
           id
-          date
           type
+          date
           createdAt
           updatedAt
           version
@@ -660,18 +1270,18 @@ export class APIService {
         }
       }`
     )
-  ) as Observable<SubscriptionResponse<OnCreateOctopusSubscription>>;
+  ) as Observable<SubscriptionResponse<OnCreateCannonSubscription>>;
 
-  OnUpdateOctopusListener: Observable<
-    SubscriptionResponse<OnUpdateOctopusSubscription>
+  OnUpdateCannonListener: Observable<
+    SubscriptionResponse<OnUpdateCannonSubscription>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnUpdateOctopus {
-        onUpdateOctopus {
+      `subscription OnUpdateCannon($user_id: String) {
+        onUpdateCannon(user_id: $user_id) {
           __typename
           id
-          date
           type
+          date
           createdAt
           updatedAt
           version
@@ -679,18 +1289,18 @@ export class APIService {
         }
       }`
     )
-  ) as Observable<SubscriptionResponse<OnUpdateOctopusSubscription>>;
+  ) as Observable<SubscriptionResponse<OnUpdateCannonSubscription>>;
 
-  OnDeleteOctopusListener: Observable<
-    SubscriptionResponse<OnDeleteOctopusSubscription>
+  OnDeleteCannonListener: Observable<
+    SubscriptionResponse<OnDeleteCannonSubscription>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnDeleteOctopus {
-        onDeleteOctopus {
+      `subscription OnDeleteCannon($user_id: String) {
+        onDeleteCannon(user_id: $user_id) {
           __typename
           id
-          date
           type
+          date
           createdAt
           updatedAt
           version
@@ -698,53 +1308,167 @@ export class APIService {
         }
       }`
     )
-  ) as Observable<SubscriptionResponse<OnDeleteOctopusSubscription>>;
+  ) as Observable<SubscriptionResponse<OnDeleteCannonSubscription>>;
 
-  OnCreateLegListener: Observable<
-    SubscriptionResponse<OnCreateLegSubscription>
+  OnCreateTargetsListener: Observable<
+    SubscriptionResponse<OnCreateTargetsSubscription>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnCreateLeg {
-        onCreateLeg {
+      `subscription OnCreateTargets($user_id: String) {
+        onCreateTargets(user_id: $user_id) {
           __typename
           id
+          type
+          target
+          targetId
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnCreateTargetsSubscription>>;
+
+  OnUpdateTargetsListener: Observable<
+    SubscriptionResponse<OnUpdateTargetsSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTargets($user_id: String) {
+        onUpdateTargets(user_id: $user_id) {
+          __typename
+          id
+          type
+          target
+          targetId
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnUpdateTargetsSubscription>>;
+
+  OnDeleteTargetsListener: Observable<
+    SubscriptionResponse<OnDeleteTargetsSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteTargets($user_id: String) {
+        onDeleteTargets(user_id: $user_id) {
+          __typename
+          id
+          type
+          target
+          targetId
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnDeleteTargetsSubscription>>;
+
+  OnCreateTargetAaaListener: Observable<
+    SubscriptionResponse<OnCreateTargetAaaSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateTargetAaa($user_id: String) {
+        onCreateTargetAAA(user_id: $user_id) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnCreateTargetAaaSubscription>>;
+
+  OnUpdateTargetAaaListener: Observable<
+    SubscriptionResponse<OnUpdateTargetAaaSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTargetAaa($user_id: String) {
+        onUpdateTargetAAA(user_id: $user_id) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnUpdateTargetAaaSubscription>>;
+
+  OnDeleteTargetAaaListener: Observable<
+    SubscriptionResponse<OnDeleteTargetAaaSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteTargetAaa($user_id: String) {
+        onDeleteTargetAAA(user_id: $user_id) {
+          __typename
+          id
+          type
+          name
+          createdAt
+          updatedAt
+          user_id
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnDeleteTargetAaaSubscription>>;
+
+  OnCreateTargetBbbListener: Observable<
+    SubscriptionResponse<OnCreateTargetBbbSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateTargetBbb {
+        onCreateTargetBBB {
+          __typename
+          id
+          type
           name
           createdAt
           updatedAt
         }
       }`
     )
-  ) as Observable<SubscriptionResponse<OnCreateLegSubscription>>;
+  ) as Observable<SubscriptionResponse<OnCreateTargetBbbSubscription>>;
 
-  OnUpdateLegListener: Observable<
-    SubscriptionResponse<OnUpdateLegSubscription>
+  OnUpdateTargetBbbListener: Observable<
+    SubscriptionResponse<OnUpdateTargetBbbSubscription>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnUpdateLeg {
-        onUpdateLeg {
+      `subscription OnUpdateTargetBbb {
+        onUpdateTargetBBB {
           __typename
           id
+          type
           name
           createdAt
           updatedAt
         }
       }`
     )
-  ) as Observable<SubscriptionResponse<OnUpdateLegSubscription>>;
+  ) as Observable<SubscriptionResponse<OnUpdateTargetBbbSubscription>>;
 
-  OnDeleteLegListener: Observable<
-    SubscriptionResponse<OnDeleteLegSubscription>
+  OnDeleteTargetBbbListener: Observable<
+    SubscriptionResponse<OnDeleteTargetBbbSubscription>
   > = API.graphql(
     graphqlOperation(
-      `subscription OnDeleteLeg {
-        onDeleteLeg {
+      `subscription OnDeleteTargetBbb {
+        onDeleteTargetBBB {
           __typename
           id
+          type
           name
           createdAt
           updatedAt
         }
       }`
     )
-  ) as Observable<SubscriptionResponse<OnDeleteLegSubscription>>;
+  ) as Observable<SubscriptionResponse<OnDeleteTargetBbbSubscription>>;
 }

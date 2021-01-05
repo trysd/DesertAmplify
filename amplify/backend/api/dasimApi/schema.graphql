@@ -1,0 +1,61 @@
+type Cannon
+  @model
+  @versioned
+    @key(name: "byExample", fields: ["type", "date"], queryField: "itemsByExample")
+    @auth (
+    rules: [
+      {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
+      {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
+    ])
+  {
+    id: ID!
+    type: Int!
+    date: AWSDate!
+  }
+
+type Targets @model
+    @auth (
+    rules: [
+      {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
+      {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
+    ])
+{
+    id: ID!
+    type: Int!
+    target: String!
+    targetId: ID!
+}
+
+type TargetAAA @model
+    @auth (
+    rules: [
+      {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
+      {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
+    ])
+{
+    id: ID!
+    type: Int!
+    name: String!
+}
+
+type TargetBBB @model {
+    id: ID!
+    type: Int!
+    name: String!
+}
+
+input testInput {
+  arg: String!
+}
+
+type response {
+  statusCode: Int
+  body: String
+  header: String
+}
+
+type Mutation {
+  createTest(input: testInput!): response @function(name: "testFunc-${env}")
+  editTest(input: testInput!): response @function(name: "testFunc-${env}")
+  deleteTest(input: testInput!): response @function(name: "testFunc-${env}")
+}

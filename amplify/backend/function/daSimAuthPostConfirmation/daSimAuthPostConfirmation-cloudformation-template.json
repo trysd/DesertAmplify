@@ -61,12 +61,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "simpledesert72ff20de72ff20dePostConfirmation",
+            "daSimAuthPostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "simpledesert72ff20de72ff20dePostConfirmation",
+                  "daSimAuthPostConfirmation",
                   "-",
                   {
                     "Ref": "env"
@@ -101,8 +101,8 @@
         "Runtime": "nodejs10.x",
         "Timeout": "25",
         "Code": {
-          "S3Bucket": "amplify-simpledesert-dev-231326-deployment",
-          "S3Key": "amplify-builds/simpledesert72ff20de72ff20dePostConfirmation-50722f63585267687a47-build.zip"
+          "S3Bucket": "amplify-dasim-dev-95713-deployment",
+          "S3Key": "amplify-builds/daSimAuthPostConfirmation-4435576a595163623933-build.zip"
         }
       }
     },
@@ -112,12 +112,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "simpledesert72ff20de72ff20dePostConfirmation",
+            "daSimAuthPostConfirmation",
             {
               "Fn::Join": [
                 "",
                 [
-                  "simpledesert72ff20de72ff20dePostConfirmation",
+                  "daSimAuthPostConfirmation",
                   "-",
                   {
                     "Ref": "env"

@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "api": {
+      "dasimApi": [
+        "read"
+      ]
+    },
+    "storage": {
+      "Cannon:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "Targets:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "TargetAAA:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "TargetBBB:@model(appsync)": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

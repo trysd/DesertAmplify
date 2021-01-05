@@ -1,25 +1,25 @@
 # this is an auto generated file. This will be overwritten
-query GetOctopus($id: ID!) {
-  getOctopus(id: $id) {
+query GetCannon($id: ID!) {
+  getCannon(id: $id) {
     id
-    date
     type
+    date
     createdAt
     updatedAt
     version
     user_id
   }
 }
-query ListOctopuss(
-  $filter: ModelOctopusFilterInput
+query ListCannons(
+  $filter: ModelCannonFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listOctopuss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listCannons(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      date
       type
+      date
       createdAt
       updatedAt
       version
@@ -28,18 +28,80 @@ query ListOctopuss(
     nextToken
   }
 }
-query GetLeg($id: ID!) {
-  getLeg(id: $id) {
+query GetTargets($id: ID!) {
+  getTargets(id: $id) {
     id
+    type
+    target
+    targetId
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+query ListTargetss(
+  $filter: ModelTargetsFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTargetss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      type
+      target
+      targetId
+      createdAt
+      updatedAt
+      user_id
+    }
+    nextToken
+  }
+}
+query GetTargetAaa($id: ID!) {
+  getTargetAAA(id: $id) {
+    id
+    type
+    name
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+query ListTargetAaAs(
+  $filter: ModelTargetAAAFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTargetAAAs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      type
+      name
+      createdAt
+      updatedAt
+      user_id
+    }
+    nextToken
+  }
+}
+query GetTargetBbb($id: ID!) {
+  getTargetBBB(id: $id) {
+    id
+    type
     name
     createdAt
     updatedAt
   }
 }
-query ListLegs($filter: ModelLegFilterInput, $limit: Int, $nextToken: String) {
-  listLegs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+query ListTargetBbBs(
+  $filter: ModelTargetBBBFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTargetBBBs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      type
       name
       createdAt
       updatedAt
@@ -51,7 +113,7 @@ query ItemsByExample(
   $type: Int
   $date: ModelStringKeyConditionInput
   $sortDirection: ModelSortDirection
-  $filter: ModelOctopusFilterInput
+  $filter: ModelCannonFilterInput
   $limit: Int
   $nextToken: String
 ) {
@@ -65,8 +127,8 @@ query ItemsByExample(
   ) {
     items {
       id
-      date
       type
+      date
       createdAt
       updatedAt
       version

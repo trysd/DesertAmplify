@@ -1,56 +1,122 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateOctopus {
-  onCreateOctopus {
+subscription OnCreateCannon($user_id: String) {
+  onCreateCannon(user_id: $user_id) {
     id
-    date
     type
+    date
     createdAt
     updatedAt
     version
     user_id
   }
 }
-subscription OnUpdateOctopus {
-  onUpdateOctopus {
+subscription OnUpdateCannon($user_id: String) {
+  onUpdateCannon(user_id: $user_id) {
     id
-    date
     type
+    date
     createdAt
     updatedAt
     version
     user_id
   }
 }
-subscription OnDeleteOctopus {
-  onDeleteOctopus {
+subscription OnDeleteCannon($user_id: String) {
+  onDeleteCannon(user_id: $user_id) {
     id
-    date
     type
+    date
     createdAt
     updatedAt
     version
     user_id
   }
 }
-subscription OnCreateLeg {
-  onCreateLeg {
+subscription OnCreateTargets($user_id: String) {
+  onCreateTargets(user_id: $user_id) {
     id
+    type
+    target
+    targetId
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+subscription OnUpdateTargets($user_id: String) {
+  onUpdateTargets(user_id: $user_id) {
+    id
+    type
+    target
+    targetId
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+subscription OnDeleteTargets($user_id: String) {
+  onDeleteTargets(user_id: $user_id) {
+    id
+    type
+    target
+    targetId
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+subscription OnCreateTargetAaa($user_id: String) {
+  onCreateTargetAAA(user_id: $user_id) {
+    id
+    type
+    name
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+subscription OnUpdateTargetAaa($user_id: String) {
+  onUpdateTargetAAA(user_id: $user_id) {
+    id
+    type
+    name
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+subscription OnDeleteTargetAaa($user_id: String) {
+  onDeleteTargetAAA(user_id: $user_id) {
+    id
+    type
+    name
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+subscription OnCreateTargetBbb {
+  onCreateTargetBBB {
+    id
+    type
     name
     createdAt
     updatedAt
   }
 }
-subscription OnUpdateLeg {
-  onUpdateLeg {
+subscription OnUpdateTargetBbb {
+  onUpdateTargetBBB {
     id
+    type
     name
     createdAt
     updatedAt
   }
 }
-subscription OnDeleteLeg {
-  onDeleteLeg {
+subscription OnDeleteTargetBbb {
+  onDeleteTargetBBB {
     id
+    type
     name
     createdAt
     updatedAt

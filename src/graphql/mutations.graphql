@@ -1,74 +1,179 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateOctopus(
-  $input: CreateOctopusInput!
-  $condition: ModelOctopusConditionInput
+mutation CreateTest($input: testInput!) {
+  createTest(input: $input) {
+    statusCode
+    body
+    header
+  }
+}
+mutation EditTest($input: testInput!) {
+  editTest(input: $input) {
+    statusCode
+    body
+    header
+  }
+}
+mutation DeleteTest($input: testInput!) {
+  deleteTest(input: $input) {
+    statusCode
+    body
+    header
+  }
+}
+mutation CreateCannon(
+  $input: CreateCannonInput!
+  $condition: ModelCannonConditionInput
 ) {
-  createOctopus(input: $input, condition: $condition) {
+  createCannon(input: $input, condition: $condition) {
     id
-    date
     type
+    date
     createdAt
     updatedAt
     version
     user_id
   }
 }
-mutation UpdateOctopus(
-  $input: UpdateOctopusInput!
-  $condition: ModelOctopusConditionInput
+mutation UpdateCannon(
+  $input: UpdateCannonInput!
+  $condition: ModelCannonConditionInput
 ) {
-  updateOctopus(input: $input, condition: $condition) {
+  updateCannon(input: $input, condition: $condition) {
     id
-    date
     type
+    date
     createdAt
     updatedAt
     version
     user_id
   }
 }
-mutation DeleteOctopus(
-  $input: DeleteOctopusInput!
-  $condition: ModelOctopusConditionInput
+mutation DeleteCannon(
+  $input: DeleteCannonInput!
+  $condition: ModelCannonConditionInput
 ) {
-  deleteOctopus(input: $input, condition: $condition) {
+  deleteCannon(input: $input, condition: $condition) {
     id
-    date
     type
+    date
     createdAt
     updatedAt
     version
     user_id
   }
 }
-mutation CreateLeg(
-  $input: CreateLegInput!
-  $condition: ModelLegConditionInput
+mutation CreateTargets(
+  $input: CreateTargetsInput!
+  $condition: ModelTargetsConditionInput
 ) {
-  createLeg(input: $input, condition: $condition) {
+  createTargets(input: $input, condition: $condition) {
     id
+    type
+    target
+    targetId
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+mutation UpdateTargets(
+  $input: UpdateTargetsInput!
+  $condition: ModelTargetsConditionInput
+) {
+  updateTargets(input: $input, condition: $condition) {
+    id
+    type
+    target
+    targetId
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+mutation DeleteTargets(
+  $input: DeleteTargetsInput!
+  $condition: ModelTargetsConditionInput
+) {
+  deleteTargets(input: $input, condition: $condition) {
+    id
+    type
+    target
+    targetId
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+mutation CreateTargetAaa(
+  $input: CreateTargetAAAInput!
+  $condition: ModelTargetAAAConditionInput
+) {
+  createTargetAAA(input: $input, condition: $condition) {
+    id
+    type
+    name
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+mutation UpdateTargetAaa(
+  $input: UpdateTargetAAAInput!
+  $condition: ModelTargetAAAConditionInput
+) {
+  updateTargetAAA(input: $input, condition: $condition) {
+    id
+    type
+    name
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+mutation DeleteTargetAaa(
+  $input: DeleteTargetAAAInput!
+  $condition: ModelTargetAAAConditionInput
+) {
+  deleteTargetAAA(input: $input, condition: $condition) {
+    id
+    type
+    name
+    createdAt
+    updatedAt
+    user_id
+  }
+}
+mutation CreateTargetBbb(
+  $input: CreateTargetBBBInput!
+  $condition: ModelTargetBBBConditionInput
+) {
+  createTargetBBB(input: $input, condition: $condition) {
+    id
+    type
     name
     createdAt
     updatedAt
   }
 }
-mutation UpdateLeg(
-  $input: UpdateLegInput!
-  $condition: ModelLegConditionInput
+mutation UpdateTargetBbb(
+  $input: UpdateTargetBBBInput!
+  $condition: ModelTargetBBBConditionInput
 ) {
-  updateLeg(input: $input, condition: $condition) {
+  updateTargetBBB(input: $input, condition: $condition) {
     id
+    type
     name
     createdAt
     updatedAt
   }
 }
-mutation DeleteLeg(
-  $input: DeleteLegInput!
-  $condition: ModelLegConditionInput
+mutation DeleteTargetBbb(
+  $input: DeleteTargetBBBInput!
+  $condition: ModelTargetBBBConditionInput
 ) {
-  deleteLeg(input: $input, condition: $condition) {
+  deleteTargetBBB(input: $input, condition: $condition) {
     id
+    type
     name
     createdAt
     updatedAt
