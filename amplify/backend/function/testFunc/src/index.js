@@ -20,8 +20,9 @@ const docClient = new AWS.DynamoDB.DocumentClient({ region: process.env.REGION }
 const { v4: uuidv4 } = require('uuid'); // npm i --save uuid ※functionフォルダで実行
 const moment = require('moment'); // npm i --save moment
 const fetch = require('node-fetch');
+const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require('constants');
 
-const transactor = require(`./md.transactor`);
+
 
 exports.handler = async (event) => {
 
@@ -44,6 +45,20 @@ exports.handler = async (event) => {
             date: '2021-12-12'
           }
         }
+      }, {
+        Update: {
+          TableName: process.env.API_DASIMAPI_CANNONTABLE_NAME,
+          Key: { id: '3b9224a2-72ca-4789-9d0c-cb31da546d8e' },
+          UpdateExpression: 'set #version = #version + :Increment',
+          ConditionExpression: '#version = :version',
+          ExpressionAttributeNames: {
+            '#version': 'version'
+          },
+          ExpressionAttributeValues: {
+            ':Increment': 1,
+            ':version' : 2
+          }
+        }
       }
     ]
   };
@@ -56,6 +71,12 @@ exports.handler = async (event) => {
     console.log('=====# // #===== ');
   }
 
+  const mdtest = require(`./md-test`);
+  const ttt = await mdtest.handler(event, '#20210110!', null)
+
+  const mdsample = (require(`./md-sample`)).handler;
+  const sss = await mdsample(event, '#20210110!', null)
+
   // TODO implement
   return {
     statusCode: 200,
@@ -66,7 +87,9 @@ exports.handler = async (event) => {
     //  },
     body: JSON.stringify({
       message: 'Hello from Lambda!',
-      event: event
+      event: event,
+      mdtest: ttt,
+      mdsample: sss
     }),
 
   };

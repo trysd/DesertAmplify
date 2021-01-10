@@ -187,7 +187,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-dasim-dev-95713-deployment",
-          "S3Key": "amplify-builds/testFunc-53587845686f6f683454-build.zip"
+          "S3Key": "amplify-builds/testFunc-734e4f43344a352b7445-build.zip"
         }
       }
     },
