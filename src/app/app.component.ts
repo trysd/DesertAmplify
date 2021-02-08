@@ -12,6 +12,20 @@ import {  } from '@aws-amplify/ui-components';
 import { I18n } from '@aws-amplify/core';
 import { AmplifyService } from 'aws-amplify-angular';
 
+import API, { graphqlOperation, GraphQLResult } from "@aws-amplify/api-graphql";
+import { Observable } from "zen-observable-ts";
+export interface SubscriptionResponse<T> {
+  value: GraphQLResult<T>;
+}
+export type OnUpdateTodoSubscription = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export const vocabularies = {
   ja: {
       // Translations Label
@@ -216,18 +230,44 @@ export class AppComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    const xxx = this.api.CreateTest({arg: "..c"});
-    const xx2 = this.api.EditTest({arg: "..e"})
+    // https://qiita.com/is_ryo/items/37cb5fc2df8c1b788663#subscribe%E5%87%A6%E7%90%86subscription
 
-    xxx.then(e => {
-      console.log(e);
-      console.log(JSON.parse(e.body))
-    });
+    const watchingId = 'dfd6f98f-ef39-445b-aec4-e79b4da42726';
+    const sampleListener: Observable<object> = API.graphql(
+      graphqlOperation(
+        `subscription subUpdateTodoById {
+          onUpdateTodoById(id: "${watchingId}") {
+            id,
+            memo,
+            name
+          }
+        }`
+      )
+    ) as Observable<object>;
+    const subscribeSampleListener = sampleListener.subscribe(e => console.log(e))
 
-    xx2.then(e => {
-      console.log(e);
-      console.log(JSON.parse(e.body))
-    })
+    // subscribeSampleListener .. unsubscribe don't forget
+
+    setTimeout(() => {
+      this.api.UpdateTodo({
+        id: 'dfd6f98f-ef39-445b-aec4-e79b4da42726',
+        memo: 'aaa'
+      }).then(e => console.log(e));
+    }, 1500);
+
+
+    // const xxx = this.api.CreateTest({arg: "..c"});
+    // const xx2 = this.api.EditTest({arg: "..e"})
+
+    // xxx.then(e => {
+    //   console.log(e);
+    //   console.log(JSON.parse(e.body))
+    // });
+
+    // xx2.then(e => {
+    //   console.log(e);
+    //   console.log(JSON.parse(e.body))
+    // })
 
     /*
 

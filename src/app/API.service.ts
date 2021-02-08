@@ -181,6 +181,30 @@ export type DeleteTargetBBBInput = {
   id?: string | null;
 };
 
+export type CreateTodoInput = {
+  id?: string | null;
+  name?: string | null;
+  memo?: string | null;
+};
+
+export type ModeltodoConditionInput = {
+  name?: ModelStringInput | null;
+  memo?: ModelStringInput | null;
+  and?: Array<ModeltodoConditionInput | null> | null;
+  or?: Array<ModeltodoConditionInput | null> | null;
+  not?: ModeltodoConditionInput | null;
+};
+
+export type UpdateTodoInput = {
+  id: string;
+  name?: string | null;
+  memo?: string | null;
+};
+
+export type DeleteTodoInput = {
+  id?: string | null;
+};
+
 export type ModelCannonFilterInput = {
   id?: ModelIDInput | null;
   type?: ModelIntInput | null;
@@ -216,6 +240,15 @@ export type ModelTargetBBBFilterInput = {
   and?: Array<ModelTargetBBBFilterInput | null> | null;
   or?: Array<ModelTargetBBBFilterInput | null> | null;
   not?: ModelTargetBBBFilterInput | null;
+};
+
+export type ModeltodoFilterInput = {
+  id?: ModelIDInput | null;
+  name?: ModelStringInput | null;
+  memo?: ModelStringInput | null;
+  and?: Array<ModeltodoFilterInput | null> | null;
+  or?: Array<ModeltodoFilterInput | null> | null;
+  not?: ModeltodoFilterInput | null;
 };
 
 export type ModelStringKeyConditionInput = {
@@ -377,6 +410,33 @@ export type DeleteTargetBbbMutation = {
   updatedAt: string;
 };
 
+export type CreateTodoMutation = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type UpdateTodoMutation = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type DeleteTodoMutation = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type GetCannonQuery = {
   __typename: "Cannon";
   id: string;
@@ -475,6 +535,28 @@ export type ListTargetBbBsQuery = {
   nextToken: string | null;
 };
 
+export type GetTodoQuery = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ListTodosQuery = {
+  __typename: "ModeltodoConnection";
+  items: Array<{
+    __typename: "todo";
+    id: string;
+    name: string | null;
+    memo: string | null;
+    createdAt: string;
+    updatedAt: string;
+  } | null> | null;
+  nextToken: string | null;
+};
+
 export type ItemsByExampleQuery = {
   __typename: "ModelCannonConnection";
   items: Array<{
@@ -488,6 +570,15 @@ export type ItemsByExampleQuery = {
     user_id: string | null;
   } | null> | null;
   nextToken: string | null;
+};
+
+export type OnUpdateTodoByIdSubscription = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type OnCreateCannonSubscription = {
@@ -609,6 +700,33 @@ export type OnDeleteTargetBbbSubscription = {
   id: string;
   type: number;
   name: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnCreateTodoSubscription = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnUpdateTodoSubscription = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type OnDeleteTodoSubscription = {
+  __typename: "todo";
+  id: string;
+  name: string | null;
+  memo: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -983,6 +1101,81 @@ export class APIService {
     )) as any;
     return <DeleteTargetBbbMutation>response.data.deleteTargetBBB;
   }
+  async CreateTodo(
+    input: CreateTodoInput,
+    condition?: ModeltodoConditionInput
+  ): Promise<CreateTodoMutation> {
+    const statement = `mutation CreateTodo($input: CreateTodoInput!, $condition: ModeltodoConditionInput) {
+        createTodo(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          memo
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <CreateTodoMutation>response.data.createTodo;
+  }
+  async UpdateTodo(
+    input: UpdateTodoInput,
+    condition?: ModeltodoConditionInput
+  ): Promise<UpdateTodoMutation> {
+    const statement = `mutation UpdateTodo($input: UpdateTodoInput!, $condition: ModeltodoConditionInput) {
+        updateTodo(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          memo
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <UpdateTodoMutation>response.data.updateTodo;
+  }
+  async DeleteTodo(
+    input: DeleteTodoInput,
+    condition?: ModeltodoConditionInput
+  ): Promise<DeleteTodoMutation> {
+    const statement = `mutation DeleteTodo($input: DeleteTodoInput!, $condition: ModeltodoConditionInput) {
+        deleteTodo(input: $input, condition: $condition) {
+          __typename
+          id
+          name
+          memo
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    if (condition) {
+      gqlAPIServiceArguments.condition = condition;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <DeleteTodoMutation>response.data.deleteTodo;
+  }
   async GetCannon(id: string): Promise<GetCannonQuery> {
     const statement = `query GetCannon($id: ID!) {
         getCannon(id: $id) {
@@ -1205,6 +1398,59 @@ export class APIService {
     )) as any;
     return <ListTargetBbBsQuery>response.data.listTargetBBBs;
   }
+  async GetTodo(id: string): Promise<GetTodoQuery> {
+    const statement = `query GetTodo($id: ID!) {
+        getTodo(id: $id) {
+          __typename
+          id
+          name
+          memo
+          createdAt
+          updatedAt
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <GetTodoQuery>response.data.getTodo;
+  }
+  async ListTodos(
+    filter?: ModeltodoFilterInput,
+    limit?: number,
+    nextToken?: string
+  ): Promise<ListTodosQuery> {
+    const statement = `query ListTodos($filter: ModeltodoFilterInput, $limit: Int, $nextToken: String) {
+        listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+          __typename
+          items {
+            __typename
+            id
+            name
+            memo
+            createdAt
+            updatedAt
+          }
+          nextToken
+        }
+      }`;
+    const gqlAPIServiceArguments: any = {};
+    if (filter) {
+      gqlAPIServiceArguments.filter = filter;
+    }
+    if (limit) {
+      gqlAPIServiceArguments.limit = limit;
+    }
+    if (nextToken) {
+      gqlAPIServiceArguments.nextToken = nextToken;
+    }
+    const response = (await API.graphql(
+      graphqlOperation(statement, gqlAPIServiceArguments)
+    )) as any;
+    return <ListTodosQuery>response.data.listTodos;
+  }
   async ItemsByExample(
     type?: number,
     date?: ModelStringKeyConditionInput,
@@ -1253,6 +1499,23 @@ export class APIService {
     )) as any;
     return <ItemsByExampleQuery>response.data.itemsByExample;
   }
+  OnUpdateTodoByIdListener: Observable<
+    SubscriptionResponse<OnUpdateTodoByIdSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTodoById($id: ID) {
+        onUpdateTodoById(id: $id) {
+          __typename
+          id
+          name
+          memo
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnUpdateTodoByIdSubscription>>;
+
   OnCreateCannonListener: Observable<
     SubscriptionResponse<OnCreateCannonSubscription>
   > = API.graphql(
@@ -1471,4 +1734,55 @@ export class APIService {
       }`
     )
   ) as Observable<SubscriptionResponse<OnDeleteTargetBbbSubscription>>;
+
+  OnCreateTodoListener: Observable<
+    SubscriptionResponse<OnCreateTodoSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnCreateTodo {
+        onCreateTodo {
+          __typename
+          id
+          name
+          memo
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnCreateTodoSubscription>>;
+
+  OnUpdateTodoListener: Observable<
+    SubscriptionResponse<OnUpdateTodoSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnUpdateTodo {
+        onUpdateTodo {
+          __typename
+          id
+          name
+          memo
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnUpdateTodoSubscription>>;
+
+  OnDeleteTodoListener: Observable<
+    SubscriptionResponse<OnDeleteTodoSubscription>
+  > = API.graphql(
+    graphqlOperation(
+      `subscription OnDeleteTodo {
+        onDeleteTodo {
+          __typename
+          id
+          name
+          memo
+          createdAt
+          updatedAt
+        }
+      }`
+    )
+  ) as Observable<SubscriptionResponse<OnDeleteTodoSubscription>>;
 }

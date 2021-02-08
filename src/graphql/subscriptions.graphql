@@ -1,4 +1,13 @@
 # this is an auto generated file. This will be overwritten
+subscription OnUpdateTodoById($id: ID) {
+  onUpdateTodoById(id: $id) {
+    id
+    name
+    memo
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateCannon($user_id: String) {
   onCreateCannon(user_id: $user_id) {
     id
@@ -118,6 +127,33 @@ subscription OnDeleteTargetBbb {
     id
     type
     name
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateTodo {
+  onCreateTodo {
+    id
+    name
+    memo
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTodo {
+  onUpdateTodo {
+    id
+    name
+    memo
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTodo {
+  onDeleteTodo {
+    id
+    name
+    memo
     createdAt
     updatedAt
   }

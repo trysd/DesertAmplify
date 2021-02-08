@@ -109,6 +109,31 @@ query ListTargetBbBs(
     nextToken
   }
 }
+query GetTodo($id: ID!) {
+  getTodo(id: $id) {
+    id
+    name
+    memo
+    createdAt
+    updatedAt
+  }
+}
+query ListTodos(
+  $filter: ModeltodoFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      memo
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
 query ItemsByExample(
   $type: Int
   $date: ModelStringKeyConditionInput

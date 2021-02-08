@@ -179,3 +179,39 @@ mutation DeleteTargetBbb(
     updatedAt
   }
 }
+mutation CreateTodo(
+  $input: CreateTodoInput!
+  $condition: ModeltodoConditionInput
+) {
+  createTodo(input: $input, condition: $condition) {
+    id
+    name
+    memo
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateTodo(
+  $input: UpdateTodoInput!
+  $condition: ModeltodoConditionInput
+) {
+  updateTodo(input: $input, condition: $condition) {
+    id
+    name
+    memo
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteTodo(
+  $input: DeleteTodoInput!
+  $condition: ModeltodoConditionInput
+) {
+  deleteTodo(input: $input, condition: $condition) {
+    id
+    name
+    memo
+    createdAt
+    updatedAt
+  }
+}

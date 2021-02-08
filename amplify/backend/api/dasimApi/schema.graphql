@@ -54,6 +54,25 @@ type response {
   header: String
 }
 
+
+type todo @model {
+  id: ID!
+  name: String
+  memo: String
+}
+
+#schema {
+#    query: Query
+#    mutation: Mutation
+#    subscription: Subscription
+#}
+
+# -- codegen required --
+type Subscription {
+  onUpdateTodoById(id: ID): todo
+    @aws_subscribe(mutations: ["updateTodo"])
+}
+
 type Mutation {
   createTest(input: testInput!): response @function(name: "testFunc-${env}")
   editTest(input: testInput!): response @function(name: "testFunc-${env}")
