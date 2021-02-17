@@ -1,3 +1,13 @@
+
+<a routerLink="/subpage">subpage</a>
+
+<router-outlet></router-outlet>
+
+
+
+
+
+<!--
 <amplify-authenticator>
   <div style="
     text-align:right;
@@ -10,8 +20,14 @@
     logined..
   </div>
   <amplify-sign-up slot="sign-up" usernameAlias="email" [formFields]="formFields"></amplify-sign-up>
-  <!-- <amplify-sign-in slot="sign-in" usernameAlias="email"></amplify-sign-in> -->
-</amplify-authenticator>
+  <amplify-sign-in slot="sign-in" usernameAlias="email"></amplify-sign-in>
+  <amplify-forgot-password
+    headerText="My Custom Forgot Password Text"
+    slot="forgot-password"
+    [formFields]="forgot"
+    usernameAlias="email"
+  ></amplify-forgot-password>
+</amplify-authenticator> -->
 
 <!-- <amplify-authenticator usernameAlias="email">
   <amplify-confirm-sign-up slot="confirm-sign-up" [formFields]="formFieldsConfirm">

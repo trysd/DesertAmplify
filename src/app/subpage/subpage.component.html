@@ -1,0 +1,31 @@
+<p>subpage works!</p>
+<a routerLink="/">../</a>
+
+<!-- router.navigate(['/']) -->
+
+<!-- <br>
+<button (click)="callback(this.testCheck.existsSpecifiedKeyValuesInObjects(arr, 'ttt', ['aaa']),
+  function(){ router.navigate(['/']) },
+  dialog('state error..'))">testCheck</button> -->
+
+<!-- <button (click)="callback(
+  this.testCheck.existsSpecifiedKeyValuesInObjects(arr, 'ttt', ['aaa']),
+  router.navigate(['/']),
+  dialog('state error..'))">testCheck</button> -->
+
+<amplify-authenticator usernameAlias="email">
+  <div style="
+    text-align:right;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    " *ngIf="user && user.signInUserSession">
+    {{ userProp.attributes['custom:nickname'] }} | <span class="pointer link" (click)="signout()">signout</span>
+  </div>
+  <div>
+    logined..
+  </div>
+  <amplify-sign-up slot="sign-up" usernameAlias="email" [formFields]="formFields"></amplify-sign-up>
+  <amplify-sign-in slot="sign-in" usernameAlias="email"></amplify-sign-in>
+  <amplify-forgot-password headerText="My Custom Forgot Password Text!!" slot="forgot-password" [formFields]="forgot"
+    usernameAlias="email"></amplify-forgot-password>
+</amplify-authenticator>

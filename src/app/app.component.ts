@@ -10,7 +10,7 @@ import {
 import { Auth } from '@aws-amplify/auth';
 import {  } from '@aws-amplify/ui-components';
 import { I18n } from '@aws-amplify/core';
-import { AmplifyService } from 'aws-amplify-angular';
+// import { AmplifyService } from 'aws-amplify-angular';
 
 import API, { graphqlOperation, GraphQLResult } from "@aws-amplify/api-graphql";
 import { Observable } from "zen-observable-ts";
@@ -26,7 +26,6 @@ export type OnUpdateTodoSubscription = {
   updatedAt: string;
 };
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,15 +35,30 @@ export class AppComponent implements OnInit {
 
   user: CognitoUserInterface | undefined;
   userProp;
-
   authState: AuthState;
   formFields: FormFieldTypes;
   formFieldsConfirm: FormFieldTypes;
   useremail: string;
 
+  forgot: any;
+
+  test() {
+    console.log('test');
+
+    const arr = [{'type':'child'}, {'type':'bbb'}];
+
+    const existsSpecifiedKeyValuesInObjects = (objList: object[], key: string, values: any[]) => {
+      return !values.map(
+          v => objList.map(a => a[key]).includes(v)
+        ).includes(false)
+    }
+    console.log( existsSpecifiedKeyValuesInObjects(arr, 'type', ['bbb', 'child']) );
+
+  }
+
   constructor(
     private ref: ChangeDetectorRef,
-    public amplify: AmplifyService,
+    // public amplify: AmplifyService,
     private api: APIService
   ) {
 
@@ -87,9 +101,20 @@ export class AppComponent implements OnInit {
         required: false,
       },
     ];
+
+    this.forgot = [{
+      type: 'confirm_code',
+      label: 'Email..',
+      placeholder: '*****',
+      required: true,
+    }];
   }
 
+
+
   async ngOnInit(): Promise<void> {
+
+    this.test();
 
     // ===== subscripbeById テスト
     // // https://qiita.com/is_ryo/items/37cb5fc2df8c1b788663#subscribe%E5%87%A6%E7%90%86subscription
@@ -204,9 +229,9 @@ export class AppComponent implements OnInit {
     }
 
     // handle auth state changes
-    this.amplify.authStateChange$.subscribe(authState => {
-      console.log(authState);
-    });
+    // this.amplify.authStateChange$.subscribe(authState => {
+    //   console.log(authState);
+    // });
 
   }
 
@@ -361,5 +386,5 @@ export const vocabularies = {
     },
 };
 
-I18n.putVocabularies(vocabularies);
-I18n.setLanguage('ja');
+// I18n.putVocabularies(vocabularies);
+// I18n.setLanguage('ja');

@@ -3,14 +3,20 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { RouterModule } from '@angular/router';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { AmplifyService } from 'aws-amplify-angular';
+
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import { SubpageComponent } from './subpage/subpage.component';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SubpageComponent
   ],
   imports: [
     BrowserModule,
@@ -18,8 +24,10 @@ import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
     BrowserAnimationsModule,
     AmplifyUIAngularModule,
     FormsModule, ReactiveFormsModule,
+    AppRoutingModule,
+    RouterModule
   ],
-  providers: [AmplifyService],
+  // providers: [AmplifyService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

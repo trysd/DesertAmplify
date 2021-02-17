@@ -1,6 +1,6 @@
 {
     "identityPoolName": "daSimPool",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "dasimcad53d45",
     "userPoolName": "dasimAuthPool",
     "autoVerifiedAttributes": [
