@@ -26,7 +26,6 @@ export type OnUpdateTodoSubscription = {
   updatedAt: string;
 };
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,18 +35,22 @@ export class AppComponent implements OnInit {
 
   user: CognitoUserInterface | undefined;
   userProp;
-
   authState: AuthState;
   formFields: FormFieldTypes;
   formFieldsConfirm: FormFieldTypes;
   useremail: string;
+
+  forgot: any;
+
+  test() {
+    console.log('test');
+  }
 
   constructor(
     private ref: ChangeDetectorRef,
     public amplify: AmplifyService,
     private api: APIService
   ) {
-
     this.formFieldsConfirm = [{
       type: 'confirm_code',
       label: '確認コードを送信しました。',
@@ -87,9 +90,20 @@ export class AppComponent implements OnInit {
         required: false,
       },
     ];
+
+    this.forgot = [{
+      type: 'confirm_code',
+      label: 'Email..',
+      placeholder: '*****',
+      required: true,
+    }];
   }
 
+
+
   async ngOnInit(): Promise<void> {
+
+    this.test();
 
     // ===== subscripbeById テスト
     // // https://qiita.com/is_ryo/items/37cb5fc2df8c1b788663#subscribe%E5%87%A6%E7%90%86subscription
@@ -361,5 +375,5 @@ export const vocabularies = {
     },
 };
 
-I18n.putVocabularies(vocabularies);
-I18n.setLanguage('ja');
+// I18n.putVocabularies(vocabularies);
+// I18n.setLanguage('ja');
