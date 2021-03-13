@@ -1,80 +1,97 @@
-type Cannon
+type test
   @model
-  @versioned
-    @key(name: "byExample", fields: ["type", "date"], queryField: "itemsByExample")
-    @auth (
-    rules: [
-      {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
-      {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
-    ])
-  {
-    id: ID!
-    type: Int!
-    date: AWSDate!
-  }
-
-type Targets @model
-    @auth (
-    rules: [
-      {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
-      {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
-    ])
+  @key(fields: ["id"])
+  @key(name: "byAbyB", fields: ["a", "d"], queryField: "Qddd")
 {
-    id: ID!
-    type: Int!
-    target: String!
-    targetId: ID!
-}
-
-type TargetAAA @model
-    @auth (
-    rules: [
-      {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
-      {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
-    ])
-{
-    id: ID!
-    type: Int!
-    name: String!
-}
-
-type TargetBBB @model {
-    id: ID!
-    type: Int!
-    name: String!
-}
-
-input testInput {
-  arg: String!
-}
-
-type response {
-  statusCode: Int
-  body: String
-  header: String
-}
-
-
-type todo @model {
   id: ID!
+  a: String!
+  b: B
+  c: [String]
+  d: String!
+}
+
+type B {
   name: String
-  memo: String
+  age: Int
+  list: [String]!
 }
 
-#schema {
-#    query: Query
-#    mutation: Mutation
-#    subscription: Subscription
-#}
+# type Cannon
+#   @model
+#   @versioned
+#     @key(name: "byExample", fields: ["type", "date"], queryField: "itemsByExample")
+#     @auth (
+#     rules: [
+#       {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
+#       {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
+#     ])
+#   {
+#     id: ID!
+#     type: Int!
+#     date: AWSDate!
+#   }
 
-# -- codegen required --
-type Subscription {
-  onUpdateTodoById(id: ID): todo
-    @aws_subscribe(mutations: ["updateTodo"])
-}
+# type Targets @model
+#     @auth (
+#     rules: [
+#       {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
+#       {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
+#     ])
+# {
+#     id: ID!
+#     type: Int!
+#     target: String!
+#     targetId: ID!
+# }
 
-type Mutation {
-  createTest(input: testInput!): response @function(name: "testFunc-${env}")
-  editTest(input: testInput!): response @function(name: "testFunc-${env}")
-  deleteTest(input: testInput!): response @function(name: "testFunc-${env}")
-}
+# type TargetAAA @model
+#     @auth (
+#     rules: [
+#       {allow: groups, groups: ["Admins"]}, # , operations: [create, update, delete]
+#       {allow: owner, ownerField: "user_id"} # , operations: [create, update, delete]
+#     ])
+# {
+#     id: ID!
+#     type: Int!
+#     name: String!
+# }
+
+# type TargetBBB @model {
+#     id: ID!
+#     type: Int!
+#     name: String!
+# }
+
+# input testInput {
+#   arg: String!
+# }
+
+# type response {
+#   statusCode: Int
+#   body: String
+#   header: String
+# }
+
+# type todo @model {
+#   id: ID!
+#   name: String
+#   memo: String
+# }
+
+# #schema {
+# #    query: Query
+# #    mutation: Mutation
+# #    subscription: Subscription
+# #}
+
+# # -- codegen required --
+# type Subscription {
+#   onUpdateTodoById(id: ID): todo
+#     @aws_subscribe(mutations: ["updateTodo"])
+# }
+
+# type Mutation {
+#   createTest(input: testInput!): response @function(name: "testFunc-${env}")
+#   editTest(input: testInput!): response @function(name: "testFunc-${env}")
+#   deleteTest(input: testInput!): response @function(name: "testFunc-${env}")
+# }

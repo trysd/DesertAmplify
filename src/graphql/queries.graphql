@@ -1,150 +1,60 @@
 # this is an auto generated file. This will be overwritten
-query GetCannon($id: ID!) {
-  getCannon(id: $id) {
+query GetTest($id: ID!) {
+  getTest(id: $id) {
     id
-    type
-    date
-    createdAt
-    updatedAt
-    version
-    user_id
-  }
-}
-query ListCannons(
-  $filter: ModelCannonFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listCannons(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      type
-      date
-      createdAt
-      updatedAt
-      version
-      user_id
-    }
-    nextToken
-  }
-}
-query GetTargets($id: ID!) {
-  getTargets(id: $id) {
-    id
-    type
-    target
-    targetId
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-query ListTargetss(
-  $filter: ModelTargetsFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listTargetss(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      type
-      target
-      targetId
-      createdAt
-      updatedAt
-      user_id
-    }
-    nextToken
-  }
-}
-query GetTargetAaa($id: ID!) {
-  getTargetAAA(id: $id) {
-    id
-    type
-    name
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-query ListTargetAaAs(
-  $filter: ModelTargetAAAFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listTargetAAAs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      type
+    a
+    b {
       name
-      createdAt
-      updatedAt
-      user_id
+      age
+      list
     }
-    nextToken
-  }
-}
-query GetTargetBbb($id: ID!) {
-  getTargetBBB(id: $id) {
-    id
-    type
-    name
+    c
+    d
     createdAt
     updatedAt
   }
 }
-query ListTargetBbBs(
-  $filter: ModelTargetBBBFilterInput
+query ListTests(
+  $id: ID
+  $filter: ModeltestFilterInput
   $limit: Int
   $nextToken: String
-) {
-  listTargetBBBs(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      type
-      name
-      createdAt
-      updatedAt
-    }
-    nextToken
-  }
-}
-query GetTodo($id: ID!) {
-  getTodo(id: $id) {
-    id
-    name
-    memo
-    createdAt
-    updatedAt
-  }
-}
-query ListTodos(
-  $filter: ModeltodoFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      memo
-      createdAt
-      updatedAt
-    }
-    nextToken
-  }
-}
-query ItemsByExample(
-  $type: Int
-  $date: ModelStringKeyConditionInput
   $sortDirection: ModelSortDirection
-  $filter: ModelCannonFilterInput
+) {
+  listTests(
+    id: $id
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
+    items {
+      id
+      a
+      b {
+        name
+        age
+        list
+      }
+      c
+      d
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query Qddd(
+  $a: String
+  $d: ModelStringKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModeltestFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  itemsByExample(
-    type: $type
-    date: $date
+  Qddd(
+    a: $a
+    d: $d
     sortDirection: $sortDirection
     filter: $filter
     limit: $limit
@@ -152,12 +62,16 @@ query ItemsByExample(
   ) {
     items {
       id
-      type
-      date
+      a
+      b {
+        name
+        age
+        list
+      }
+      c
+      d
       createdAt
       updatedAt
-      version
-      user_id
     }
     nextToken
   }

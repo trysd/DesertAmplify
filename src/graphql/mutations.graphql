@@ -1,216 +1,54 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateTest($input: testInput!) {
-  createTest(input: $input) {
-    statusCode
-    body
-    header
-  }
-}
-mutation EditTest($input: testInput!) {
-  editTest(input: $input) {
-    statusCode
-    body
-    header
-  }
-}
-mutation DeleteTest($input: testInput!) {
-  deleteTest(input: $input) {
-    statusCode
-    body
-    header
-  }
-}
-mutation CreateCannon(
-  $input: CreateCannonInput!
-  $condition: ModelCannonConditionInput
+mutation CreateTest(
+  $input: CreateTestInput!
+  $condition: ModeltestConditionInput
 ) {
-  createCannon(input: $input, condition: $condition) {
+  createTest(input: $input, condition: $condition) {
     id
-    type
-    date
-    createdAt
-    updatedAt
-    version
-    user_id
-  }
-}
-mutation UpdateCannon(
-  $input: UpdateCannonInput!
-  $condition: ModelCannonConditionInput
-) {
-  updateCannon(input: $input, condition: $condition) {
-    id
-    type
-    date
-    createdAt
-    updatedAt
-    version
-    user_id
-  }
-}
-mutation DeleteCannon(
-  $input: DeleteCannonInput!
-  $condition: ModelCannonConditionInput
-) {
-  deleteCannon(input: $input, condition: $condition) {
-    id
-    type
-    date
-    createdAt
-    updatedAt
-    version
-    user_id
-  }
-}
-mutation CreateTargets(
-  $input: CreateTargetsInput!
-  $condition: ModelTargetsConditionInput
-) {
-  createTargets(input: $input, condition: $condition) {
-    id
-    type
-    target
-    targetId
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-mutation UpdateTargets(
-  $input: UpdateTargetsInput!
-  $condition: ModelTargetsConditionInput
-) {
-  updateTargets(input: $input, condition: $condition) {
-    id
-    type
-    target
-    targetId
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-mutation DeleteTargets(
-  $input: DeleteTargetsInput!
-  $condition: ModelTargetsConditionInput
-) {
-  deleteTargets(input: $input, condition: $condition) {
-    id
-    type
-    target
-    targetId
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-mutation CreateTargetAaa(
-  $input: CreateTargetAAAInput!
-  $condition: ModelTargetAAAConditionInput
-) {
-  createTargetAAA(input: $input, condition: $condition) {
-    id
-    type
-    name
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-mutation UpdateTargetAaa(
-  $input: UpdateTargetAAAInput!
-  $condition: ModelTargetAAAConditionInput
-) {
-  updateTargetAAA(input: $input, condition: $condition) {
-    id
-    type
-    name
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-mutation DeleteTargetAaa(
-  $input: DeleteTargetAAAInput!
-  $condition: ModelTargetAAAConditionInput
-) {
-  deleteTargetAAA(input: $input, condition: $condition) {
-    id
-    type
-    name
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-mutation CreateTargetBbb(
-  $input: CreateTargetBBBInput!
-  $condition: ModelTargetBBBConditionInput
-) {
-  createTargetBBB(input: $input, condition: $condition) {
-    id
-    type
-    name
+    a
+    b {
+      name
+      age
+      list
+    }
+    c
+    d
     createdAt
     updatedAt
   }
 }
-mutation UpdateTargetBbb(
-  $input: UpdateTargetBBBInput!
-  $condition: ModelTargetBBBConditionInput
+mutation UpdateTest(
+  $input: UpdateTestInput!
+  $condition: ModeltestConditionInput
 ) {
-  updateTargetBBB(input: $input, condition: $condition) {
+  updateTest(input: $input, condition: $condition) {
     id
-    type
-    name
+    a
+    b {
+      name
+      age
+      list
+    }
+    c
+    d
     createdAt
     updatedAt
   }
 }
-mutation DeleteTargetBbb(
-  $input: DeleteTargetBBBInput!
-  $condition: ModelTargetBBBConditionInput
+mutation DeleteTest(
+  $input: DeleteTestInput!
+  $condition: ModeltestConditionInput
 ) {
-  deleteTargetBBB(input: $input, condition: $condition) {
+  deleteTest(input: $input, condition: $condition) {
     id
-    type
-    name
-    createdAt
-    updatedAt
-  }
-}
-mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModeltodoConditionInput
-) {
-  createTodo(input: $input, condition: $condition) {
-    id
-    name
-    memo
-    createdAt
-    updatedAt
-  }
-}
-mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModeltodoConditionInput
-) {
-  updateTodo(input: $input, condition: $condition) {
-    id
-    name
-    memo
-    createdAt
-    updatedAt
-  }
-}
-mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModeltodoConditionInput
-) {
-  deleteTodo(input: $input, condition: $condition) {
-    id
-    name
-    memo
+    a
+    b {
+      name
+      age
+      list
+    }
+    c
+    d
     createdAt
     updatedAt
   }

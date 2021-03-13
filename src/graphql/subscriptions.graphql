@@ -1,159 +1,45 @@
 # this is an auto generated file. This will be overwritten
-subscription OnUpdateTodoById($id: ID) {
-  onUpdateTodoById(id: $id) {
+subscription OnCreateTest {
+  onCreateTest {
     id
-    name
-    memo
+    a
+    b {
+      name
+      age
+      list
+    }
+    c
+    d
     createdAt
     updatedAt
   }
 }
-subscription OnCreateCannon($user_id: String) {
-  onCreateCannon(user_id: $user_id) {
+subscription OnUpdateTest {
+  onUpdateTest {
     id
-    type
-    date
-    createdAt
-    updatedAt
-    version
-    user_id
-  }
-}
-subscription OnUpdateCannon($user_id: String) {
-  onUpdateCannon(user_id: $user_id) {
-    id
-    type
-    date
-    createdAt
-    updatedAt
-    version
-    user_id
-  }
-}
-subscription OnDeleteCannon($user_id: String) {
-  onDeleteCannon(user_id: $user_id) {
-    id
-    type
-    date
-    createdAt
-    updatedAt
-    version
-    user_id
-  }
-}
-subscription OnCreateTargets($user_id: String) {
-  onCreateTargets(user_id: $user_id) {
-    id
-    type
-    target
-    targetId
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-subscription OnUpdateTargets($user_id: String) {
-  onUpdateTargets(user_id: $user_id) {
-    id
-    type
-    target
-    targetId
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-subscription OnDeleteTargets($user_id: String) {
-  onDeleteTargets(user_id: $user_id) {
-    id
-    type
-    target
-    targetId
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-subscription OnCreateTargetAaa($user_id: String) {
-  onCreateTargetAAA(user_id: $user_id) {
-    id
-    type
-    name
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-subscription OnUpdateTargetAaa($user_id: String) {
-  onUpdateTargetAAA(user_id: $user_id) {
-    id
-    type
-    name
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-subscription OnDeleteTargetAaa($user_id: String) {
-  onDeleteTargetAAA(user_id: $user_id) {
-    id
-    type
-    name
-    createdAt
-    updatedAt
-    user_id
-  }
-}
-subscription OnCreateTargetBbb {
-  onCreateTargetBBB {
-    id
-    type
-    name
+    a
+    b {
+      name
+      age
+      list
+    }
+    c
+    d
     createdAt
     updatedAt
   }
 }
-subscription OnUpdateTargetBbb {
-  onUpdateTargetBBB {
+subscription OnDeleteTest {
+  onDeleteTest {
     id
-    type
-    name
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteTargetBbb {
-  onDeleteTargetBBB {
-    id
-    type
-    name
-    createdAt
-    updatedAt
-  }
-}
-subscription OnCreateTodo {
-  onCreateTodo {
-    id
-    name
-    memo
-    createdAt
-    updatedAt
-  }
-}
-subscription OnUpdateTodo {
-  onUpdateTodo {
-    id
-    name
-    memo
-    createdAt
-    updatedAt
-  }
-}
-subscription OnDeleteTodo {
-  onDeleteTodo {
-    id
-    name
-    memo
+    a
+    b {
+      name
+      age
+      list
+    }
+    c
+    d
     createdAt
     updatedAt
   }
